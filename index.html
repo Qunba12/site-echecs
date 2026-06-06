@@ -570,54 +570,7 @@
         <!-- ==========================================
              PAGE CONTACT
         ========================================== -->
-        <div id="contact" class="page">
-            <h1 id="title-contact" data-editable>Nous trouver & Liens 📍</h1>
-            <div class="card" style="margin-bottom: 25px;">
-                <h3 id="subtitle-adresse" data-editable>📍 L'Adresse</h3>
-                <p id="edit-adresse" data-editable>Salle des Fêtes, 76890 Saint-Ouen-du-Breuil.</p>
-            </div>
-
-            <h3>🔗 Liens et Communauté</h3>
-            <div id="links-container"></div>
-            
-            <div class="card" style="margin-top: 25px; border-top: 4px solid #3498db;">
-                <h3>✉️ Nous envoyer un message</h3>
-                <input type="text" id="contact-nom" class="form-input" placeholder="Votre Prénom et Nom">
-                <label style="font-size: 0.9rem; display: block; margin-bottom: 15px; cursor: pointer;">
-                    <input type="checkbox" id="contact-anonyme" onchange="document.getElementById('contact-nom').disabled = this.checked; if(this.checked) document.getElementById('contact-nom').value = '';"> 
-                    Rester anonyme 🕵️‍♂️
-                </label>
-
-                <div style="margin-bottom: 15px; background: rgba(0,0,0,0.05); padding: 10px; border-radius: 5px;">
-                    <p style="margin: 0 0 10px 0; font-weight: bold; font-size: 0.9rem; color: var(--text-color);">Type de réponse souhaitée :</p>
-                    <label style="font-size: 0.9rem; margin-right: 15px; cursor: pointer; color: var(--text-color);">
-                        <input type="radio" name="contact-type" value="prive" checked onchange="toggleEmailInput()"> 🔒 Privée (par Email)
-                    </label>
-                    <label style="font-size: 0.9rem; cursor: pointer; color: var(--text-color);">
-                        <input type="radio" name="contact-type" value="public" onchange="toggleEmailInput()"> 🌍 Publique (sur le site)
-                    </label>
-                </div>
-                
-                <input type="email" id="contact-email" class="form-input" placeholder="Votre adresse Email">
-                <textarea id="contact-msg" class="form-input" rows="4" placeholder="Votre message ici..."></textarea>
-                <button class="poll-btn" onclick="envoyerMessageContact()" style="background-color: #3498db; color: white; width: 100%; margin: 0;">Envoyer le message</button>
-                <p id="contact-success" style="color: #2ecc71; display: none; font-weight: bold; margin-top: 10px; text-align: center;">✅ Envoyé !</p>
-            </div>
-
-            <div class="card" style="margin-top: 25px; border-top: 4px solid #2ecc71;">
-                <h3>🌍 Espace d'Échange Public</h3>
-                <div id="qa-publique-container"></div>
-            </div>
-
-            <div id="zone-contact" class="dynamic-zone"></div>
-        </div>
-    </main>
-
-    <footer>
-        <p>♟️ Le Cercle des Rois - <span id="edit-annee" data-editable>2026</span></p>
-        <span class="admin-login" onclick="connexionAdmin()">Connexion Espace Admin</span>
-    </footer>
-
+       
     <!-- ==========================================
          SCRIPT JAVASCRIPT ET FIREBASE
     ========================================== -->
