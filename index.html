@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-MQWVDFRR');</script>
+    <!-- End Google Tag Manager -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
+    <!-- =========================================
+         SEO & MÉTA-DONNÉES (Google, Réseaux Sociaux)
+    ========================================= -->
     <title>Le Cercle des Rois - Club d'Échecs à Saint-Ouen-du-Breuil (76)</title>
     <meta name="description" content="Bienvenue au Cercle des Rois, le club d'échecs de Saint-Ouen-du-Breuil ! Venez jouer, apprendre les ouvertures et participer à nos tournois. Débutants et experts bienvenus.">
     <meta name="keywords" content="club échecs, Saint-Ouen-du-Breuil, jouer aux échecs, Cercle des Rois, apprendre les échecs, tournoi échecs, Normandie, 76890, échecs en ligne">
     <meta name="author" content="Le Cercle des Rois">
     <meta name="robots" content="index, follow">
     
+    <!-- Open Graph (Partage Facebook, WhatsApp, Discord, Téléphone...) -->
     <meta property="og:title" content="Le Cercle des Rois - Club d'Échecs de Saint-Ouen-du-Breuil">
     <meta property="og:description" content="Rejoignez notre club convivial ! Ouvert à tous, venez apprendre, jouer et échanger autour des 64 cases à Saint-Ouen-du-Breuil.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:image" content="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?q=80&w=1200&auto=format&fit=crop">
     
+    <!-- Twitter Card (Affichage grande image pour les partages) -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Le Cercle des Rois - Club d'Échecs">
     <meta name="twitter:description" content="Rejoignez notre club convivial ! Ouvert à tous, venez apprendre, jouer et échanger autour des 64 cases à Saint-Ouen-du-Breuil.">
     <meta name="twitter:image" content="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?q=80&w=1200&auto=format&fit=crop">
+    <!-- ========================================= -->
+
+    <!-- Bibliothèques d'Échecs -->
     <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
@@ -204,13 +215,18 @@
     </style>
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQWVDFRR"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- BANNIÈRE ADMINISTRATEUR -->
     <div id="admin-banner" class="admin-banner">
         🛠️ MODE ADMINISTRATEUR ACTIF
         <button class="btn-quitter" onclick="quitterAdmin()">Quitter et Sauvegarder</button>
     </div>
 
+    <!-- PANNEAU ADMINISTRATEUR -->
     <div id="admin-dashboard" class="admin-dashboard">
         <h3>⚙️ Centre de Contrôle</h3>
         
@@ -323,6 +339,7 @@
         </details>
     </div>
 
+    <!-- MENU DE NAVIGATION -->
     <nav>
         <span class="nav-btn active" onclick="afficherPage('accueil', this)">Accueil</span>
         <span class="nav-btn" onclick="afficherPage('classement', this)">Leaderboard</span>
@@ -337,6 +354,9 @@
     <div id="banniere-annonce"></div>
 
     <main id="main-content">
+        <!-- ==========================================
+             PAGE ACCUEIL
+        ========================================== -->
         <div id="accueil" class="page active">
             <h1 id="title-accueil" data-editable>Bienvenue au Cercle des Rois ♟️</h1>
             
@@ -376,6 +396,9 @@
             <div id="zone-accueil" class="dynamic-zone"></div>
         </div>
 
+        <!-- ==========================================
+             PAGE CLASSEMENT
+        ========================================== -->
         <div id="classement" class="page">
             <h1 id="title-classement" data-editable>Le Classement du Club 🏆</h1>
             <div class="table-container">
@@ -390,26 +413,33 @@
             </div>
         </div>
 
+        <!-- ==========================================
+             PAGE TECHNIQUES : L'ACADÉMIE
+        ========================================== -->
         <div id="techniques" class="page">
             <h1 id="title-tech" data-editable>L'Académie d'Échecs 🎓</h1>
             
+            <!-- TOME 1 : OUVERTURES -->
             <div class="academic-book">
                 <h2 class="book-title">Tome I : Encyclopédie des Ouvertures</h2>
                 <p style="font-style: italic; color: var(--text-muted);">Sélectionnez une ouverture classique, puis utilisez les boutons pour avancer pas à pas sur l'échiquier interactif.</p>
                 
                 <div class="opening-layout">
                     <div class="opening-menu">
+                        <!-- LES BLANCS -->
                         <h4 class="category-title">⚔️ Ouvertures Blanches</h4>
                         <button class="academic-btn" onclick="afficherOuverture('Partie Italienne', '1. e4 e5 2. Cf3 Cc6 3. Fc4', '1. e4 e5 2. Nf3 Nc6 3. Bc4', 'Idéale pour les débutants. Elle vise à contrôler le centre rapidement et à développer le Fou sur une diagonale agressive pointant directement vers le pion f7, le point faible du Roi adverse.', this)">Partie Italienne</button>
                         <button class="academic-btn" onclick="afficherOuverture('Partie Espagnole (Ruy Lopez)', '1. e4 e5 2. Cf3 Cc6 3. Fb5', '1. e4 e5 2. Nf3 Nc6 3. Bb5', 'Une des ouvertures les plus étudiées au monde. En plaçant le Fou en b5, les Blancs mettent la pression sur le Cavalier noir qui défend le centre, préparant une attaque à long terme.', this)">Partie Espagnole</button>
                         <button class="academic-btn" onclick="afficherOuverture('Gambit Dame', '1. d4 d5 2. c4', '1. d4 d5 2. c4', 'Une ouverture stratégique majeure où les Blancs sacrifient temporairement un pion (le pion c4) pour obtenir un contrôle absolu du centre de l\'échiquier.', this)">Gambit Dame</button>
                         <button class="academic-btn" onclick="afficherOuverture('Système de Londres', '1. d4 d5 2. Ff4 (ou Cf3 puis Ff4)', '1. d4 d5 2. Bf4', 'Un système très solide et universel pour les Blancs. Quelle que soit la réponse des Noirs, les Blancs déploient leurs pièces de manière sécurisée sans prendre trop de risques.', this)">Système de Londres</button>
 
+                        <!-- LES NOIRS VS E4 -->
                         <h4 class="category-title">🛡️ Défenses Noires (contre e4)</h4>
                         <button class="academic-btn" onclick="afficherOuverture('Défense Sicilienne', '1. e4 c5', '1. e4 c5', 'La Sicilienne est la réponse la plus populaire et agressive contre e4. Les Noirs luttent pour le centre avec un pion latéral, créant un déséquilibre immédiat et des parties complexes.', this)">Défense Sicilienne</button>
                         <button class="academic-btn" onclick="afficherOuverture('Défense Française', '1. e4 e6 2. d4 d5', '1. e4 e6 2. d4 d5', 'Une défense très solide. Les Noirs laissent les Blancs prendre le centre au premier coup pour venir le contester et le briser immédiatement au deuxième coup.', this)">Défense Française</button>
                         <button class="academic-btn" onclick="afficherOuverture('Défense Caro-Kann', '1. e4 c6 2. d4 d5', '1. e4 c6 2. d4 d5', 'Réputée pour sa solidité à toute épreuve. Semblable à la Française, mais le Fou de cases claires des Noirs n\'est pas bloqué, offrant une excellente structure défensive.', this)">Défense Caro-Kann</button>
 
+                        <!-- LES NOIRS VS D4 -->
                         <h4 class="category-title">🛡️ Défenses Noires (contre d4)</h4>
                         <button class="academic-btn" onclick="afficherOuverture('Est-Indienne', '1. d4 Cf6 2. c4 g6', '1. d4 Nf6 2. c4 g6', 'Une défense hyper-dynamique où les Noirs laissent les Blancs former un grand centre de pions pour mieux le contre-attaquer plus tard, souvent en lançant une attaque violente sur le Roi blanc.', this)">Défense Est-Indienne</button>
                         <button class="academic-btn" onclick="afficherOuverture('Nimzo-Indienne', '1. d4 Cf6 2. c4 e6 3. Cc3 Fb4', '1. d4 Nf6 2. c4 e6 3. Nc3 Bb4', 'Une des meilleures défenses contre d4. Les Noirs sortent rapidement leur Fou pour clouer le Cavalier blanc et empêcher les Blancs de dominer le centre avec un pion en e4.', this)">Nimzo-Indienne</button>
@@ -433,6 +463,7 @@
                 </div>
             </div>
 
+            <!-- TOME 2 : FONDAMENTAUX -->
             <div class="academic-book">
                 <h2 class="book-title">Tome II : Le Livre des Fondamentaux</h2>
                 <p style="font-style: italic; color: var(--text-muted);">Comprendre la valeur des pièces et les schémas de mat incontournables.</p>
@@ -462,6 +493,7 @@
                 </div>
             </div>
 
+            <!-- ANALYSEUR PGN -->
             <div class="card" style="margin-top: 30px; border-top: 4px solid #3498db; text-align: center;">
                 <h2 style="border: none; margin-top: 0;">🔍 Analyser une partie (PGN)</h2>
                 <p style="color: var(--text-muted); font-size: 0.95rem;">Copie le texte de ta partie (au format PGN) et colle-le ci-dessous pour voir tes erreurs et analyser tes coups avec l'ordinateur.</p>
@@ -472,6 +504,9 @@
             <div id="zone-techniques" class="dynamic-zone"></div>
         </div>
 
+        <!-- ==========================================
+             PAGE JOUER EN LIGNE
+        ========================================== -->
         <div id="jouer" class="page">
             <h1>Jouer aux Échecs ⚔️</h1>
             
@@ -497,7 +532,7 @@
             <div class="card" style="text-align: center; border-top: 4px solid #2ecc71;">
                 <h2 style="margin-top: 0;">1. Créer un salon d'attente</h2>
                 <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px;">
-                    Indique ton pseudo et choisis le temps. Lichess te générera une partie : <strong>ne commence pas à jouer !</strong> Attends simplement qu'un membre du club te rejoigne depuis cette page.
+                    Indique ton pseudo et choisis le temps. Lichess s'ouvrira dans un nouvel onglet : <strong>ne commence pas à jouer !</strong> Attends simplement qu'un membre du club clique sur "Rejoindre" depuis cette page.
                 </p>
                 
                 <input type="text" id="mon-pseudo-jeu" class="form-input" placeholder="👉 Ton pseudo (ex: Quentin)..." style="max-width: 300px; margin: auto;">
@@ -509,12 +544,10 @@
                     <option value="unlimited">⏳ Temps illimité (Amical sans stress)</option>
                 </select>
 
-                <div id="btn-create-container">
-                    <button id="btn-create-salon" class="poll-btn" onclick="creerPartieLichess()" style="background-color: #2ecc71; color: white;">Ouvrir mon salon sur Lichess</button>
-                </div>
+                <button class="poll-btn" onclick="creerPartieLichess()" style="background-color: #2ecc71; color: white;">Ouvrir mon salon sur Lichess</button>
 
                 <div id="zone-secours-manuelle" style="display: none; background: rgba(231, 76, 60, 0.1); padding: 15px; border-radius: 5px; margin-top: 25px; border: 1px dashed #e74c3c;">
-                    <p style="color: #c0392b; font-weight: bold; margin-top:0;">⚠️ Ton navigateur bloque la connexion automatique.</p>
+                    <p style="color: #c0392b; font-weight: bold; margin-top:0;">⚠️ Ton navigateur bloque l'ouverture automatique.</p>
                     <p style="font-size: 0.9rem; margin-bottom: 15px;">Pas de problème ! Clique sur le lien pour aller sur Lichess, crée ta partie, puis <strong>copie l'adresse (URL) de ta partie et colle-la ici :</strong></p>
                     <input type="url" id="lien-lichess-manuel" class="form-input" placeholder="Ex: https://lichess.org/aBcDeF..." style="max-width: 350px; margin: auto; margin-bottom: 10px;">
                     <button class="poll-btn" onclick="publierPartieLichessManuelle()" style="background-color: #e74c3c; color: white; padding: 8px 15px; font-size: 0.95rem;">✅ Confirmer et Publier ma partie</button>
@@ -544,6 +577,9 @@
             </div>
         </div>
 
+        <!-- ==========================================
+             PAGE CONTACT
+        ========================================== -->
         <div id="contact" class="page">
             <h1 id="title-contact" data-editable>Nous trouver & Liens 📍</h1>
             <div class="card" style="margin-bottom: 25px;">
@@ -592,6 +628,9 @@
         <span class="admin-login" onclick="connexionAdmin()">Connexion Espace Admin</span>
     </footer>
 
+    <!-- ==========================================
+         SCRIPT JAVASCRIPT ET FIREBASE
+    ========================================== -->
     <script type="module">
         // ----------------------------------------
         // 1. CONFIGURATION ET IMPORTS FIREBASE
@@ -637,12 +676,13 @@
         function startHeartbeat(docId) {
             monLobbyId = docId;
             if (heartbeatInterval) clearInterval(heartbeatInterval);
+            // Envoi d'un signal "Je suis en ligne" toutes les 10 secondes
             heartbeatInterval = setInterval(async () => {
                 if (monLobbyId) {
                     try {
                         await updateDoc(doc(db, "partiesLive", monLobbyId), { lastPing: Date.now() });
                     } catch(e) {
-                        stopHeartbeat(); 
+                        stopHeartbeat(); // Le document a été supprimé ou bug réseau
                     }
                 }
             }, 10000); 
@@ -654,9 +694,10 @@
             monLobbyId = null;
         }
 
+        // Si le joueur ferme la page du club, on efface son annonce
         window.addEventListener('beforeunload', () => {
             if (monLobbyId) {
-                deleteDoc(doc(db, "partiesLive", monLobbyId)).catch(()=> { });
+                deleteDoc(doc(db, "partiesLive", monLobbyId)).catch(()=> { /* ignore */ });
             }
         });
 
@@ -678,10 +719,12 @@
             if(pageCible) pageCible.classList.add('active');
             if(boutonClique) boutonClique.classList.add('active');
             
+            // Redimensionner l'échiquier 
             if(idPage === 'techniques' && typeof openingBoard !== 'undefined' && openingBoard) {
                 setTimeout(() => { openingBoard.resize(); }, 100);
             }
 
+            // OPTIMISATION DONNÉES : On n'écoute la Base de Données des parties que si on est sur la page Jouer
             if (idPage === 'jouer') {
                 window.startPartiesListener();
             } else {
@@ -748,28 +791,26 @@
             }
         });
 
-        // Anti-Popup Analyse
-        window.analyserPGN = function() {
+        window.analyserPGN = async function() {
             let pgn = document.getElementById('pgn-input').value.trim();
             if (!pgn) return alert("Veuillez coller le texte de votre partie (PGN) avant de lancer l'analyse !");
-            
-            // On ouvre immédiatement pour ne pas être bloqué
-            window.open('https://lichess.org/paste', '_blank');
-            
-            navigator.clipboard.writeText(pgn).then(() => {
-                alert("✅ PGN copié avec succès !\n\nLichess est ouvert dans un nouvel onglet. Fais un Clic-Droit > Coller (ou Ctrl+V) dans le grand rectangle blanc.");
+            try {
+                await navigator.clipboard.writeText(pgn);
+                alert("✅ PGN copié avec succès !\n\nUne page Lichess va s'ouvrir. Fais un Clic-Droit > Coller (ou Ctrl+V) dans le grand rectangle blanc, puis clique sur 'Importer la partie'.");
+                window.open('https://lichess.org/paste', '_blank');
                 document.getElementById('pgn-input').value = '';
-            }).catch(err => {
+            } catch (err) {
                 prompt("Ton navigateur bloque la copie automatique. Copie manuellement le texte ci-dessous (Ctrl+C) puis va le coller sur Lichess :", pgn);
-            });
+                window.open('https://lichess.org/paste', '_blank');
+            }
         };
 
         // ----------------------------------------
-        // 5. JEU EN LIGNE (Matchmaking Club)
+        // 5. JEU EN LIGNE (Matchmaking Club & Listeners)
         // ----------------------------------------
         
         window.startPartiesListener = function() {
-            if (unsubscribeParties) return; 
+            if (unsubscribeParties) return; // Déjà connecté
             
             unsubscribeParties = onSnapshot(partiesLiveRef, (snapshot) => {
                 let lobbyHtml = '';
@@ -786,10 +827,11 @@
                 partiesTab.forEach(partie => {
                     if (partie.statut === "attente") {
                         
+                        // SYSTÈME ANTI-FANTÔME : Si pas de signal ping depuis 25 secondes, on supprime !
                         let dernierSignal = partie.lastPing || partie.timestamp;
                         if (now - dernierSignal > 25000) {
                             deleteDoc(doc(db, "partiesLive", partie.id)).catch(e => console.log(e));
-                            return; 
+                            return; // On ne l'affiche pas
                         }
 
                         let affichageTemps = partie.tempsInitial === "unlimited" ? "Illimité" : (partie.tempsInitial ? (partie.tempsInitial / 60) + " minutes" : "");
@@ -823,23 +865,15 @@
 
         window.stopPartiesListener = function() {
             if (unsubscribeParties) {
-                unsubscribeParties(); 
+                unsubscribeParties(); // Coupe la connexion
                 unsubscribeParties = null;
             }
         };
 
-        // Anti-Popup Création de partie
         window.creerPartieLichess = async function() {
-            let btnContainer = document.getElementById('btn-create-container');
-            let btn = document.getElementById('btn-create-salon');
             let pseudo = document.getElementById('mon-pseudo-jeu').value.trim();
             let tempsVal = document.getElementById('game-time').value;
-            
             if(!pseudo) return alert("Veuillez entrer un pseudo pour jouer !");
-            
-            let texteOriginal = btn.innerText;
-            btn.innerText = "⏳ Création du salon...";
-            btn.disabled = true;
             
             try {
                 let bodyData = new URLSearchParams();
@@ -864,26 +898,23 @@
                         urlLichess: data.challenge.url,
                         date: obtenirDateFormatee(),
                         timestamp: Date.now(),
-                        lastPing: Date.now() 
+                        lastPing: Date.now() // Début du Heartbeat
                     });
                     startHeartbeat(docRef.id);
                     
-                    // MAGIE ANTI-POPUP : On génère un VRAI lien HTML. Impossible à bloquer par le navigateur.
-                    btnContainer.innerHTML = `<a href="${data.challenge.url}" target="_blank" class="poll-btn" style="background-color: #3498db; color: white; display: inline-block; text-decoration: none;" onclick="this.innerHTML='✅ Redirection...'">🚀 Salon prêt ! Clique ici pour l'ouvrir</a>`;
-                    
+                    alert("✅ Salon créé ! Lichess va s'ouvrir. IMPORTANT : Ne commence pas à jouer : attends qu'un membre du club te rejoigne depuis l'accueil du site !");
+                    window.open(data.challenge.url, '_blank');
                 } else {
                     throw new Error("Lichess n'a pas renvoyé le lien attendu.");
                 }
             } catch(e) {
                 console.error(e);
-                btn.innerText = texteOriginal;
-                btn.disabled = false;
-                alert("⚠️ Erreur de connexion automatique avec Lichess. Utilisons la méthode manuelle !");
+                alert("⚠️ Ton navigateur a bloqué l'ouverture automatique. Pas de panique, je t'ouvre Lichess pour que tu puisses la créer manuellement. Copie ensuite le lien et reviens le coller sur le site !");
                 document.getElementById('zone-secours-manuelle').style.display = 'block';
+                window.open('https://lichess.org/?any#friend', '_blank');
             }
         };
 
-        // Anti-popup manuel
         window.publierPartieLichessManuelle = async function() {
             let pseudo = document.getElementById('mon-pseudo-jeu').value.trim();
             let url = document.getElementById('lien-lichess-manuel').value.trim();
@@ -892,9 +923,6 @@
             if(!pseudo) return alert("Veuillez entrer un pseudo !");
             if(!url.includes('lichess.org/')) return alert("Veuillez coller un lien Lichess valide ! (https://lichess.org/...)");
 
-            // On ouvre de suite pour esquiver le bloqueur
-            window.open(url, '_blank');
-
             let docRef = await addDoc(partiesLiveRef, {
                 statut: 'attente',
                 createurNom: pseudo,
@@ -902,31 +930,28 @@
                 urlLichess: url,
                 date: obtenirDateFormatee(),
                 timestamp: Date.now(),
-                lastPing: Date.now()
+                lastPing: Date.now() // Début du Heartbeat
             });
             startHeartbeat(docRef.id);
 
-            alert("✅ Ta partie a été ajoutée à la liste d'attente !");
+            alert("✅ Ta partie a été ajoutée à la liste d'attente sur le site ! Elle restera visible pendant 10 minutes. Tu vas être redirigé vers ton salon sur Lichess.");
             document.getElementById('lien-lichess-manuel').value = '';
             document.getElementById('zone-secours-manuelle').style.display = 'none'; 
+            window.open(url, '_blank');
         };
 
-        // Anti-Popup Rejoindre
-        window.rejoindrePartieLichess = function(idPartie, urlLichess, createur) {
+        window.rejoindrePartieLichess = async function(idPartie, urlLichess, createur) {
             let pseudo = document.getElementById('mon-pseudo-jeu').value.trim();
             if(!pseudo) {
                 pseudo = prompt("Entrez votre pseudo pour affronter " + createur + " :");
                 if(!pseudo) return;
             }
-            
-            // Ouverture immédiate pour esquiver le bloqueur !
-            window.open(urlLichess, '_blank');
-
-            // Mise à jour discrète en arrière plan
-            updateDoc(doc(db, "partiesLive", idPartie), {
+            await updateDoc(doc(db, "partiesLive", idPartie), {
                 statut: 'historique',
                 adversaireNom: pseudo
-            }).catch(e => console.log(e));
+            });
+            alert("⚔️ C'est parti !\n\nTu vas être redirigé vers Lichess pour affronter " + createur + " !");
+            window.open(urlLichess, '_blank');
         };
 
         window.supprimerPartie = async function(id) {
