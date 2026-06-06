@@ -21,11 +21,18 @@
     <meta name="author" content="Le Cercle des Rois">
     <meta name="robots" content="index, follow">
     
-    <!-- Open Graph (Partage Facebook, WhatsApp, Discord...) -->
+    <!-- Open Graph (Partage Facebook, WhatsApp, Discord, Téléphone...) -->
     <meta property="og:title" content="Le Cercle des Rois - Club d'Échecs de Saint-Ouen-du-Breuil">
     <meta property="og:description" content="Rejoignez notre club convivial ! Ouvert à tous, venez apprendre, jouer et échanger autour des 64 cases à Saint-Ouen-du-Breuil.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?q=80&w=1200&auto=format&fit=crop">
+    
+    <!-- Twitter Card (Affichage grande image pour les partages) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Le Cercle des Rois - Club d'Échecs">
+    <meta name="twitter:description" content="Rejoignez notre club convivial ! Ouvert à tous, venez apprendre, jouer et échanger autour des 64 cases à Saint-Ouen-du-Breuil.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?q=80&w=1200&auto=format&fit=crop">
     <!-- ========================================= -->
 
     <!-- Bibliothèques d'Échecs -->
@@ -110,7 +117,10 @@
         
         .academic-btn { background: var(--card-bg); border: 1px solid var(--border); color: var(--text-color); padding: 10px 15px; text-align: left; font-weight: bold; cursor: pointer; border-radius: 5px; transition: 0.2s; font-size: 0.95rem; }
         .academic-btn:hover, .academic-btn.active { background: var(--accent); color: #000; transform: translateX(5px); }
+        
         .opening-content { flex: 2; min-width: 300px; background: var(--card-bg); padding: 20px; border-radius: 5px; border: 1px solid var(--border); display: flex; gap: 20px; align-items: flex-start; }
+        .opening-board-area { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+        .opening-text-area { flex: 1; min-width: 0; }
         .moves-box { background: rgba(0,0,0,0.05); padding: 10px; font-family: monospace; font-size: 1.1rem; border-radius: 4px; margin-bottom: 15px; border-left: 3px solid var(--accent); }
         
         .chapter h3 { color: var(--accent); font-family: 'Georgia', serif; margin-top: 30px; }
@@ -570,7 +580,54 @@
         <!-- ==========================================
              PAGE CONTACT
         ========================================== -->
-       
+        <div id="contact" class="page">
+            <h1 id="title-contact" data-editable>Nous trouver & Liens 📍</h1>
+            <div class="card" style="margin-bottom: 25px;">
+                <h3 id="subtitle-adresse" data-editable>📍 L'Adresse</h3>
+                <p id="edit-adresse" data-editable>Salle des Fêtes, 76890 Saint-Ouen-du-Breuil.</p>
+            </div>
+
+            <h3>🔗 Liens et Communauté</h3>
+            <div id="links-container"></div>
+            
+            <div class="card" style="margin-top: 25px; border-top: 4px solid #3498db;">
+                <h3>✉️ Nous envoyer un message</h3>
+                <input type="text" id="contact-nom" class="form-input" placeholder="Votre Prénom et Nom">
+                <label style="font-size: 0.9rem; display: block; margin-bottom: 15px; cursor: pointer;">
+                    <input type="checkbox" id="contact-anonyme" onchange="document.getElementById('contact-nom').disabled = this.checked; if(this.checked) document.getElementById('contact-nom').value = '';"> 
+                    Rester anonyme 🕵️‍♂️
+                </label>
+
+                <div style="margin-bottom: 15px; background: rgba(0,0,0,0.05); padding: 10px; border-radius: 5px;">
+                    <p style="margin: 0 0 10px 0; font-weight: bold; font-size: 0.9rem; color: var(--text-color);">Type de réponse souhaitée :</p>
+                    <label style="font-size: 0.9rem; margin-right: 15px; cursor: pointer; color: var(--text-color);">
+                        <input type="radio" name="contact-type" value="prive" checked onchange="toggleEmailInput()"> 🔒 Privée (par Email)
+                    </label>
+                    <label style="font-size: 0.9rem; cursor: pointer; color: var(--text-color);">
+                        <input type="radio" name="contact-type" value="public" onchange="toggleEmailInput()"> 🌍 Publique (sur le site)
+                    </label>
+                </div>
+                
+                <input type="email" id="contact-email" class="form-input" placeholder="Votre adresse Email">
+                <textarea id="contact-msg" class="form-input" rows="4" placeholder="Votre message ici..."></textarea>
+                <button class="poll-btn" onclick="envoyerMessageContact()" style="background-color: #3498db; color: white; width: 100%; margin: 0;">Envoyer le message</button>
+                <p id="contact-success" style="color: #2ecc71; display: none; font-weight: bold; margin-top: 10px; text-align: center;">✅ Envoyé !</p>
+            </div>
+
+            <div class="card" style="margin-top: 25px; border-top: 4px solid #2ecc71;">
+                <h3>🌍 Espace d'Échange Public</h3>
+                <div id="qa-publique-container"></div>
+            </div>
+
+            <div id="zone-contact" class="dynamic-zone"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>♟️ Le Cercle des Rois - <span id="edit-annee" data-editable>2026</span></p>
+        <span class="admin-login" onclick="connexionAdmin()">Connexion Espace Admin</span>
+    </footer>
+
     <!-- ==========================================
          SCRIPT JAVASCRIPT ET FIREBASE
     ========================================== -->
@@ -601,12 +658,48 @@
         let messagesPublicData = [];
         let messagesAdminData = [];
 
+        // Variable d'optimisation
+        let unsubscribeParties = null; 
+
+        // Variable Heartbeat (présence)
+        let monLobbyId = null;
+        let heartbeatInterval = null;
+
         // ----------------------------------------
         // 2. UTILITAIRES GLOBAUX
         // ----------------------------------------
         function obtenirDateFormatee() {
             return new Date().toLocaleDateString('fr-FR') + ' à ' + new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
         }
+
+        // --- Système Anti-Fantôme (Heartbeat) ---
+        function startHeartbeat(docId) {
+            monLobbyId = docId;
+            if (heartbeatInterval) clearInterval(heartbeatInterval);
+            // Envoi d'un signal "Je suis en ligne" toutes les 10 secondes
+            heartbeatInterval = setInterval(async () => {
+                if (monLobbyId) {
+                    try {
+                        await updateDoc(doc(db, "partiesLive", monLobbyId), { lastPing: Date.now() });
+                    } catch(e) {
+                        stopHeartbeat(); // Le document a été supprimé ou bug réseau
+                    }
+                }
+            }, 10000); 
+        }
+
+        function stopHeartbeat() {
+            if (heartbeatInterval) clearInterval(heartbeatInterval);
+            heartbeatInterval = null;
+            monLobbyId = null;
+        }
+
+        // Si le joueur ferme la page du club, on efface son annonce
+        window.addEventListener('beforeunload', () => {
+            if (monLobbyId) {
+                deleteDoc(doc(db, "partiesLive", monLobbyId)).catch(()=> { /* ignore */ });
+            }
+        });
 
         // ----------------------------------------
         // 3. NAVIGATION ET THÈME
@@ -626,16 +719,23 @@
             if(pageCible) pageCible.classList.add('active');
             if(boutonClique) boutonClique.classList.add('active');
             
-            // Redimensionner l'échiquier si on va sur la page Technique
+            // Redimensionner l'échiquier 
             if(idPage === 'techniques' && typeof openingBoard !== 'undefined' && openingBoard) {
                 setTimeout(() => { openingBoard.resize(); }, 100);
+            }
+
+            // OPTIMISATION DONNÉES : On n'écoute la Base de Données des parties que si on est sur la page Jouer
+            if (idPage === 'jouer') {
+                window.startPartiesListener();
+            } else {
+                window.stopPartiesListener();
             }
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // ----------------------------------------
-        // 4. L'ACADÉMIE D'ÉCHECS (Échiquier Interactif & PGN)
+        // 4. L'ACADÉMIE D'ÉCHECS 
         // ----------------------------------------
         let openingBoard = null;
         let openingGame = new Chess();
@@ -706,8 +806,70 @@
         };
 
         // ----------------------------------------
-        // 5. JEU EN LIGNE (Matchmaking Club)
+        // 5. JEU EN LIGNE (Matchmaking Club & Listeners)
         // ----------------------------------------
+        
+        window.startPartiesListener = function() {
+            if (unsubscribeParties) return; // Déjà connecté
+            
+            unsubscribeParties = onSnapshot(partiesLiveRef, (snapshot) => {
+                let lobbyHtml = '';
+                let historiqueHtml = '';
+                let partiesTab = [];
+                let now = Date.now();
+                
+                snapshot.forEach(docSnap => {
+                    let p = docSnap.data(); p.id = docSnap.id; partiesTab.push(p);
+                });
+
+                partiesTab.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+
+                partiesTab.forEach(partie => {
+                    if (partie.statut === "attente") {
+                        
+                        // SYSTÈME ANTI-FANTÔME : Si pas de signal ping depuis 25 secondes, on supprime !
+                        let dernierSignal = partie.lastPing || partie.timestamp;
+                        if (now - dernierSignal > 25000) {
+                            deleteDoc(doc(db, "partiesLive", partie.id)).catch(e => console.log(e));
+                            return; // On ne l'affiche pas
+                        }
+
+                        let affichageTemps = partie.tempsInitial === "unlimited" ? "Illimité" : (partie.tempsInitial ? (partie.tempsInitial / 60) + " minutes" : "");
+                        lobbyHtml += `
+                        <div style="background: var(--bg-color); padding: 15px; border-radius: 5px; margin-bottom: 10px; border-left: 4px solid #e67e22; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 10px;">
+                            <div><strong>⚔️ En attente : ${partie.createurNom}</strong><br><span style="font-size: 0.85rem; color: var(--text-muted);">${affichageTemps ? '⏱️ ' + affichageTemps : ''}</span></div>
+                            <div>
+                                <button class="poll-btn" style="margin: 0; padding: 6px 12px; font-size: 0.9rem; background-color:#e67e22; color:white;" onclick="rejoindrePartieLichess('${partie.id}', '${partie.urlLichess}', '${partie.createurNom}')">Rejoindre la partie</button>
+                                <button class="admin-only-btn" style="margin: 0; padding: 6px 12px; background-color:#e74c3c;" onclick="supprimerPartie('${partie.id}')">❌</button>
+                            </div>
+                        </div>`;
+                    }
+                    
+                    if (partie.statut === "historique") {
+                        historiqueHtml += `
+                        <div class="historique-item" style="background: var(--bg-color); padding: 10px 15px; border-radius: 5px; margin-bottom: 10px; border-left: 4px solid #9b59b6; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 10px;">
+                            <div><strong>${partie.createurNom} ⚡ ${partie.adversaireNom}</strong><br><span style="font-size: 0.85rem; color: var(--text-muted);">📅 ${partie.date}</span></div>
+                            <div style="display:flex; gap: 5px; align-items:center;">
+                                <a href="${partie.urlLichess}" target="_blank" class="poll-btn" style="text-decoration: none; margin: 0; padding: 6px 12px; font-size: 0.8rem; background-color: #9b59b6; color: white;">🔍 Analyser</a>
+                                <button class="admin-only-btn" style="margin: 0; padding: 6px 12px; background-color:#e74c3c;" onclick="supprimerPartie('${partie.id}')">❌</button>
+                            </div>
+                        </div>`;
+                    }
+                });
+                
+                document.getElementById('liste-parties-attente').innerHTML = lobbyHtml || '<p style="color: var(--text-muted);">Personne ne cherche de partie pour le moment. Sois le premier à créer un salon au-dessus !</p>';
+                document.getElementById('liste-historique').innerHTML = historiqueHtml || '<p style="color: var(--text-muted);">Aucune partie jouée pour le moment.</p>';
+                if(typeof window.filtrerHistorique === 'function') window.filtrerHistorique();
+            });
+        };
+
+        window.stopPartiesListener = function() {
+            if (unsubscribeParties) {
+                unsubscribeParties(); // Coupe la connexion
+                unsubscribeParties = null;
+            }
+        };
+
         window.creerPartieLichess = async function() {
             let pseudo = document.getElementById('mon-pseudo-jeu').value.trim();
             let tempsVal = document.getElementById('game-time').value;
@@ -729,14 +891,17 @@
                 let data = await response.json();
                 
                 if(data.challenge && data.challenge.url) {
-                    await addDoc(partiesLiveRef, {
+                    let docRef = await addDoc(partiesLiveRef, {
                         statut: 'attente',
                         createurNom: pseudo,
                         tempsInitial: tempsVal,
                         urlLichess: data.challenge.url,
                         date: obtenirDateFormatee(),
-                        timestamp: Date.now()
+                        timestamp: Date.now(),
+                        lastPing: Date.now() // Début du Heartbeat
                     });
+                    startHeartbeat(docRef.id);
+                    
                     alert("✅ Salon créé ! Lichess va s'ouvrir. IMPORTANT : Ne commence pas à jouer : attends qu'un membre du club te rejoigne depuis l'accueil du site !");
                     window.open(data.challenge.url, '_blank');
                 } else {
@@ -758,14 +923,17 @@
             if(!pseudo) return alert("Veuillez entrer un pseudo !");
             if(!url.includes('lichess.org/')) return alert("Veuillez coller un lien Lichess valide ! (https://lichess.org/...)");
 
-            await addDoc(partiesLiveRef, {
+            let docRef = await addDoc(partiesLiveRef, {
                 statut: 'attente',
                 createurNom: pseudo,
                 tempsInitial: tempsVal,
                 urlLichess: url,
                 date: obtenirDateFormatee(),
-                timestamp: Date.now()
+                timestamp: Date.now(),
+                lastPing: Date.now() // Début du Heartbeat
             });
+            startHeartbeat(docRef.id);
+
             alert("✅ Ta partie a été ajoutée à la liste d'attente sur le site ! Elle restera visible pendant 10 minutes. Tu vas être redirigé vers ton salon sur Lichess.");
             document.getElementById('lien-lichess-manuel').value = '';
             document.getElementById('zone-secours-manuelle').style.display = 'none'; 
@@ -1066,52 +1234,6 @@
                 document.getElementById('count-peutetre').innerText = data.peutetre || 0; document.getElementById('bar-peutetre').style.width = ((data.peutetre || 0) / total * 100) + '%';
                 document.getElementById('count-non').innerText = data.non || 0; document.getElementById('bar-non').style.width = ((data.non || 0) / total * 100) + '%';
             }
-        });
-
-        onSnapshot(partiesLiveRef, (snapshot) => {
-            let lobbyHtml = '';
-            let historiqueHtml = '';
-            let partiesTab = [];
-            let now = Date.now();
-            
-            snapshot.forEach(docSnap => {
-                let p = docSnap.data(); p.id = docSnap.id; partiesTab.push(p);
-            });
-
-            partiesTab.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
-
-            partiesTab.forEach(partie => {
-                if (partie.statut === "attente") {
-                    if (now - partie.timestamp > 600000) {
-                        deleteDoc(doc(db, "partiesLive", partie.id)).catch(e => console.log(e));
-                        return;
-                    }
-                    let affichageTemps = partie.tempsInitial === "unlimited" ? "Illimité" : (partie.tempsInitial ? (partie.tempsInitial / 60) + " minutes" : "");
-                    lobbyHtml += `
-                    <div style="background: var(--bg-color); padding: 15px; border-radius: 5px; margin-bottom: 10px; border-left: 4px solid #e67e22; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 10px;">
-                        <div><strong>⚔️ En attente : ${partie.createurNom}</strong><br><span style="font-size: 0.85rem; color: var(--text-muted);">${affichageTemps ? '⏱️ ' + affichageTemps : ''}</span></div>
-                        <div>
-                            <button class="poll-btn" style="margin: 0; padding: 6px 12px; font-size: 0.9rem; background-color:#e67e22; color:white;" onclick="rejoindrePartieLichess('${partie.id}', '${partie.urlLichess}', '${partie.createurNom}')">Rejoindre la partie</button>
-                            <button class="admin-only-btn" style="margin: 0; padding: 6px 12px; background-color:#e74c3c;" onclick="supprimerPartie('${partie.id}')">❌</button>
-                        </div>
-                    </div>`;
-                }
-                
-                if (partie.statut === "historique") {
-                    historiqueHtml += `
-                    <div class="historique-item" style="background: var(--bg-color); padding: 10px 15px; border-radius: 5px; margin-bottom: 10px; border-left: 4px solid #9b59b6; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 10px;">
-                        <div><strong>${partie.createurNom} ⚡ ${partie.adversaireNom}</strong><br><span style="font-size: 0.85rem; color: var(--text-muted);">📅 ${partie.date}</span></div>
-                        <div style="display:flex; gap: 5px; align-items:center;">
-                            <a href="${partie.urlLichess}" target="_blank" class="poll-btn" style="text-decoration: none; margin: 0; padding: 6px 12px; font-size: 0.8rem; background-color: #9b59b6; color: white;">🔍 Analyser</a>
-                            <button class="admin-only-btn" style="margin: 0; padding: 6px 12px; background-color:#e74c3c;" onclick="supprimerPartie('${partie.id}')">❌</button>
-                        </div>
-                    </div>`;
-                }
-            });
-            
-            document.getElementById('liste-parties-attente').innerHTML = lobbyHtml || '<p style="color: var(--text-muted);">Personne ne cherche de partie pour le moment. Sois le premier à créer un salon au-dessus !</p>';
-            document.getElementById('liste-historique').innerHTML = historiqueHtml || '<p style="color: var(--text-muted);">Aucune partie jouée pour le moment.</p>';
-            if(typeof window.filtrerHistorique === 'function') window.filtrerHistorique();
         });
 
         onSnapshot(commsRef, (docSnap) => {
