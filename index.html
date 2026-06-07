@@ -236,10 +236,8 @@
         <button class="btn-quitter" onclick="quitterAdmin()">Quitter et Sauvegarder</button>
     </div>
 
-    <!-- BOUTON FLOTTANT ADMIN -->
     <button class="admin-fab" onclick="document.getElementById('admin-sidebar').classList.add('open')" style="display: none;" id="admin-fab-btn">⚙️</button>
 
-    <!-- MENU LATÉRAL ADMIN -->
     <div id="admin-sidebar" class="admin-sidebar">
         <div class="admin-sidebar-header">
             <h3>Centre de Contrôle</h3>
@@ -364,7 +362,6 @@
         </div>
     </div>
 
-    <!-- MODALE EDITION ACADÉMIE -->
     <div id="admin-modal-overlay" class="admin-modal-overlay">
         <div class="admin-modal">
             <h2 id="modal-title">Modifier</h2>
@@ -376,7 +373,6 @@
         </div>
     </div>
 
-    <!-- NAVIGATION -->
     <nav>
         <span class="nav-btn active" onclick="afficherPage('accueil', this)">Accueil</span>
         <span class="nav-btn" onclick="afficherPage('classement', this)">Leaderboard</span>
@@ -390,7 +386,6 @@
     <div id="banniere-annonce"></div>
 
     <main id="main-content">
-        <!-- ACCUEIL -->
         <div id="accueil" class="page active">
             <h1 id="title-accueil" data-editable>Club d'Échecs de Saint-Ouen-du-Breuil ♟️</h1>
             <p style="text-align: center; font-size: 1.1rem; color: var(--text-muted); margin-top: -20px; margin-bottom: 40px;">Le Cercle des Rois - Apprendre, Jouer et Progresser en Normandie.</p>
@@ -431,7 +426,6 @@
             <div id="zone-accueil" class="dynamic-zone"></div>
         </div>
 
-        <!-- LEADERBOARD -->
         <div id="classement" class="page">
             <h1 id="title-classement" data-editable>Le Classement du Club 🏆</h1>
             <div class="table-container">
@@ -446,7 +440,6 @@
             </div>
         </div>
 
-        <!-- TECHNIQUES / ACADÉMIE -->
         <div id="techniques" class="page">
             <h1 id="title-tech" data-editable>L'Académie d'Échecs 🎓</h1>
             <p style="text-align: center; color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem;">Sélectionne ton niveau pour adapter les leçons à ton expérience.</p>
@@ -457,7 +450,6 @@
                 <div class="level-btn" onclick="choisirNiveau(3, this)">🔬 Niv 3 : Avancé</div>
             </div>
 
-            <!-- NIVEAU 1 -->
             <div id="niveau-1" class="level-content active">
                 <div class="academic-book">
                     <h2 class="book-title">Tome I : Les Fondamentaux Interactifs</h2>
@@ -484,7 +476,6 @@
                 </div>
             </div>
 
-            <!-- NIVEAU 2 -->
             <div id="niveau-2" class="level-content">
                 <div class="academic-book">
                     <h2 class="book-title">Tome II : Encyclopédie des Ouvertures & Contres</h2>
@@ -514,7 +505,6 @@
                 </div>
             </div>
 
-            <!-- NIVEAU 3 -->
             <div id="niveau-3" class="level-content">
                 <div class="academic-book">
                     <h2 class="book-title">Tome III : Stratégies et Concepts Avancés</h2>
@@ -550,7 +540,6 @@
             <div id="zone-techniques" class="dynamic-zone"></div>
         </div>
 
-        <!-- JOUER EN LIGNE -->
         <div id="jouer" class="page">
             <h1 style="margin-bottom: 10px;">Jouer aux Échecs ⚔️</h1>
             <p style="text-align: center; color: var(--text-muted); font-size: 1.1rem; margin-bottom: 40px;">Affrontez d'autres joueurs ou lancez une partie amicale avec un membre du Cercle des Rois.</p>
@@ -589,11 +578,9 @@
                 </select>
 
                 <div id="btn-create-container">
-                    <!-- LE BOUTON MAGIQUE QUI REDIRIGE IMMÉDIATEMENT -->
                     <button id="btn-create-salon" class="poll-btn" onclick="creerPartieLichess()" style="background-color: #2ecc71; color: white; padding: 15px 30px; font-size: 1.1rem;">Ouvrir mon salon sur Lichess</button>
                 </div>
 
-                <!-- ZONE DE SECOURS (Si Lichess bugue) -->
                 <div id="zone-secours-manuelle" style="display: none; background: rgba(231, 76, 60, 0.05); padding: 25px; border-radius: 12px; margin-top: 30px; border: 2px dashed #e74c3c; text-align: left;">
                     <h3 style="color: #c0392b; margin-top:0; text-align: center; font-size: 1.3rem;">⚠️ Action bloquée par Lichess ou votre navigateur</h3>
                     <p style="font-size: 1rem; margin-bottom: 15px; color: var(--text-color);">Faisons-le simplement à la main en 3 étapes :</p>
@@ -632,7 +619,6 @@
             </div>
         </div>
 
-        <!-- CONTACT -->
         <div id="contact" class="page">
             <h1 id="title-contact" data-editable>Nous trouver & Liens 📍</h1>
             <div class="card" style="margin-bottom: 30px;">
@@ -1128,20 +1114,40 @@
             }
         };
 
+        // LA CORRECTION DU BOUTON MANUEL EST ICI
         window.publierPartieLichessManuelle = async function() {
-            let pseudo = document.getElementById('mon-pseudo-jeu').value.trim();
-            let url = document.getElementById('lien-lichess-manuel').value.trim();
-            let tempsVal = document.getElementById('game-time').value;
-            if(!pseudo) return alert("Veuillez entrer un pseudo !");
-            if(!url.includes('lichess.org/')) return alert("Veuillez coller un lien Lichess valide ! (https://lichess.org/...)");
+            let btn = document.querySelector('#zone-secours-manuelle .poll-btn');
+            let originalText = btn.innerText;
+            
+            try {
+                let pseudo = document.getElementById('mon-pseudo-jeu').value.trim();
+                let url = document.getElementById('lien-lichess-manuel').value.trim();
+                let tempsVal = document.getElementById('game-time').value;
+                
+                if(!pseudo) return alert("Veuillez entrer un pseudo !");
+                if(!url.includes('lichess.org/')) return alert("Veuillez coller un lien Lichess valide ! (https://lichess.org/...)");
 
-            const newLobbyRef = push(lobbyRtdbRef);
-            await set(newLobbyRef, { createurNom: pseudo, tempsInitial: tempsVal, urlLichess: url });
-            onDisconnect(newLobbyRef).remove();
+                btn.innerText = "⏳ Publication en cours...";
+                btn.disabled = true;
 
-            alert("✅ Ta partie a été ajoutée à la liste d'attente ! Laisse la page Lichess ouverte pour attendre ton adversaire.");
-            document.getElementById('lien-lichess-manuel').value = '';
-            document.getElementById('zone-secours-manuelle').style.display = 'none'; 
+                const newLobbyRef = push(lobbyRtdbRef);
+                await set(newLobbyRef, { createurNom: pseudo, tempsInitial: tempsVal, urlLichess: url });
+                onDisconnect(newLobbyRef).remove();
+
+                alert("✅ Ta partie a été ajoutée à la liste d'attente ! Laisse la page Lichess ouverte pour attendre ton adversaire.");
+                document.getElementById('lien-lichess-manuel').value = '';
+                document.getElementById('zone-secours-manuelle').style.display = 'none'; 
+                
+                btn.innerText = originalText;
+                btn.disabled = false;
+                
+            } catch (error) {
+                console.error("Erreur bloquée par Firebase :", error);
+                alert("❌ Opération bloquée !\n\nC'est la sécurité de ta clé API qui fait son travail. Tu testes depuis ton ordinateur (Fichier Local). Mets ton code à jour sur Netlify et ça fonctionnera !");
+                
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
         };
 
         window.rejoindrePartieLichess = async function(idLobby, urlLichess, createur) {
