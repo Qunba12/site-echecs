@@ -1304,21 +1304,29 @@
         }
 
   window.voter = async function(optionIndex) {
-            if (localStorage.getItem('hasVoted')) return alert("Tu as déjà voté !");
-            
-            try {
-                // On utilise l'index (0, 1, 2) comme nom de champ dans Firebase
-                await setDoc(pollRef, { [optionIndex]: increment(1) }, { merge: true });
-                localStorage.setItem('hasVoted', 'true');
-                
-                document.getElementById('poll-voting').style.display = 'none'; 
-                document.getElementById('poll-results').style.display = 'block';
-                alert("✅ Vote enregistré !");
-            } catch (e) {
-                console.error("Erreur vote :", e);
-                alert("Impossible de voter pour le moment. Vérifie ta connexion.");
-            }
-        }
+    if (localStorage.getItem('hasVoted')) return alert("Tu as déjà voté !");
+    
+    // On crée la passerelle entre le clic (0, 1, 2) et le champ dans Firebase (oui, non, peutetre)
+    const mapping = {
+        '0': 'oui',
+        '1': 'peutetre', // Attention à l'ordre exact de tes boutons
+        '2': 'non'
+    };
+
+    let fieldName = mapping[optionIndex];
+    
+    try {
+        // Cette ligne va maintenant mettre à jour le bon champ ("oui", etc.)
+        await setDoc(pollRef, { [fieldName]: increment(1) }, { merge: true });
+        
+        localStorage.setItem('hasVoted', 'true');
+        alert("✅ Vote enregistré !");
+        location.reload(); // Recharge pour voir les barres à jour
+    } catch (e) {
+        console.error("Erreur vote :", e);
+        alert("Impossible de voter pour le moment.");
+    }
+}
         
         window.toggleSondage = async function() {
             let isHidden = document.getElementById('sondage-accueil').style.display === 'none';
