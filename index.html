@@ -856,24 +856,23 @@
         };
 
         window.updatePollBars = function() {
-            try {
-                let total = 0;
-                for (let key in currentPollVotes) total += currentPollVotes[key] || 0;
-                if (total === 0) total = 1;
-                
-                let resultsDiv = document.getElementById('poll-results');
-                if(!resultsDiv) return;
-                let counts = resultsDiv.querySelectorAll('[id^="count-opt-"]');
-                counts.forEach(span => {
-                    let idx = span.id.replace('count-opt-', '');
-                    let val = currentPollVotes[idx] || 0;
-                    span.innerText = val;
-                    let bar = document.getElementById('bar-opt-' + idx);
-                    if(bar) bar.style.width = ((val / total) * 100) + '%';
-                });
-                if (window.isAdmin && typeof window.majStatsAdmin === 'function') window.majStatsAdmin();
-            } catch (e) {}
+    try {
+        let total = (currentPollVotes.oui || 0) + (currentPollVotes.peutetre || 0) + (currentPollVotes.non || 0);
+        if (total === 0) total = 1;
+
+        // Fonction utilitaire pour mettre à jour chaque barre
+        const updateBar = (id, valeur) => {
+            document.getElementById('count-opt-' + id).innerText = valeur;
+            let bar = document.getElementById('bar-opt-' + id);
+            if(bar) bar.style.width = ((valeur / total) * 100) + '%';
         };
+
+        updateBar('0', currentPollVotes.oui || 0);
+        updateBar('1', currentPollVotes.peutetre || 0);
+        updateBar('2', currentPollVotes.non || 0);
+
+    } catch (e) { console.error("Erreur affichage barres :", e); }
+}
 
         // =========================================
         // 5. MOTEUR D'AFFICHAGE DE L'ACADÉMIE
