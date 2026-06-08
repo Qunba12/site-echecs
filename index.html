@@ -13,6 +13,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
     <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
 
+    // Ce code s'exécute dès que la page charge
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('hasVoted')) {
+        // L'utilisateur a déjà voté, on cache les boutons et on montre les résultats
+        let votingDiv = document.getElementById('poll-voting');
+        let resultsDiv = document.getElementById('poll-results');
+        
+        if (votingDiv) votingDiv.style.display = 'none';
+        if (resultsDiv) resultsDiv.style.display = 'block';
+    }
+});
+
     <style>
         /* =========================================
            1. VARIABLES ET THÈMES
@@ -1303,35 +1315,27 @@
             }
         }
 
-  window.voter = async function(optionIndex) {
-    if (localStorage.getItem('hasVoted')) return alert("Tu as déjà voté !");
+ window.voter = async function(optionIndex) {
+    // 1. On vérifie si l'utilisateur a déjà voté dans sa mémoire locale
+    if (localStorage.getItem('hasVoted')) {
+        return alert("Tu as déjà voté !");
+    }
     
-    const mapping = {
-        '0': 'oui',
-        '1': 'peutetre',
-        '2': 'non'
-    };
-
+    const mapping = {'0': 'oui', '1': 'peutetre', '2': 'non'};
     let fieldName = mapping[optionIndex];
     
     try {
-        // 1. Enregistrement du vote
         await setDoc(pollRef, { [fieldName]: increment(1) }, { merge: true });
+        
+        // 2. On marque comme voté pour toujours (ou jusqu'au vidage du cache)
         localStorage.setItem('hasVoted', 'true');
         
-        // 2. Bascule visuelle : on cache les boutons et on affiche les résultats
         document.getElementById('poll-voting').style.display = 'none'; 
         document.getElementById('poll-results').style.display = 'block';
-        
-        // 3. Optionnel : un petit message de confirmation
-        alert("✅ Vote enregistré ! Voici les résultats.");
-        
-        // 4. Mise à jour immédiate de l'affichage des barres
-        window.updatePollBars(); 
-        
+        window.updatePollBars();
+        alert("✅ Vote enregistré !");
     } catch (e) {
-        console.error("Erreur vote :", e);
-        alert("Impossible de voter pour le moment.");
+        alert("Erreur technique.");
     }
 }
         
