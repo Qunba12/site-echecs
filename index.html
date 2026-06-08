@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MQWVDFRR');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
@@ -24,7 +19,7 @@
         ========================================= */
         :root {
             --bg-color: #f0f2f5;
-            --nav-bg: rgba(255, 255, 255, 0.9);
+            --nav-bg: rgba(255, 255, 255, 0.95);
             --text-color: #2c3e50;
             --text-muted: #7f8c8d;
             --card-bg: #ffffff;
@@ -35,7 +30,7 @@
 
         [data-theme="dark"] {
             --bg-color: #121212;
-            --nav-bg: rgba(30, 30, 30, 0.9);
+            --nav-bg: rgba(30, 30, 30, 0.95);
             --text-color: #f5f5f5;
             --text-muted: #aaaaaa;
             --card-bg: #1e1e1e;
@@ -51,28 +46,28 @@
         h2 { color: var(--accent); border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-top: 40px; font-weight: 700; }
         
         .page { display: none; max-width: 1000px; margin: 40px auto; padding: 20px; }
-        .page.active { display: block; animation: fadeIn 0.5s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .page.active { display: block; animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .card { background-color: var(--card-bg); padding: 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 5px solid var(--accent); transition: transform 0.3s, box-shadow 0.3s; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .card { background-color: var(--card-bg); padding: 30px; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.06); border-top: 5px solid var(--accent); transition: transform 0.3s, box-shadow 0.3s; }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
 
         /* =========================================
-           3. NAVIGATION GLASSMORPHISM
+           3. NAVIGATION
         ========================================= */
-        nav { background-color: var(--nav-bg); padding: 15px 20px; text-align: center; border-bottom: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 15px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-        .nav-btn { font-size: 1.05rem; font-weight: 600; cursor: pointer; color: var(--text-muted); text-decoration: none; padding: 8px 16px; border-radius: 20px; transition: 0.3s; }
+        nav { background-color: var(--nav-bg); padding: 15px 20px; text-align: center; border-bottom: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 15px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+        .nav-btn { font-size: 1.05rem; font-weight: 600; cursor: pointer; color: var(--text-muted); text-decoration: none; padding: 8px 16px; border-radius: 20px; transition: 0.2s; }
         .nav-btn:hover { background-color: rgba(0,0,0,0.05); color: var(--text-color); }
         [data-theme="dark"] .nav-btn:hover { background-color: rgba(255,255,255,0.05); }
         .nav-btn.active { background-color: var(--accent); color: #000; }
         .theme-toggle { background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer; margin-left: auto; color: var(--text-color); display: flex; align-items: center; justify-content: center; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .theme-toggle:hover { transform: rotate(30deg); }
         
-        #banniere-annonce { display: block; background: linear-gradient(90deg, #2ecc71, #27ae60); color: white; text-align: center; padding: 15px; font-size: 1.1rem; font-weight: bold; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3); letter-spacing: 0.5px; }
+        #banniere-annonce { display: block; background: linear-gradient(90deg, #2ecc71, #27ae60); color: white; text-align: center; padding: 15px; font-size: 1.1rem; font-weight: bold; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3); }
 
         /* =========================================
-           4. COMPOSANTS (Boutons, Inputs, Tableau)
+           4. COMPOSANTS
         ========================================= */
         .poll-btn { background-color: var(--accent); color: #000; border: none; padding: 12px 24px; margin: 10px 5px; font-size: 1rem; font-weight: bold; border-radius: 8px; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .poll-btn:hover { background-color: #f1c40f; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
@@ -197,6 +192,9 @@
         .admin-login { color: var(--text-muted); cursor: pointer; font-size: 0.9rem; text-decoration: underline; transition: 0.2s; }
         .admin-login:hover { color: var(--accent); }
         
+        /* =========================================
+           8. ADAPTATION MOBILE
+        ========================================= */
         @media (max-width: 768px) {
             .page { margin: 20px auto; padding: 15px; }
             h1 { font-size: 2rem; margin-bottom: 20px; }
@@ -225,6 +223,34 @@
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQWVDFRR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
+    <script>
+        window.toggleTheme = function() {
+            let currentTheme = document.documentElement.getAttribute("data-theme");
+            let targetTheme = currentTheme === "dark" ? "light" : "dark";
+            document.documentElement.setAttribute("data-theme", targetTheme);
+            localStorage.setItem("theme", targetTheme);
+        }
+        if(localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");
+
+        window.afficherPage = function(idPage, boutonClique) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            let pageCible = document.getElementById(idPage);
+            if(pageCible) pageCible.classList.add('active');
+            if(boutonClique) boutonClique.classList.add('active');
+            
+            if(idPage === 'techniques') {
+                if(window.openingBoard) setTimeout(() => { window.openingBoard.resize(); }, 100);
+                if(window.conceptBoard1) setTimeout(() => { window.conceptBoard1.resize(); }, 100);
+                if(window.conceptBoard3) setTimeout(() => { window.conceptBoard3.resize(); }, 100);
+            }
+            if (idPage === 'jouer' && typeof window.startPartiesListener === 'function') window.startPartiesListener(); 
+            else if (typeof window.stopPartiesListener === 'function') window.stopPartiesListener();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        window.fermerModalAdmin = function() { document.getElementById('admin-modal-overlay').style.display = 'none'; }
+    </script>
+
     <div id="admin-banner" class="admin-banner">
         🛠️ MODE ADMINISTRATEUR ACTIF
         <button class="btn-quitter" onclick="quitterAdmin()">Quitter et Sauvegarder</button>
@@ -234,7 +260,7 @@
         <span id="banniere-annonce-text">🎉 Nouveau club d'échecs à Saint-Ouen-du-Breuil, nous venons d'ouvrir !</span>
     </div>
 
-    <button class="admin-fab" onclick="document.getElementById('admin-sidebar').classList.add('open')" id="admin-fab-btn">⚙️</button>
+    <button class="admin-fab" onclick="document.getElementById('admin-sidebar').classList.add('open')" id="admin-fab-btn" style="display:none;">⚙️</button>
 
     <div id="admin-sidebar" class="admin-sidebar">
         <div class="admin-sidebar-header">
@@ -389,7 +415,6 @@
 
     <main id="main-content">
         <div id="accueil" class="page active">
-            
             <h1 id="title-accueil" data-editable>Club d'Échecs de Saint-Ouen-du-Breuil ♟️</h1>
             <p style="text-align: center; font-size: 1.1rem; color: var(--text-muted); margin-top: -20px; margin-bottom: 40px;">Le Cercle des Rois - Apprendre, Jouer et Progresser en Normandie.</p>
             
@@ -399,7 +424,7 @@
             </div>
 
             <div id="sondage-accueil" class="poll-container">
-                <h2 id="poll-question" style="border: none; color: white; margin-top: 0; font-size: 1.8rem; line-height: 1.4;">Chargement du sondage...</h2>
+                <h2 id="poll-question" style="border: none; color: white; margin-top: 0; font-size: 1.5rem; line-height: 1.4;">Est-ce que vous êtes partant pour un club d'échecs à Saint-Ouen-du-Breuil ?</h2>
                 <div id="poll-voting"></div>
                 <div id="poll-results" class="poll-results"></div>
             </div>
@@ -557,7 +582,7 @@
             <div class="card" style="text-align: center; border-top: 5px solid #2ecc71;">
                 <h2 style="margin-top: 0; color: #2ecc71; border:none;">1. Créer un salon d'attente</h2>
                 <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 25px;">
-                    Indique ton pseudo et choisis le temps. Ton salon sera ouvert instantanément.
+                    Indique ton pseudo et choisis le temps. Lichess te générera une partie.<br><strong>Tu seras redirigé instantanément sur Lichess.</strong>
                 </p>
                 
                 <input type="text" id="mon-pseudo-jeu" class="form-input" placeholder="👉 Ton pseudo (ex: Quentin)..." style="max-width: 350px; margin: 0 auto 15px auto;">
@@ -684,8 +709,9 @@
         const pollRef = doc(db, "club", "sondage");
         const contentRef = doc(db, "club", "textes");
         const commsRef = doc(db, "club", "communications");
+        const partiesLiveRef = collection(db, "partiesLive");
 
-        let isAdmin = false;
+        window.isAdmin = false;
         let customPages = [];
         let messagesPublicData = [];
         let messagesAdminData = [];
@@ -700,10 +726,10 @@
         // ==========================================
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                isAdmin = true; 
+                window.isAdmin = true; 
                 activerModeAdmin();
             } else {
-                isAdmin = false;
+                window.isAdmin = false;
                 document.body.classList.remove('admin-mode'); 
                 let banner = document.getElementById('admin-banner'); if(banner) banner.style.display = 'none'; 
                 let fab = document.getElementById('admin-fab-btn'); if(fab) fab.style.display = 'none';
@@ -713,7 +739,7 @@
         });
 
         window.connexionAdmin = async function() { 
-            if (isAdmin) return alert("Déjà connecté !"); 
+            if (window.isAdmin) return alert("Déjà connecté !"); 
             let email = prompt("Email Administrateur :"); if (!email) return;
             let mdp = prompt("Mot de passe :"); if (!mdp) return;
             try { 
@@ -725,20 +751,22 @@
         }
 
         window.quitterAdmin = async function() {
-            let modifications = {}; 
-            document.querySelectorAll('[data-editable]').forEach(el => modifications[el.id] = el.innerHTML);
-            document.querySelectorAll('.dynamic-zone').forEach(zone => { 
-                let clone = zone.cloneNode(true); 
-                clone.querySelectorAll('[data-editable-dyn]').forEach(el => el.removeAttribute('contenteditable')); 
-                modifications[zone.id] = clone.innerHTML; 
-            });
-            await setDoc(contentRef, modifications, { merge: true }); 
-            await signOut(auth); 
-            location.reload();
+            try {
+                let modifications = {}; 
+                document.querySelectorAll('[data-editable]').forEach(el => modifications[el.id] = el.innerHTML);
+                document.querySelectorAll('.dynamic-zone').forEach(zone => { 
+                    let clone = zone.cloneNode(true); 
+                    clone.querySelectorAll('[data-editable-dyn]').forEach(el => el.removeAttribute('contenteditable')); 
+                    modifications[zone.id] = clone.innerHTML; 
+                });
+                await setDoc(contentRef, modifications, { merge: true }); 
+                await signOut(auth); 
+                location.reload();
+            } catch(e) { console.error("Erreur deconnexion", e); }
         }
 
         // ==========================================
-        // 3. BASE DE DONNÉES DE L'ACADÉMIE (INTACTE)
+        // 3. BASE DE DONNÉES DE L'ACADÉMIE
         // ==========================================
         window.ouverturesData = [
             { cat: "⚔️ Ouvertures Blanches", nom: "Partie Italienne", fr: "1. e4 e5 2. Cf3 Cc6 3. Fc4 Fc5 4. c3 Cf6 5. d3 d6 6. O-O O-O", en: "1. e4 e5 2. Nf3 Nc6 3. Bc4 Bc5 4. c3 Nf6 5. d3 d6 6. O-O O-O", desc: "Idéale pour les débutants. Elle vise à contrôler le centre rapidement et à développer le Fou sur une diagonale agressive pointant directement vers le pion f7. La position se solidifie ensuite avec les roques.", color: "" },
@@ -759,74 +787,50 @@
         ];
 
         window.conceptsData = [
-            { niv: 1, chap: "Chapitre 1 : Valeur et Mouvement des pièces", nom: "Le Pion (1 pt)", descText: "Avance d'une case tout droit (ou de deux à son 1er coup). Capture en diagonale. Se promeut s'il atteint l'autre bout.", desc: "Observez le pion blanc au centre. À son tout premier coup, il a le droit d'avancer de 2 cases (d4). Ensuite, il est bloqué par le pion noir. Mais au coup suivant, il mange un autre pion adverse en diagonale !", pgn: "1. d4 d5 2. e4 dxe4", icon: "♙", img: "", color: "" },
-            { niv: 1, chap: "Chapitre 1 : Valeur et Mouvement des pièces", nom: "Le Cavalier (3 pts)", descText: "Se déplace en \"L\". C'est la seule pièce qui peut sauter par-dessus les autres.", desc: "Le Cavalier se déplace en 'L' (deux cases dans un sens, une case dans l'autre). Observez comment il est la seule pièce capable de sauter par-dessus les autres pour sortir dès le début de la partie !", pgn: "1. Nf3 d5 2. Ne5", icon: "♘", img: "", color: "" },
-            { niv: 1, chap: "Chapitre 1 : Valeur et Mouvement des pièces", nom: "Le Fou (3 pts)", descText: "Se déplace en diagonale d'autant de cases qu'il le souhaite. Il reste toujours sur sa couleur de départ.", desc: "Le Fou se déplace uniquement en diagonale. Regardez comment il traverse tout l'échiquier en une seule fois. Notez qu'un Fou qui commence sur une case blanche restera sur les cases blanches toute sa vie.", pgn: "1. e4 d5 2. Ba6", icon: "♗", img: "", color: "" },
-            { niv: 1, chap: "Chapitre 1 : Valeur et Mouvement des pièces", nom: "La Tour (5 pts)", descText: "Se déplace en ligne droite (horizontalement et verticalement) d'autant de cases qu'elle le souhaite.", desc: "La Tour avance en ligne droite (horizontalement et verticalement) d'autant de cases qu'elle le souhaite. C'est une pièce très puissante qu'on libère généralement en fin d'ouverture.", pgn: "1. h4 a5 2. Rh3", icon: "♖", img: "", color: "" },
-            { niv: 1, chap: "Chapitre 1 : Valeur et Mouvement des pièces", nom: "La Dame (9 pts)", descText: "La pièce la plus puissante. Combine les mouvements de la Tour et du Fou.", desc: "La pièce maîtresse absolue ! Elle combine les mouvements de la Tour (lignes droites) et du Fou (diagonales).", pgn: "1. e4 d5 2. Qh5", icon: "♕", img: "", color: "" },
-            { niv: 1, chap: "Chapitre 1 : Valeur et Mouvement des pièces", nom: "Le Roi (Inestimable)", descText: "Se déplace d'une seule case dans toutes les directions. S'il est attaqué et ne peut pas fuir, c'est Échec et Mat.", desc: "Le Roi se déplace d'une seule case dans n'importe quelle direction. S'il est attaqué et ne peut pas fuir (ni être protégé), c'est Échec et Mat !", pgn: "1. e4 e5 2. Ke2", icon: "♔", img: "", color: "" },
-            { niv: 1, chap: "Chapitre 2 : Les Coups Spéciaux", nom: "🏰 Le Roque", descText: "Le seul moment où l'on bouge 2 pièces d'un coup ! Le Roi se met à l'abri sur le côté, et la Tour passe par-dessus. Impossible si le Roi est en échec ou a déjà bougé.", desc: "Le seul moment où l'on bouge 2 pièces d'un coup ! Le Roi se met à l'abri sur le côté (de 2 cases), et la Tour passe par-dessus pour venir se recentrer. C'est le mouvement défensif le plus important des échecs.", pgn: "1. e4 e5 2. Nf3 Nc6 3. Bc4 Bc5 4. O-O", icon: "", img: "", color: "#2ecc71" },
-            { niv: 1, chap: "Chapitre 2 : Les Coups Spéciaux", nom: "👻 La Prise en Passant", descText: "La règle secrète du pion ! Si un pion adverse avance de deux cases et se retrouve juste à côté du vôtre, vous avez **immédiatement** le droit de le capturer en diagonale derrière lui !", desc: "Une règle secrète souvent oubliée par les débutants ! Si un pion adverse tente d'esquiver votre pion en avançant de deux cases d'un coup, vous avez immédiatement le droit de le capturer en diagonale derrière lui !", pgn: "[SetUp \"1\"]\n[FEN \"rnbqkbnr/ppp1pppp/8/3pP3/8/8/PPPP1PPP/RNBQKBNR w KQkq d6 0 2\"]\n\n1. exd6", icon: "", img: "", color: "#e74c3c" },
-            { niv: 1, chap: "Chapitre 2 : Les Coups Spéciaux", nom: "👑 La Promotion", descText: "Lorsqu'un de vos pions parvient à traverser tout l'échiquier et atteint la dernière rangée adverse, il est immédiatement promu et se transforme en la pièce de votre choix.", desc: "La consécration pour un pion ! Lorsqu'un de vos pions parvient à traverser tout l'échiquier et atteint la toute dernière ligne adverse, il est immédiatement promu et se transforme en Dame (ou autre pièce).", pgn: "[SetUp \"1\"]\n[FEN \"8/P7/8/8/8/8/8/4K2k w - - 0 1\"]\n\n1. a8=Q+", icon: "", img: "", color: "#f1c40f" },
-            { niv: 1, chap: "Chapitre 3 : Les Schémas de Mat basiques", nom: "Le Mat du Couloir", descText: "", desc: "Regardez le Roi noir. Il s'est cru en sécurité derrière ses 3 pions, mais il a oublié de se laisser une case de fuite ! La Tour blanche arrive au fond et c'est terminé.", pgn: "[SetUp \"1\"]\n[FEN \"6k1/5ppp/8/8/8/8/8/4R1K1 w - - 0 1\"]\n\n1. Re8#", icon: "", img: "https://lichess1.org/export/fen.gif?fen=4R1k1/5ppp/8/8/8/8/8/6K1&theme=brown&piece=cburnett", color: "" },
-            { niv: 1, chap: "Chapitre 3 : Les Schémas de Mat basiques", nom: "Le Mat du Berger", descText: "", desc: "L'attaque la plus connue. Les Blancs sortent rapidement la Dame et le Fou pour attaquer conjointement le pion f7, le seul pion qui n'est défendu que par le Roi noir au début de la partie.", pgn: "1. e4 e5 2. Bc4 Bc5 3. Qh5 Nf6 4. Qxf7#", icon: "", img: "https://lichess1.org/export/fen.gif?fen=r1bqk1nr/pppp1Qpp/2n5/2b1p3/2B1P3/8/PPPP1PPP/RNB1K1NR&theme=brown&piece=cburnett", color: "" },
-            { niv: 1, chap: "Chapitre 3 : Les Schémas de Mat basiques", nom: "Le Baiser de la mort", descText: "", desc: "La forme d'échec et mat la plus fréquente au corps à corps. La Dame vient se coller directement devant le Roi adverse pour le mater. Elle doit impérativement être soutenue par une autre pièce (ici le Cavalier) pour ne pas se faire manger.", pgn: "[SetUp \"1\"]\n[FEN \"7k/6pp/5N2/8/8/8/8/5Q1K w - - 0 1\"]\n\n1. Qxh7#", icon: "", img: "https://lichess1.org/export/fen.gif?fen=6k1/6Q1/5K2/8/8/8/8/8&theme=brown&piece=cburnett", color: "" },
-            { niv: 1, chap: "Chapitre 3 : Les Schémas de Mat basiques", nom: "Le Mat à l'étouffée", descText: "", desc: "Le mat le plus satisfaisant à réaliser ! Le Roi noir s'est tellement entouré de ses propres pièces pour se protéger qu'il s'est lui-même coincé. Le Cavalier adverse lui donne le coup de grâce en sautant par-dessus la muraille !", pgn: "[SetUp \"1\"]\n[FEN \"6rk/6pp/8/4N3/8/8/8/7K w - - 0 1\"]\n\n1. Nf7#", icon: "", img: "https://lichess1.org/export/fen.gif?fen=6rk/5Npp/8/8/8/8/8/7K&theme=brown&piece=cburnett", color: "" },
-            { niv: 3, chap: "Le Jeu Positionnel", nom: "♟️ Pions Doublés", descText: "Avoir deux pions de la même couleur alignés sur la même colonne est une faiblesse majeure car ils se bloquent mutuellement. Observez comment les Blancs forcent ce défaut.", desc: "Observez la structure des pions noirs après l'échange. Ils se retrouvent avec deux pions sur la colonne c. Ces pions se bloquent et ne peuvent plus s'entraider. Les Blancs ont volontairement forcé cette faiblesse pour avoir l'avantage à long terme.", pgn: "1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Bxc6 dxc6", icon: "", img: "", color: "#8e44ad" },
-            { niv: 3, chap: "Le Jeu Positionnel", nom: "🏯 L'Avant-poste (Case Forte)", descText: "C'est une case située profondément dans le camp adverse, protégée par l'un de vos pions, et qui ne peut plus être attaquée par un pion ennemi. Y placer un Cavalier est fatal.", desc: "Regardez le Cavalier blanc qui va atterrir sur la case e5. Cette case est un \"Avant-poste\" : elle est ancrée chez l'ennemi, protégée par le pion d4, et aucun pion noir ne pourra jamais chasser le Cavalier ! C'est un poison absolu.", pgn: "[SetUp \"1\"]\n[FEN \"r2q1rk1/pp1nbppp/2p1pn2/3p2B1/2PP4/2N3P1/PP2PPBP/R2Q1RK1 w - - 0 1\"]\n\n1. Ne5", icon: "", img: "", color: "#8e44ad" },
-            { niv: 3, chap: "Le Jeu Positionnel", nom: "🔭 Le Fianchetto", descText: "Consiste à avancer le pion cavalier d'une case pour y glisser son Fou sur la plus grande diagonale de l'échiquier. Cela crée une forteresse défensive très puissante.", desc: "Plutôt que de sortir son Fou au centre, on pousse le pion g3 pour glisser le Fou en g2. C'est le Fianchetto. Le Fou devient un véritable tireur d'élite balayant toute la plus grande diagonale de l'échiquier tout en protégeant son Roi.", pgn: "1. g3 d5 2. Bg2 c5 3. Nf3 Nc6 4. O-O", icon: "", img: "", color: "#8e44ad" },
-            { niv: 3, chap: "Le Jeu Positionnel", nom: "📏 La Règle du Carré", descText: "En finale, tracez un carré mental entre le pion adverse et sa case de promotion. Si votre Roi parvient à y entrer, il rattrapera forcément le pion avant sa transformation !", desc: "Le pion noir file à toute vitesse ! Le Roi blanc peut-il l'intercepter ? Imaginez un carré formé par le pion et la case de promotion. Si le Roi blanc arrive à entrer dans ce carré virtuel à son tour de jeu, le pion est perdu !", pgn: "[SetUp \"1\"]\n[FEN \"8/8/8/p7/8/8/8/4K3 b - - 0 1\"]\n\n1... a4 2. Kd2 a3 3. Kc3 a2 4. Kb2 a1=Q+ 5. Kxa1", icon: "", img: "", color: "#f39c12" },
-            { niv: 3, chap: "Le Jeu Positionnel", nom: "🤺 L'Opposition des Rois", descText: "Les Rois se font face avec une seule case d'écart. C'est à celui dont c'est le tour de jouer de devoir reculer et céder le passage à l'autre ! C'est la clé des finales de pions.", desc: "Une notion vitale des finales de pions. Les Rois se font face avec une seule case d'écart. C'est ce qu'on appelle avoir l'Opposition. La règle est simple : celui à qui c'est le tour de jouer est désavantagé, il doit reculer et céder le passage à l'autre !", pgn: "[SetUp \"1\"]\n[FEN \"8/8/8/8/3k4/8/3K4/8 b - - 0 1\"]\n\n1... Ke4 2. Ke2 Kf4 3. Kf2", icon: "", img: "", color: "#f39c12" }
+            { niv: 1, chap: "Chapitre 1 : Valeur et Mouvement des pièces", nom: "Le Pion (1 pt)", descText: "Avance d'une case tout droit. Capture en diagonale.", desc: "Il avance d'une case (ou deux au début) mais prend en diagonale !", pgn: "1. d4 d5 2. e4 dxe4", icon: "♙" },
+            { niv: 1, chap: "Chapitre 1 : Valeur et Mouvement des pièces", nom: "Le Cavalier (3 pts)", descText: "Se déplace en L.", desc: "Saute par-dessus les pièces.", pgn: "1. Nf3 d5 2. Ne5", icon: "♘" },
+            { niv: 1, chap: "Chapitre 1 : Valeur et Mouvement des pièces", nom: "Le Fou (3 pts)", descText: "Diagonales.", desc: "Reste sur sa couleur d'origine.", pgn: "1. e4 d5 2. Ba6", icon: "♗" },
+            { niv: 1, chap: "Chapitre 1 : Valeur et Mouvement des pièces", nom: "La Tour (5 pts)", descText: "Lignes droites.", desc: "Lignes horizontales et verticales.", pgn: "1. h4 a5 2. Rh3", icon: "♖" },
+            { niv: 1, chap: "Chapitre 1 : Valeur et Mouvement des pièces", nom: "La Dame (9 pts)", descText: "Tour + Fou.", desc: "La plus puissante.", pgn: "1. e4 d5 2. Qh5", icon: "♕" },
+            { niv: 1, chap: "Chapitre 1 : Valeur et Mouvement des pièces", nom: "Le Roi (Inestimable)", descText: "Une case.", desc: "La pièce vitale de la partie.", pgn: "1. e4 e5 2. Ke2", icon: "♔" },
+            { niv: 1, chap: "Chapitre 2 : Les Coups Spéciaux", nom: "🏰 Le Roque", descText: "Sécurité du Roi.", desc: "Abri rapide du Roi.", pgn: "1. e4 e5 2. Nf3 Nc6 3. Bc4 Bc5 4. O-O", color: "#2ecc71" },
+            { niv: 1, chap: "Chapitre 2 : Les Coups Spéciaux", nom: "👻 La Prise en Passant", descText: "Capture spéciale.", desc: "Prend un pion qui a avancé de 2 cases.", pgn: "[SetUp \"1\"]\n[FEN \"rnbqkbnr/ppp1pppp/8/3pP3/8/8/PPPP1PPP/RNBQKBNR w KQkq d6 0 2\"]\n\n1. exd6", color: "#e74c3c" },
+            { niv: 1, chap: "Chapitre 2 : Les Coups Spéciaux", nom: "👑 La Promotion", descText: "Transformation.", desc: "Arrivé au bout, le pion devient Dame.", pgn: "[SetUp \"1\"]\n[FEN \"8/P7/8/8/8/8/8/4K2k w - - 0 1\"]\n\n1. a8=Q+", color: "#f1c40f" },
+            { niv: 1, chap: "Chapitre 3 : Les Schémas de Mat basiques", nom: "Le Mat du Couloir", desc: "Roi étouffé sous ses pions.", pgn: "[SetUp \"1\"]\n[FEN \"6k1/5ppp/8/8/8/8/8/4R1K1 w - - 0 1\"]\n\n1. Re8#", img: "https://lichess1.org/export/fen.gif?fen=4R1k1/5ppp/8/8/8/8/8/6K1&theme=brown&piece=cburnett" },
+            { niv: 1, chap: "Chapitre 3 : Les Schémas de Mat basiques", nom: "Le Mat du Berger", desc: "Mat éclair en 4 coups.", pgn: "1. e4 e5 2. Bc4 Bc5 3. Qh5 Nf6 4. Qxf7#", img: "https://lichess1.org/export/fen.gif?fen=r1bqk1nr/pppp1Qpp/2n5/2b1p3/2B1P3/8/PPPP1PPP/RNB1K1NR&theme=brown&piece=cburnett" },
+            { niv: 1, chap: "Chapitre 3 : Les Schémas de Mat basiques", nom: "Le Baiser de la mort", desc: "Dame collée au Roi.", pgn: "[SetUp \"1\"]\n[FEN \"7k/6pp/5N2/8/8/8/8/5Q1K w - - 0 1\"]\n\n1. Qxh7#", img: "https://lichess1.org/export/fen.gif?fen=6k1/6Q1/5K2/8/8/8/8/8&theme=brown&piece=cburnett" },
+            { niv: 1, chap: "Chapitre 3 : Les Schémas de Mat basiques", nom: "Le Mat à l'étouffée", desc: "Cavalier fatal sur Roi bloqué.", pgn: "[SetUp \"1\"]\n[FEN \"6rk/6pp/8/4N3/8/8/8/7K w - - 0 1\"]\n\n1. Nf7#", img: "https://lichess1.org/export/fen.gif?fen=6rk/5Npp/8/8/8/8/8/7K&theme=brown&piece=cburnett" },
+            // Niveau 3
+            { niv: 3, chap: "Le Jeu Positionnel", nom: "♟️ Pions Doublés", descText: "Faiblesse de structure.", desc: "Deux pions alignés bloqués.", pgn: "1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Bxc6 dxc6", color: "#8e44ad" },
+            { niv: 3, chap: "Le Jeu Positionnel", nom: "🏯 L'Avant-poste", descText: "Case forte avancée.", desc: "Case forte intouchable pour un Cavalier.", pgn: "[SetUp \"1\"]\n[FEN \"r2q1rk1/pp1nbppp/2p1pn2/3p2B1/2PP4/2N3P1/PP2PPBP/R2Q1RK1 w - - 0 1\"]\n\n1. Ne5", color: "#8e44ad" },
+            { niv: 3, chap: "Le Jeu Positionnel", nom: "🔭 Le Fianchetto", descText: "Grandes diagonales.", desc: "Fou placé en embuscade en g2/b2.", pgn: "1. g3 d5 2. Bg2 c5 3. Nf3 Nc6 4. O-O", color: "#8e44ad" },
+            { niv: 3, chap: "Le Jeu Positionnel", nom: "📏 La Règle du Carré", descText: "Calcul de finale.", desc: "Carré imaginaire pour stopper un pion.", pgn: "[SetUp \"1\"]\n[FEN \"8/8/8/p7/8/8/8/4K3 b - - 0 1\"]\n\n1... a4 2. Kd2 a3 3. Kc3 a2 4. Kb2 a1=Q+ 5. Kxa1", color: "#f39c12" },
+            { niv: 3, chap: "Le Jeu Positionnel", nom: "🤺 L'Opposition des Rois", descText: "Duel final de rois.", desc: "Gagner le passage crucial en finale.", pgn: "[SetUp \"1\"]\n[FEN \"8/8/8/8/3k4/8/3K4/8 b - - 0 1\"]\n\n1... Ke4 2. Ke2 Kf4 3. Kf2", color: "#f39c12" }
         ];
 
+        // =========================================
+        // 4. MOTEUR D'AFFICHAGE DU SONDAGE ET STATS
+        // =========================================
         function obtenirDateFormatee() { return new Date().toLocaleDateString('fr-FR') + ' à ' + new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }); }
 
         window.majStatsAdmin = async function() {
-            if(!isAdmin) return;
-            
-            let totalVotes = 0;
-            for (let key in currentPollVotes) totalVotes += currentPollVotes[key] || 0;
-            let statVotes = document.getElementById('stat-votes');
-            if (statVotes) statVotes.innerText = totalVotes;
-            
-            let tb = document.getElementById('edit-classement-body');
-            let statJoueurs = document.getElementById('stat-joueurs');
-            if (statJoueurs) statJoueurs.innerText = tb ? tb.getElementsByTagName('tr').length : 0;
-            
+            if(!window.isAdmin) return;
             try {
+                let totalVotes = 0;
+                for (let key in currentPollVotes) totalVotes += currentPollVotes[key] || 0;
+                let statVotes = document.getElementById('stat-votes');
+                if (statVotes) statVotes.innerText = totalVotes;
+                
+                let tb = document.getElementById('edit-classement-body');
+                let statJoueurs = document.getElementById('stat-joueurs');
+                if (statJoueurs) statJoueurs.innerText = tb ? tb.getElementsByTagName('tr').length : 0;
+                
                 let hist = document.getElementById('liste-historique');
                 let statParties = document.getElementById('stat-parties');
                 if (statParties && hist) statParties.innerText = hist.children.length;
             } catch(e) {}
         }
 
-        window.toggleTheme = function() {
-            let currentTheme = document.documentElement.getAttribute("data-theme");
-            let targetTheme = currentTheme === "dark" ? "light" : "dark";
-            document.documentElement.setAttribute("data-theme", targetTheme);
-            localStorage.setItem("theme", targetTheme);
-        }
-        if(localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");
-
-        window.afficherPage = function(idPage, boutonClique) {
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            let pageCible = document.getElementById(idPage);
-            if(pageCible) pageCible.classList.add('active');
-            if(boutonClique) boutonClique.classList.add('active');
-            
-            if(idPage === 'techniques') {
-                if(openingBoard) setTimeout(() => { openingBoard.resize(); }, 100);
-                if(conceptBoard1) setTimeout(() => { conceptBoard1.resize(); }, 100);
-                if(conceptBoard3) setTimeout(() => { conceptBoard3.resize(); }, 100);
-            }
-            if (idPage === 'jouer') window.startPartiesListener(); else window.stopPartiesListener();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // =========================================
-        // 4. MOTEUR D'AFFICHAGE DU SONDAGE (NOUVEAU)
-        // =========================================
         window.renderPollConfig = function(configJSON) {
             let config = { 
                 question: "Est-ce que vous êtes partant pour un club d'échecs à Saint-Ouen-du-Breuil ?", 
@@ -850,84 +854,88 @@
         };
 
         window.updatePollBars = function() {
-            let total = 0;
-            for (let key in currentPollVotes) total += currentPollVotes[key] || 0;
-            if (total === 0) total = 1;
-            
-            let resultsDiv = document.getElementById('poll-results');
-            if(!resultsDiv) return;
-            let counts = resultsDiv.querySelectorAll('[id^="count-opt-"]');
-            counts.forEach(span => {
-                let idx = span.id.replace('count-opt-', '');
-                let val = currentPollVotes[idx] || 0;
-                span.innerText = val;
-                let bar = document.getElementById('bar-opt-' + idx);
-                if(bar) bar.style.width = ((val / total) * 100) + '%';
-            });
-            if (isAdmin && typeof window.majStatsAdmin === 'function') window.majStatsAdmin();
+            try {
+                let total = 0;
+                for (let key in currentPollVotes) total += currentPollVotes[key] || 0;
+                if (total === 0) total = 1;
+                
+                let resultsDiv = document.getElementById('poll-results');
+                if(!resultsDiv) return;
+                let counts = resultsDiv.querySelectorAll('[id^="count-opt-"]');
+                counts.forEach(span => {
+                    let idx = span.id.replace('count-opt-', '');
+                    let val = currentPollVotes[idx] || 0;
+                    span.innerText = val;
+                    let bar = document.getElementById('bar-opt-' + idx);
+                    if(bar) bar.style.width = ((val / total) * 100) + '%';
+                });
+                if (window.isAdmin && typeof window.majStatsAdmin === 'function') window.majStatsAdmin();
+            } catch (e) {}
         };
 
         // =========================================
         // 5. MOTEUR D'AFFICHAGE DE L'ACADÉMIE
         // =========================================
         window.renderOuvertures = function() {
-            let menu = document.getElementById('menu-ouvertures-dyn'); if(!menu) return;
-            let html = '';
-            let categories = [...new Set(window.ouverturesData.map(o => o.cat))];
-            
-            categories.forEach(cat => {
-                let adminRename = isAdmin ? `<button class="admin-only-btn" style="margin:0; padding:4px 8px; font-size:0.7rem; background:#f39c12;" onclick="renommerCategorie('${cat}')">✏️ Renommer</button>` : '';
-                html += `<div class="category-container"><h4 class="category-title">${cat} ${adminRename}</h4>`;
+            try {
+                let menu = document.getElementById('menu-ouvertures-dyn'); if(!menu) return;
+                let html = '';
+                let categories = [...new Set(window.ouverturesData.map(o => o.cat))];
                 
-                window.ouverturesData.filter(o => o.cat === cat).forEach((o) => {
-                    let realIndex = window.ouverturesData.indexOf(o);
-                    let borderStyle = o.color ? `border-left: 4px solid ${o.color};` : '';
-                    let adminHtml = isAdmin ? `<div style="display:flex; gap:5px; margin-bottom: 5px;"><button class="msg-btn" style="background:#f39c12; flex:1;" onclick="ouvrirModalOuverture(${realIndex})">✏️ Éditer</button><button class="msg-btn" style="flex:1;" onclick="supprimerOuverture(${realIndex})">❌ Suppr</button></div>` : '';
-                    html += `<div style="margin-bottom: 10px;">${adminHtml}<button class="academic-btn" style="${borderStyle}" onclick="afficherOuverture(${realIndex}, this, event)">${o.nom}</button></div>`;
+                categories.forEach(cat => {
+                    let adminRename = window.isAdmin ? `<button class="admin-only-btn" style="margin:0; padding:4px 8px; font-size:0.7rem; background:#f39c12;" onclick="renommerCategorie('${cat}')">✏️ Renommer</button>` : '';
+                    html += `<div class="category-container"><h4 class="category-title">${cat} ${adminRename}</h4>`;
+                    
+                    window.ouverturesData.filter(o => o.cat === cat).forEach((o) => {
+                        let realIndex = window.ouverturesData.indexOf(o);
+                        let borderStyle = o.color ? `border-left: 4px solid ${o.color};` : '';
+                        let adminHtml = window.isAdmin ? `<div style="display:flex; gap:5px; margin-bottom: 5px;"><button class="msg-btn" style="background:#f39c12; flex:1;" onclick="ouvrirModalOuverture(${realIndex})">✏️ Éditer</button><button class="msg-btn" style="flex:1;" onclick="supprimerOuverture(${realIndex})">❌ Suppr</button></div>` : '';
+                        html += `<div style="margin-bottom: 10px;">${adminHtml}<button class="academic-btn" style="${borderStyle}" onclick="afficherOuverture(${realIndex}, this, event)">${o.nom}</button></div>`;
+                    });
+                    html += `</div>`;
                 });
-                html += `</div>`;
-            });
-            menu.innerHTML = html;
+                menu.innerHTML = html;
+            } catch(e) {}
         }
 
         window.renderConcepts = function(niv) {
-            let container = document.getElementById('concepts-dyn-' + niv); if(!container) return;
-            let html = '';
-            let conceptsNiv = window.conceptsData.filter(c => c.niv === niv);
-            let chapters = [...new Set(conceptsNiv.map(c => c.chap))];
+            try {
+                let container = document.getElementById('concepts-dyn-' + niv); if(!container) return;
+                let html = '';
+                let conceptsNiv = window.conceptsData.filter(c => c.niv === niv);
+                let chapters = [...new Set(conceptsNiv.map(c => c.chap))];
 
-            chapters.forEach(chap => {
-                let adminRename = isAdmin ? `<button class="admin-only-btn" style="margin:0; padding:6px 12px; font-size:0.85rem; background:#f39c12;" onclick="renommerChapitre('${chap}', ${niv})">✏️ Renommer Chapitre</button>` : '';
-                html += `<div class="chapter"><h3 style="color:var(--text-color); font-size:1.4rem; border-bottom:2px solid var(--border); padding-bottom:10px;">${chap} ${adminRename}</h3><div class="concept-grid">`;
-                
-                conceptsNiv.filter(c => c.chap === chap).forEach(c => {
-                    let realIndex = window.conceptsData.indexOf(c);
-                    let borderStyle = c.color ? `border-top: 3px solid ${c.color};` : '';
-                    let visualHtml = '';
-                    if(c.img) visualHtml = `<img src="${c.img}" alt="${c.nom}">`;
-                    else if(c.icon) visualHtml = `<span class="piece-icon">${c.icon}</span>`;
+                chapters.forEach(chap => {
+                    let adminRename = window.isAdmin ? `<button class="admin-only-btn" style="margin:0; padding:6px 12px; font-size:0.85rem; background:#f39c12;" onclick="renommerChapitre('${chap}', ${niv})">✏️ Renommer Chapitre</button>` : '';
+                    html += `<div class="chapter"><h3 style="color:var(--text-color); font-size:1.4rem; border-bottom:2px solid var(--border); padding-bottom:10px;">${chap} ${adminRename}</h3><div class="concept-grid">`;
                     
-                    let adminHtml = isAdmin ? `<div style="position: absolute; top: 10px; right: 10px; display:flex; gap:5px; z-index: 10;"><button class="msg-btn" style="background:#f39c12; padding:6px;" onclick="ouvrirModalConcept(${niv}, ${realIndex}); event.stopPropagation();">✏️</button><button class="msg-btn" style="padding:6px;" onclick="supprimerConcept(${realIndex}); event.stopPropagation();">❌</button></div>` : '';
+                    conceptsNiv.filter(c => c.chap === chap).forEach(c => {
+                        let realIndex = window.conceptsData.indexOf(c);
+                        let borderStyle = c.color ? `border-top: 3px solid ${c.color};` : '';
+                        let visualHtml = '';
+                        if(c.img) visualHtml = `<img src="${c.img}" alt="${c.nom}">`;
+                        else if(c.icon) visualHtml = `<span class="piece-icon">${c.icon}</span>`;
+                        
+                        let adminHtml = window.isAdmin ? `<div style="position: absolute; top: 10px; right: 10px; display:flex; gap:5px; z-index: 10;"><button class="msg-btn" style="background:#f39c12; padding:6px;" onclick="ouvrirModalConcept(${niv}, ${realIndex}); event.stopPropagation();">✏️</button><button class="msg-btn" style="padding:6px;" onclick="supprimerConcept(${realIndex}); event.stopPropagation();">❌</button></div>` : '';
 
-                    html += `<div class="concept-card" style="${borderStyle}" onclick="jouerConcept(${realIndex}, ${niv}, this, event)">
-                        ${adminHtml}
-                        ${visualHtml}
-                        <h4 style="margin: 5px 0; ${c.color ? `font-size: 1.2rem;` : ''}">${c.nom}</h4>
-                        ${c.descText ? `<p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 5px;">${c.descText}</p>` : ''}
-                        <p class="click-hint" style="${c.color ? `color:${c.color};` : ''}">Cliquer pour animer 🖱️</p>
-                    </div>`;
+                        html += `<div class="concept-card" style="${borderStyle}" onclick="jouerConcept(${realIndex}, ${niv}, this, event)">
+                            ${adminHtml}
+                            ${visualHtml}
+                            <h4 style="margin: 5px 0; ${c.color ? `font-size: 1.2rem;` : ''}">${c.nom}</h4>
+                            ${c.descText ? `<p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 5px;">${c.descText}</p>` : ''}
+                            <p class="click-hint" style="${c.color ? `color:${c.color};` : ''}">Cliquer pour animer 🖱️</p>
+                        </div>`;
+                    });
+                    html += `</div></div>`;
                 });
-                html += `</div></div>`;
-            });
-            container.innerHTML = html;
+                container.innerHTML = html;
+            } catch(e) {}
         }
 
         // =========================================
-        // FONCTIONS D'ADMINISTRATION (MODALITÉ)
+        // 6. FONCTIONS D'ADMINISTRATION MODALES
         // =========================================
         let currentEditingItem = null; let currentModalType = null;
-
-        window.fermerModalAdmin = function() { document.getElementById('admin-modal-overlay').style.display = 'none'; }
 
         window.sauvegarderAcademie = async function() {
             try {
@@ -998,32 +1006,29 @@
         window.supprimerConcept = function(index) { if(confirm("Supprimer ce concept ?")) { window.conceptsData.splice(index, 1); window.sauvegarderAcademie(); } }
 
         // =========================================
-        // MOTEURS ÉCHIQUIERS (CHESS.JS)
+        // 7. MOTEURS ÉCHIQUIERS (CHESS.JS)
         // =========================================
-        let conceptBoard1 = null, conceptGame1 = new Chess(), conceptMoves1 = [], currentConceptMoveIndex1 = 0;
-        let conceptBoard3 = null, conceptGame3 = new Chess(), conceptMoves3 = [], currentConceptMoveIndex3 = 0;
-
         window.jouerConcept = function(index, niv, btnElement, event) {
-            if (event && (event.target.closest('.admin-only-btn') || event.target.isContentEditable)) return;
-
-            document.getElementById('niveau-' + niv).querySelectorAll('.concept-card').forEach(c => c.classList.remove('active-concept'));
-            if(btnElement) btnElement.classList.add('active-concept');
-
-            const data = window.conceptsData[index];
-            document.getElementById('concept-details-' + niv).style.display = 'flex';
-            document.getElementById('concept-name-' + niv).innerText = data.nom;
-            document.getElementById('concept-desc-' + niv).innerText = data.desc;
-
-            let board, game;
-            if (niv === 1) {
-                if (!conceptBoard1) conceptBoard1 = Chessboard('board-concept-1', { position: 'start', pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png' });
-                board = conceptBoard1; game = conceptGame1;
-            } else {
-                if (!conceptBoard3) conceptBoard3 = Chessboard('board-concept-3', { position: 'start', pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png' });
-                board = conceptBoard3; game = conceptGame3;
-            }
-
             try {
+                if (event && (event.target.closest('.admin-only-btn') || event.target.isContentEditable)) return;
+
+                document.getElementById('niveau-' + niv).querySelectorAll('.concept-card').forEach(c => c.classList.remove('active-concept'));
+                if(btnElement) btnElement.classList.add('active-concept');
+
+                const data = window.conceptsData[index];
+                document.getElementById('concept-details-' + niv).style.display = 'flex';
+                document.getElementById('concept-name-' + niv).innerText = data.nom;
+                document.getElementById('concept-desc-' + niv).innerText = data.desc;
+
+                let board, game;
+                if (niv === 1) {
+                    if (!window.conceptBoard1) window.conceptBoard1 = Chessboard('board-concept-1', { position: 'start', pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png' });
+                    board = window.conceptBoard1; game = conceptGame1;
+                } else {
+                    if (!window.conceptBoard3) window.conceptBoard3 = Chessboard('board-concept-3', { position: 'start', pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png' });
+                    board = window.conceptBoard3; game = conceptGame3;
+                }
+
                 game.load_pgn(data.pgn);
                 let moves = game.history();
                 while(game.undo()){} 
@@ -1033,59 +1038,61 @@
 
                 board.position(game.fen());
                 document.getElementById('concept-moves-' + niv).innerText = moves.length > 0 ? moves.join(' ') : "Prêt pour l'animation.";
-            } catch(e) {
-                console.error("Erreur de format PGN/FEN", e);
-                document.getElementById('concept-moves-' + niv).innerText = "Erreur : Code PGN invalide.";
+                setTimeout(() => { board.resize(); }, 100);
+                document.getElementById('concept-details-' + niv).scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } catch (e) {
+                console.error("PGN Error", e);
+                document.getElementById('concept-moves-' + niv).innerText = "Impossible de charger l'animation (PGN invalide).";
             }
-            
-            setTimeout(() => { board.resize(); }, 100);
-            document.getElementById('concept-details-' + niv).scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
         window.nextConceptMove = function(niv) {
-            if (niv === 1 && currentConceptMoveIndex1 < conceptMoves1.length) { conceptGame1.move(conceptMoves1[currentConceptMoveIndex1]); currentConceptMoveIndex1++; conceptBoard1.position(conceptGame1.fen()); }
-            else if (niv === 3 && currentConceptMoveIndex3 < conceptMoves3.length) { conceptGame3.move(conceptMoves3[currentConceptMoveIndex3]); currentConceptMoveIndex3++; conceptBoard3.position(conceptGame3.fen()); }
+            try {
+                if (niv === 1 && currentConceptMoveIndex1 < conceptMoves1.length) { conceptGame1.move(conceptMoves1[currentConceptMoveIndex1]); currentConceptMoveIndex1++; window.conceptBoard1.position(conceptGame1.fen()); }
+                else if (niv === 3 && currentConceptMoveIndex3 < conceptMoves3.length) { conceptGame3.move(conceptMoves3[currentConceptMoveIndex3]); currentConceptMoveIndex3++; window.conceptBoard3.position(conceptGame3.fen()); }
+            } catch(e) {}
         }
 
         window.prevConceptMove = function(niv) {
-            if (niv === 1 && currentConceptMoveIndex1 > 0) { conceptGame1.undo(); currentConceptMoveIndex1--; conceptBoard1.position(conceptGame1.fen()); }
-            else if (niv === 3 && currentConceptMoveIndex3 > 0) { conceptGame3.undo(); currentConceptMoveIndex3--; conceptBoard3.position(conceptGame3.fen()); }
+            try {
+                if (niv === 1 && currentConceptMoveIndex1 > 0) { conceptGame1.undo(); currentConceptMoveIndex1--; window.conceptBoard1.position(conceptGame1.fen()); }
+                else if (niv === 3 && currentConceptMoveIndex3 > 0) { conceptGame3.undo(); currentConceptMoveIndex3--; window.conceptBoard3.position(conceptGame3.fen()); }
+            } catch(e) {}
         }
 
         window.choisirNiveau = function(niveau, btnElement) {
             document.querySelectorAll('.level-btn').forEach(btn => btn.classList.remove('active')); btnElement.classList.add('active');
             document.querySelectorAll('.level-content').forEach(content => content.classList.remove('active')); document.getElementById('niveau-' + niveau).classList.add('active');
-            if (niveau === 1 && conceptBoard1) setTimeout(() => { conceptBoard1.resize(); }, 100);
-            if (niveau === 2 && openingBoard) setTimeout(() => { openingBoard.resize(); }, 100);
-            if (niveau === 3 && conceptBoard3) setTimeout(() => { conceptBoard3.resize(); }, 100);
+            if (niveau === 1 && window.conceptBoard1) setTimeout(() => { window.conceptBoard1.resize(); }, 100);
+            if (niveau === 2 && window.openingBoard) setTimeout(() => { window.openingBoard.resize(); }, 100);
+            if (niveau === 3 && window.conceptBoard3) setTimeout(() => { window.conceptBoard3.resize(); }, 100);
         }
-
-        let openingBoard = null; let openingGame = new Chess(); let openingMoves = []; let currentMoveIndex = 0;
 
         window.afficherOuverture = function(index, btnElement, event) {
-            if (event && (event.target.closest('.admin-only-btn') || event.target.isContentEditable)) return;
-
-            document.querySelectorAll('.academic-btn').forEach(btn => btn.classList.remove('active')); btnElement.classList.add('active');
-            let o = window.ouverturesData[index];
-            document.getElementById('opening-details').style.display = 'flex';
-            document.getElementById('open-name').innerText = o.nom; document.getElementById('open-moves').innerText = o.fr; document.getElementById('open-desc').innerText = o.desc;
-            
-            if (!openingBoard) openingBoard = Chessboard('board-ouverture', { position: 'start', pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png' });
-            
             try {
-                openingGame.reset(); openingGame.load_pgn(o.en); openingMoves = openingGame.history(); openingGame.reset(); currentMoveIndex = 0; openingBoard.position(openingGame.fen());
+                if (event && (event.target.closest('.admin-only-btn') || event.target.isContentEditable)) return;
+
+                document.querySelectorAll('.academic-btn').forEach(btn => btn.classList.remove('active')); btnElement.classList.add('active');
+                let o = window.ouverturesData[index];
+                document.getElementById('opening-details').style.display = 'flex';
+                document.getElementById('open-name').innerText = o.nom; document.getElementById('open-moves').innerText = o.fr; document.getElementById('open-desc').innerText = o.desc;
+                
+                if (!window.openingBoard) window.openingBoard = Chessboard('board-ouverture', { position: 'start', pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png' });
+                
+                openingGame.reset(); openingGame.load_pgn(o.en); openingMoves = openingGame.history(); openingGame.reset(); currentMoveIndex = 0; window.openingBoard.position(openingGame.fen());
+                setTimeout(() => { window.openingBoard.resize(); }, 100);
             } catch(e) {
-                console.error("PGN Error");
+                console.error("PGN Error", e);
+                document.getElementById('open-moves').innerText = "Impossible de charger l'ouverture (PGN invalide).";
             }
-            setTimeout(() => { openingBoard.resize(); }, 100);
         }
 
-        window.nextMove = function() { if (currentMoveIndex < openingMoves.length) { openingGame.move(openingMoves[currentMoveIndex]); currentMoveIndex++; openingBoard.position(openingGame.fen()); } }
-        window.prevMove = function() { if (currentMoveIndex > 0) { openingGame.undo(); currentMoveIndex--; openingBoard.position(openingGame.fen()); } }
+        window.nextMove = function() { try { if (currentMoveIndex < openingMoves.length) { openingGame.move(openingMoves[currentMoveIndex]); currentMoveIndex++; window.openingBoard.position(openingGame.fen()); } } catch(e){} }
+        window.prevMove = function() { try { if (currentMoveIndex > 0) { openingGame.undo(); currentMoveIndex--; window.openingBoard.position(openingGame.fen()); } } catch(e){} }
         
         window.addEventListener('resize', () => {
             if(document.getElementById('techniques').classList.contains('active')) {
-                if(openingBoard) openingBoard.resize(); if(conceptBoard1) conceptBoard1.resize(); if(conceptBoard3) conceptBoard3.resize();
+                if(window.openingBoard) window.openingBoard.resize(); if(window.conceptBoard1) window.conceptBoard1.resize(); if(window.conceptBoard3) window.conceptBoard3.resize();
             }
         });
 
@@ -1097,59 +1104,62 @@
         };
 
         // =========================================
-        // 8. JEU EN LIGNE DIRECT ET SÉCURISÉ (FIRESTORE)
+        // 8. JEU EN LIGNE (GARANTI SANS BUG DE BOUCLE)
         // =========================================
-        function startHeartbeat(docId) {
-            monLobbyId = docId;
-            if (heartbeatInterval) clearInterval(heartbeatInterval);
-            heartbeatInterval = setInterval(async () => {
-                if (monLobbyId) { try { await updateDoc(doc(db, "partiesLive", monLobbyId), { lastPing: Date.now() }); } catch(e) { stopHeartbeat(); } }
-            }, 10000); 
-        }
-
-        function stopHeartbeat() { if (heartbeatInterval) clearInterval(heartbeatInterval); heartbeatInterval = null; monLobbyId = null; }
-        window.addEventListener('beforeunload', () => { if (monLobbyId) { deleteDoc(doc(db, "partiesLive", monLobbyId)).catch(()=> {}); } });
+        window.addPartieLive = async function(pseudo, tempsVal, url) {
+            await addDoc(partiesLiveRef, {
+                statut: 'attente',
+                createurNom: pseudo,
+                tempsInitial: tempsVal,
+                urlLichess: url,
+                date: obtenirDateFormatee(),
+                timestamp: Date.now(),
+                lastPing: Date.now() 
+            });
+        };
 
         window.startPartiesListener = function() {
             if (unsubscribeParties) return; 
             unsubscribeParties = onSnapshot(partiesLiveRef, (snapshot) => {
-                let lobbyHtml = ''; let historiqueHtml = ''; let partiesTab = []; let now = Date.now();
-                snapshot.forEach(docSnap => { let p = docSnap.data(); p.id = docSnap.id; partiesTab.push(p); });
-                partiesTab.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+                try {
+                    let lobbyHtml = ''; let historiqueHtml = ''; let partiesTab = []; let now = Date.now();
+                    snapshot.forEach(docSnap => { let p = docSnap.data(); p.id = docSnap.id; partiesTab.push(p); });
+                    partiesTab.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
 
-                partiesTab.forEach(partie => {
-                    if (partie.statut === "attente") {
-                        let dernierSignal = partie.lastPing || partie.timestamp;
-                        if (now - dernierSignal > 25000) { deleteDoc(doc(db, "partiesLive", partie.id)).catch(e => console.log(e)); return; }
-                        let affichageTemps = partie.tempsInitial === "unlimited" ? "Illimité" : (partie.tempsInitial ? (partie.tempsInitial / 60) + " minutes" : "");
-                        lobbyHtml += `
-                        <div style="background: var(--bg-color); padding: 15px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #e67e22; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 10px;">
-                            <div><strong>⚔️ En attente : ${partie.createurNom}</strong><br><span style="font-size: 0.85rem; color: var(--text-muted);">${affichageTemps ? '⏱️ ' + affichageTemps : ''}</span></div>
-                            <div>
-                                <button class="poll-btn" style="margin: 0; padding: 8px 16px; font-size: 0.95rem; background-color:#e67e22; color:white;" onclick="rejoindrePartieLichess('${partie.id}', '${partie.urlLichess}', '${partie.createurNom}')">Rejoindre la partie</button>
-                                <button class="admin-only-btn" style="margin: 0; padding: 8px 16px; background-color:#e74c3c;" onclick="supprimerPartie('${partie.id}')">❌</button>
-                            </div>
-                        </div>`;
+                    partiesTab.forEach(partie => {
+                        if (partie.statut === "attente") {
+                            let dernierSignal = partie.lastPing || partie.timestamp;
+                            if (now - dernierSignal > 30000) { deleteDoc(doc(db, "partiesLive", partie.id)).catch(e => console.log(e)); return; }
+                            let affichageTemps = partie.tempsInitial === "unlimited" ? "Illimité" : (partie.tempsInitial ? (partie.tempsInitial / 60) + " minutes" : "");
+                            lobbyHtml += `
+                            <div style="background: var(--bg-color); padding: 15px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #e67e22; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 10px;">
+                                <div><strong>⚔️ En attente : ${partie.createurNom}</strong><br><span style="font-size: 0.85rem; color: var(--text-muted);">${affichageTemps ? '⏱️ ' + affichageTemps : ''}</span></div>
+                                <div>
+                                    <button class="poll-btn" style="margin: 0; padding: 8px 16px; font-size: 0.95rem; background-color:#e67e22; color:white;" onclick="rejoindrePartieLichess('${partie.id}', '${partie.urlLichess}', '${partie.createurNom}')">Rejoindre la partie</button>
+                                    <button class="admin-only-btn" style="margin: 0; padding: 8px 16px; background-color:#e74c3c;" onclick="supprimerPartie('${partie.id}')">❌</button>
+                                </div>
+                            </div>`;
+                        }
+                        if (partie.statut === "historique") {
+                            historiqueHtml += `
+                            <div class="historique-item" style="background: var(--bg-color); padding: 10px 15px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #9b59b6; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 10px;">
+                                <div><strong>${partie.createurNom} ⚡ ${partie.adversaireNom}</strong><br><span style="font-size: 0.85rem; color: var(--text-muted);">📅 ${partie.date}</span></div>
+                                <div style="display:flex; gap: 5px; align-items:center;">
+                                    <a href="${partie.urlLichess}" target="_blank" class="poll-btn" style="text-decoration: none; margin: 0; padding: 8px 16px; font-size: 0.8rem; background-color: #9b59b6; color: white;">🔍 Analyser</a>
+                                    <button class="admin-only-btn" style="margin: 0; padding: 8px 16px; background-color:#e74c3c;" onclick="supprimerPartie('${partie.id}')">❌</button>
+                                </div>
+                            </div>`;
+                        }
+                    });
+                    
+                    document.getElementById('liste-parties-attente').innerHTML = lobbyHtml || '<p style="color: var(--text-muted); font-style:italic; text-align:center;">Personne ne cherche de partie pour le moment. Sois le premier à créer un salon au-dessus !</p>';
+                    let histContainer = document.getElementById('liste-historique');
+                    if(histContainer) {
+                        histContainer.innerHTML = historiqueHtml || '<p style="color: var(--text-muted); font-style:italic; text-align:center;">Aucune partie jouée pour le moment.</p>';
+                        if(typeof window.filtrerHistorique === 'function') window.filtrerHistorique();
+                        if(window.isAdmin && typeof window.majStatsAdmin === 'function') window.majStatsAdmin();
                     }
-                    if (partie.statut === "historique") {
-                        historiqueHtml += `
-                        <div class="historique-item" style="background: var(--bg-color); padding: 10px 15px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #9b59b6; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 10px;">
-                            <div><strong>${partie.createurNom} ⚡ ${partie.adversaireNom}</strong><br><span style="font-size: 0.85rem; color: var(--text-muted);">📅 ${partie.date}</span></div>
-                            <div style="display:flex; gap: 5px; align-items:center;">
-                                <a href="${partie.urlLichess}" target="_blank" class="poll-btn" style="text-decoration: none; margin: 0; padding: 8px 16px; font-size: 0.8rem; background-color: #9b59b6; color: white;">🔍 Analyser</a>
-                                <button class="admin-only-btn" style="margin: 0; padding: 8px 16px; background-color:#e74c3c;" onclick="supprimerPartie('${partie.id}')">❌</button>
-                            </div>
-                        </div>`;
-                    }
-                });
-                
-                document.getElementById('liste-parties-attente').innerHTML = lobbyHtml || '<p style="color: var(--text-muted); font-style:italic; text-align:center;">Personne ne cherche de partie pour le moment. Sois le premier à créer un salon au-dessus !</p>';
-                let histContainer = document.getElementById('liste-historique');
-                if(histContainer) {
-                    histContainer.innerHTML = historiqueHtml || '<p style="color: var(--text-muted); font-style:italic; text-align:center;">Aucune partie jouée pour le moment.</p>';
-                    if(typeof window.filtrerHistorique === 'function') window.filtrerHistorique();
-                    if(isAdmin && typeof window.majStatsAdmin === 'function') window.majStatsAdmin();
-                }
+                } catch(e) {}
             });
         };
 
@@ -1166,7 +1176,6 @@
             btn.innerText = "⏳ Création..."; 
             btn.disabled = true;
             
-            // REDIRECTION IMMÉDIATE POUR CONTRER LE BLOQUEUR
             let fenetreLichess = null;
             try { fenetreLichess = window.open('about:blank', '_blank'); } catch(e) {}
             
@@ -1178,22 +1187,14 @@
                 let data = await response.json();
                 
                 if(data.challenge && data.challenge.url) {
-                    let docRef = await addDoc(partiesLiveRef, {
-                        statut: 'attente',
-                        createurNom: pseudo,
-                        tempsInitial: tempsVal,
-                        urlLichess: data.challenge.url,
-                        date: obtenirDateFormatee(),
-                        timestamp: Date.now(),
-                        lastPing: Date.now() 
-                    });
-                    startHeartbeat(docRef.id);
                     
-                    // REDIRECTION GARANTIE (Onglet ou Fenêtre courante)
+                    await window.addPartieLive(pseudo, tempsVal, data.challenge.url);
+                    
                     if (fenetreLichess && !fenetreLichess.closed) {
                         fenetreLichess.location.href = data.challenge.url;
                         btn.innerText = "✅ Redirection...";
                     } else {
+                        // FORCE LA REDIRECTION SUR LA PAGE ACTUELLE
                         window.location.href = data.challenge.url;
                     }
                     
@@ -1205,7 +1206,7 @@
                 btn.innerText = originalText;
                 btn.disabled = false;
                 document.getElementById('zone-secours-manuelle').style.display = 'block';
-                alert("⚠️ Erreur réseau ou Lichess indisponible. Utilisons la méthode manuelle !");
+                alert("⚠️ Erreur de création automatique. Utilisons la méthode manuelle affichée juste en dessous !");
             }
         };
 
@@ -1222,19 +1223,10 @@
                 if(!pseudo) return alert("Veuillez entrer un pseudo !");
                 if(!url.includes('lichess.org/')) return alert("Veuillez coller un lien Lichess valide ! (https://lichess.org/...)");
 
-                btn.innerText = "⏳ Publication...";
+                btn.innerText = "⏳ Publication en cours...";
                 btn.disabled = true;
 
-                let docRef = await addDoc(partiesLiveRef, {
-                    statut: 'attente',
-                    createurNom: pseudo,
-                    tempsInitial: tempsVal,
-                    urlLichess: url,
-                    date: obtenirDateFormatee(),
-                    timestamp: Date.now(),
-                    lastPing: Date.now()
-                });
-                startHeartbeat(docRef.id);
+                await window.addPartieLive(pseudo, tempsVal, url);
 
                 alert("✅ Ta partie a été ajoutée à la liste d'attente ! Laisse la page Lichess ouverte pour attendre ton adversaire.");
                 document.getElementById('lien-lichess-manuel').value = '';
@@ -1244,7 +1236,7 @@
                 btn.disabled = false;
             } catch(e) {
                 console.error(e);
-                alert("❌ Erreur lors de la publication.");
+                alert("❌ Erreur lors de la publication. Impossible d'écrire dans la base.");
                 btn.innerText = originalText;
                 btn.disabled = false;
             }
@@ -1254,11 +1246,10 @@
             let pseudo = document.getElementById('mon-pseudo-jeu').value.trim();
             if(!pseudo) { pseudo = prompt("Entrez votre pseudo pour affronter " + createur + " :"); if(!pseudo) return; }
             
-            // Ouverture immédiate pour esquiver le bloqueur !
             let fenetreLichess = window.open(urlLichess, '_blank');
             if (!fenetreLichess) window.location.href = urlLichess;
 
-            await updateDoc(doc(db, "partiesLive", idPartie), { statut: 'historique', adversaireNom: pseudo });
+            try { await updateDoc(doc(db, "partiesLive", idPartie), { statut: 'historique', adversaireNom: pseudo }); } catch(e){}
         };
 
         window.supprimerPartie = async function(id) { if(confirm("Administrateur : Supprimer cette partie ?")) await deleteDoc(doc(db, "partiesLive", id)); }
@@ -1286,19 +1277,34 @@
             if(options.length < 2) return alert("Il faut au moins 2 options !");
             
             if(confirm("Cela va remplacer le sondage actuel et remettre les votes à zéro. Continuer ?")) {
-                await setDoc(pollRef, {}); 
-                let newConfig = { question: q, options: options };
-                await setDoc(contentRef, { pollConfigJSON: JSON.stringify(newConfig), sondageVisible: true }, { merge: true });
-                localStorage.removeItem('hasVoted');
-                alert("✅ Nouveau sondage créé !");
-                location.reload();
+                try {
+                    await setDoc(pollRef, {}); 
+                    let newConfig = { question: q, options: options };
+                    await setDoc(contentRef, { pollConfigJSON: JSON.stringify(newConfig), sondageVisible: true }, { merge: true });
+                    localStorage.removeItem('hasVoted');
+                    alert("✅ Nouveau sondage créé !");
+                    location.reload();
+                } catch(e) { alert("❌ Erreur Firebase"); }
             }
         }
         
         window.supprimerSondage = async function() {
             if(confirm("Masquer et désactiver le sondage ?")) {
-                await setDoc(contentRef, { sondageVisible: false }, { merge: true });
+                try { await setDoc(contentRef, { sondageVisible: false }, { merge: true }); } catch(e){}
             }
+        }
+
+        window.voter = async function(idx) {
+            if (localStorage.getItem('hasVoted')) return;
+            await setDoc(pollRef, { [idx]: increment(1) }, { merge: true });
+            localStorage.setItem('hasVoted', 'true');
+            document.getElementById('poll-voting').style.display = 'none'; 
+            document.getElementById('poll-results').style.display = 'block';
+        }
+        
+        window.toggleSondage = async function() {
+            let isHidden = document.getElementById('sondage-accueil').style.display === 'none';
+            await setDoc(contentRef, { sondageVisible: isHidden }, { merge: true });
         }
 
         window.toggleEmailInput = function() { let isPrive = document.querySelector('input[name="contact-type"]:checked').value === 'prive'; document.getElementById('contact-email').style.display = isPrive ? 'block' : 'none'; }
@@ -1311,9 +1317,11 @@
             if (isPrive && !email.trim()) return alert("Veuillez indiquer votre adresse email pour recevoir une réponse privée.");
 
             let nouveauMessage = { id: Date.now(), auteur: anonyme ? "🕵️‍♂️ Anonyme" : "👤 " + nom, texte: msg, date: obtenirDateFormatee(), type: isPrive ? 'prive' : 'public', email: isPrive ? email : null, reponse: null, commentaires: [] };
-            await setDoc(commsRef, { messagesPublic: [...messagesPublicData, nouveauMessage] }, { merge: true });
-            document.getElementById('contact-msg').value = ''; if (!anonyme) document.getElementById('contact-nom').value = ''; if (isPrive) document.getElementById('contact-email').value = '';
-            document.getElementById('contact-success').style.display = 'block'; setTimeout(() => document.getElementById('contact-success').style.display = 'none', 4000);
+            try {
+                await setDoc(commsRef, { messagesPublic: [...messagesPublicData, nouveauMessage] }, { merge: true });
+                document.getElementById('contact-msg').value = ''; if (!anonyme) document.getElementById('contact-nom').value = ''; if (isPrive) document.getElementById('contact-email').value = '';
+                document.getElementById('contact-success').style.display = 'block'; setTimeout(() => document.getElementById('contact-success').style.display = 'none', 4000);
+            } catch(e) { alert("Erreur lors de l'envoi."); }
         };
 
         window.envoyerReponsePublique = async function(idMessage) {
@@ -1323,50 +1331,52 @@
                 if (m.id === idMessage) { let comms = m.commentaires || []; comms.push({ auteur: pseudo.trim() ? "👤 " + pseudo : "🕵️‍♂️ Anonyme", texte: texte, date: obtenirDateFormatee() }); return { ...m, commentaires: comms }; }
                 return m;
             });
-            await setDoc(commsRef, { messagesPublic: updatedMessages }, { merge: true });
+            try { await setDoc(commsRef, { messagesPublic: updatedMessages }, { merge: true }); } catch(e){}
         }
 
-        window.supprimerMessagePublic = async function(idToDel) { if(confirm("Supprimer ce message ?")) await setDoc(commsRef, { messagesPublic: messagesPublicData.filter(m => m.id !== idToDel) }, { merge: true }); };
-        window.repondreMessagePublic = async function(idToReply) { let r = prompt("📝 Entrez la réponse officielle :"); if (r && r.trim()) await setDoc(commsRef, { messagesPublic: messagesPublicData.map(m => m.id === idToReply ? { ...m, reponse: r } : m) }, { merge: true }); };
+        window.supprimerMessagePublic = async function(idToDel) { if(confirm("Supprimer ce message ?")) try{ await setDoc(commsRef, { messagesPublic: messagesPublicData.filter(m => m.id !== idToDel) }, { merge: true }); }catch(e){} };
+        window.repondreMessagePublic = async function(idToReply) { let r = prompt("📝 Entrez la réponse officielle :"); if (r && r.trim()) try{ await setDoc(commsRef, { messagesPublic: messagesPublicData.map(m => m.id === idToReply ? { ...m, reponse: r } : m) }, { merge: true }); }catch(e){} };
         window.envoyerMessageAdmin = async function() {
             let input = document.getElementById('admin-chat-input'); let msg = input.value; if (!msg.trim()) return;
             let updatedMessages = [...messagesAdminData, { id: Date.now(), texte: msg, date: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) }];
             if (updatedMessages.length > 50) updatedMessages.shift();
-            await setDoc(commsRef, { messagesAdmin: updatedMessages }, { merge: true }); input.value = '';
+            try { await setDoc(commsRef, { messagesAdmin: updatedMessages }, { merge: true }); input.value = ''; }catch(e){}
         };
 
+        // ----------------------------------------
+        // 10. GESTION DES PAGES ET BLOCS
+        // ----------------------------------------
         window.ajouterEvenement = async function() {
             let date = document.getElementById('event-date').value; let titre = document.getElementById('event-title').value; if(!date || !titre) return alert("Remplis la date et l'intitulé !");
             let dateFormatee = new Date(date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }); let container = document.getElementById('agenda-container'); if(container.innerHTML.includes("Aucun événement")) container.innerHTML = '';
             let uniqueId = 'event-' + Date.now(); container.insertAdjacentHTML('beforeend', `<div class="event-row" id="${uniqueId}"><div><strong>📅 ${dateFormatee}</strong> — ${titre}</div><button class="admin-only-btn" style="margin:0;" onclick="supprimerEvenement('${uniqueId}')">❌ Retirer</button></div>`);
-            await setDoc(contentRef, { agendaHtml: container.innerHTML }, { merge: true }); document.getElementById('event-title').value = '';
+            try{ await setDoc(contentRef, { agendaHtml: container.innerHTML }, { merge: true }); document.getElementById('event-title').value = '';}catch(e){}
         }
-        window.supprimerEvenement = async function(id) { if(confirm("Supprimer cet événement ?")) { document.getElementById(id).remove(); let c = document.getElementById('agenda-container'); if(!c.children.length) c.innerHTML = '<p style="color: var(--text-muted);">Aucun événement prévu.</p>'; await setDoc(contentRef, { agendaHtml: c.innerHTML }, { merge: true }); } }
+        window.supprimerEvenement = async function(id) { if(confirm("Supprimer cet événement ?")) { document.getElementById(id).remove(); let c = document.getElementById('agenda-container'); if(!c.children.length) c.innerHTML = '<p style="color: var(--text-muted);">Aucun événement prévu.</p>'; try{await setDoc(contentRef, { agendaHtml: c.innerHTML }, { merge: true });}catch(e){} } }
         
         window.ajouterLien = async function() {
             let nom = document.getElementById('link-name').value; let url = document.getElementById('link-url').value; if(!nom || !url) return alert("Complète le nom et l'adresse web !");
             let container = document.getElementById('links-container'); let uniqueId = 'link-' + Date.now();
             container.insertAdjacentHTML('beforeend', `<div id="${uniqueId}" style="display:inline-block; margin-right:10px;"><a href="${url}" target="_blank" class="link-badge">🔗 ${nom}</a><button class="admin-only-btn" style="display:block; margin:2px auto;" onclick="supprimerLien('${uniqueId}')">❌ Supprimer</button></div>`);
-            await setDoc(contentRef, { linksHtml: container.innerHTML }, { merge: true }); document.getElementById('link-name').value = ''; document.getElementById('link-url').value = '';
+            try{await setDoc(contentRef, { linksHtml: container.innerHTML }, { merge: true }); document.getElementById('link-name').value = ''; document.getElementById('link-url').value = '';}catch(e){}
         }
-        window.supprimerLien = async function(id) { if(confirm("Supprimer ce bouton de lien ?")) { document.getElementById(id).remove(); await setDoc(contentRef, { linksHtml: document.getElementById('links-container').innerHTML }, { merge: true }); } }
+        window.supprimerLien = async function(id) { if(confirm("Supprimer ce bouton de lien ?")) { document.getElementById(id).remove(); try{await setDoc(contentRef, { linksHtml: document.getElementById('links-container').innerHTML }, { merge: true });}catch(e){} } }
 
-        window.publierAnnonce = async function() { await setDoc(contentRef, { annonceTexte: document.getElementById('input-annonce').value }, { merge: true }); }
-        window.supprimerAnnonce = async function() { await setDoc(contentRef, { annonceTexte: "" }, { merge: true }); }
-        window.changerCouleur = async function() { await setDoc(contentRef, { couleurPrincipale: document.getElementById('input-color').value }, { merge: true }); }
-        
-        window.supprimerLigneClassement = async function(bouton) { if(confirm("Retirer ce joueur ?")) { bouton.closest('tr').remove(); let lignes = document.getElementById('edit-classement-body').getElementsByTagName('tr'); for(let i=0; i<lignes.length; i++) lignes[i].getElementsByTagName('td')[0].innerText = i + 1; await setDoc(contentRef, { 'edit-classement-body': document.getElementById('edit-classement-body').innerHTML }, { merge: true }); if(isAdmin) window.majStatsAdmin(); } }
+        window.publierAnnonce = async function() { try{await setDoc(contentRef, { annonceTexte: document.getElementById('input-annonce').value }, { merge: true });}catch(e){} }
+        window.supprimerAnnonce = async function() { try{await setDoc(contentRef, { annonceTexte: "" }, { merge: true });}catch(e){} }
+        window.changerCouleur = async function() { try{await setDoc(contentRef, { couleurPrincipale: document.getElementById('input-color').value }, { merge: true });}catch(e){} }
+        window.resetSondage = async function() { if (confirm("Effacer les votes ?")) { try{await setDoc(pollRef, {}); localStorage.removeItem('hasVoted'); location.reload();}catch(e){} } }
+        window.supprimerLigneClassement = async function(bouton) { if(confirm("Retirer ce joueur ?")) { bouton.closest('tr').remove(); let lignes = document.getElementById('edit-classement-body').getElementsByTagName('tr'); for(let i=0; i<lignes.length; i++) lignes[i].getElementsByTagName('td')[0].innerText = i + 1; try{await setDoc(contentRef, { 'edit-classement-body': document.getElementById('edit-classement-body').innerHTML }, { merge: true }); if(window.isAdmin) window.majStatsAdmin();}catch(e){} } }
         
         window.ajouterJoueur = async function() {
             let nom = document.getElementById('new-nom').value; let elo = document.getElementById('new-elo').value; let titre = document.getElementById('new-titre').value || "Membre"; 
             if (!nom || !elo) return alert("Nom et Elo requis !");
             let tbody = document.getElementById('edit-classement-body'); let rangActuel = tbody.getElementsByTagName('tr').length + 1;
             tbody.insertAdjacentHTML('beforeend', `<tr><td>${rangActuel}</td><td>${titre}</td><td>${nom}</td><td>${elo}</td><td><button class="admin-only-btn" onclick="supprimerLigneClassement(this)">❌</button></td></tr>`);
-            await setDoc(contentRef, { 'edit-classement-body': tbody.innerHTML }, { merge: true }); 
-            document.getElementById('new-nom').value = ''; document.getElementById('new-elo').value = ''; document.getElementById('new-titre').value = ''; if(isAdmin) window.majStatsAdmin();
+            try{await setDoc(contentRef, { 'edit-classement-body': tbody.innerHTML }, { merge: true }); document.getElementById('new-nom').value = ''; document.getElementById('new-elo').value = ''; document.getElementById('new-titre').value = ''; if(window.isAdmin) window.majStatsAdmin();}catch(e){}
         }
-        window.ajouterNouvellePage = async function() { let nom = document.getElementById('new-page-name').value; if(!nom) return; customPages.push({ id: 'page-' + Date.now(), nom: nom }); await setDoc(contentRef, { customPagesList: JSON.stringify(customPages) }, { merge: true }); document.getElementById('new-page-name').value = ''; }
-        window.supprimerPageDepuisAdmin = async function() { let select = document.getElementById('delete-page-select'); let pageId = select.value; if(!pageId) return; if(confirm("Supprimer cette page ? C'est définitif !")) { customPages = customPages.filter(p => p.id !== pageId); await setDoc(contentRef, { customPagesList: JSON.stringify(customPages), ['zone-'+pageId]: '' }, { merge: true }); location.reload(); } }
+        window.ajouterNouvellePage = async function() { let nom = document.getElementById('new-page-name').value; if(!nom) return; customPages.push({ id: 'page-' + Date.now(), nom: nom }); try{await setDoc(contentRef, { customPagesList: JSON.stringify(customPages) }, { merge: true }); document.getElementById('new-page-name').value = '';}catch(e){} }
+        window.supprimerPageDepuisAdmin = async function() { let select = document.getElementById('delete-page-select'); let pageId = select.value; if(!pageId) return; if(confirm("Supprimer cette page ? C'est définitif !")) { customPages = customPages.filter(p => p.id !== pageId); try{await setDoc(contentRef, { customPagesList: JSON.stringify(customPages), ['zone-'+pageId]: '' }, { merge: true }); location.reload();}catch(e){} } }
 
         function construirePagesPersonnalisees() {
             let navContainer = document.getElementById('dynamic-nav-container'); let mainContent = document.getElementById('main-content'); let selectBlock = document.getElementById('new-block-page'); let selectDelete = document.getElementById('delete-page-select');
@@ -1395,15 +1405,17 @@
 
         window.supprimerBloc = function(blocId, zoneId) { document.getElementById(blocId).remove(); window.sauvegarderZoneDynamic(zoneId); }
         window.sauvegarderZoneDynamic = async function(zoneId) { 
-            let clone = document.getElementById(zoneId).cloneNode(true); 
-            clone.querySelectorAll('[data-editable-dyn]').forEach(el => el.removeAttribute('contenteditable')); 
-            await setDoc(contentRef, { [zoneId]: clone.innerHTML }, { merge: true }); 
+            try{
+                let clone = document.getElementById(zoneId).cloneNode(true); 
+                clone.querySelectorAll('[data-editable-dyn]').forEach(el => el.removeAttribute('contenteditable')); 
+                await setDoc(contentRef, { [zoneId]: clone.innerHTML }, { merge: true }); 
+            }catch(e){}
         }
 
         function activerEdition() { 
             document.querySelectorAll('[data-editable], [data-editable-dyn]').forEach(el => { 
                 el.setAttribute('contenteditable', 'true'); 
-                el.onblur = function() { let zoneParent = el.closest('.dynamic-zone'); if(zoneParent) window.sauvegarderZoneDynamic(zoneParent.id); else setDoc(contentRef, { [el.id]: el.innerHTML }, { merge: true }); }; 
+                el.onblur = function() { let zoneParent = el.closest('.dynamic-zone'); if(zoneParent) window.sauvegarderZoneDynamic(zoneParent.id); else try{setDoc(contentRef, { [el.id]: el.innerHTML }, { merge: true });}catch(e){} }; 
             }); 
         }
         
@@ -1414,90 +1426,46 @@
         }
 
         // =========================================
-        // INITIALISATION FIREBASE REAL-TIME
+        // CHARGEMENT GLOBAL SÉCURISÉ FIRESTORE
         // =========================================
-        
-        // SONDAGE
-        onSnapshot(pollRef, (docSnap) => {
-            currentPollVotes = docSnap.exists() ? docSnap.data() : {};
-            window.updatePollBars();
-        });
-
-        // MESSAGES ET QUESTIONS
-        onSnapshot(commsRef, (docSnap) => {
-            if (docSnap.exists()) {
-                const data = docSnap.data(); messagesPublicData = data.messagesPublic || []; messagesAdminData = data.messagesAdmin || [];
-                
-                let inboxHtml = '';
-                if(messagesPublicData.length === 0) inboxHtml = '<p style="color: #aaa; text-align:center; font-size:0.9rem; margin-top:50px;">Aucun message reçu. 📭</p>';
-                messagesPublicData.slice().reverse().forEach(m => {
-                    let isPrive = m.type !== 'public'; let badgeType = isPrive ? '<span style="color:#e74c3c">🔒 Privé</span>' : '<span style="color:#2ecc71">🌍 Public</span>'; let nbCommentaires = m.commentaires ? m.commentaires.length : 0; let commsBadge = nbCommentaires > 0 ? `<span style="color:#3498db; font-size:0.8rem; margin-left: 10px;">💬 ${nbCommentaires} rép.</span>` : '';
-                    let repondreBtn = ''; if (isPrive) { let mailto = `mailto:${m.email || ''}?subject=Réponse du Cercle des Rois&body=Bonjour,%0D%0A%0D%0AConcernant votre message : "${m.texte}"%0D%0A%0D%0A`; repondreBtn = `<a href="${mailto}" class="admin-btn-action" style="background:#3498db; color:white; padding:5px 8px; font-size:0.8rem; text-decoration:none; display:inline-block; margin-top:5px; width:auto;">📧 Répondre par mail</a>`; } 
-                    else if (!m.reponse) { repondreBtn = `<button class="admin-btn-action" style="background:#2ecc71; color:white; padding:5px 8px; font-size:0.8rem; margin-top:5px; width:auto;" onclick="repondreMessagePublic(${m.id})">💬 Réponse Officielle du Club</button>`; }
-                    let adminRepHtml = m.reponse ? `<div style="background:#16a085; padding:6px; border-radius:4px; margin-top:8px; font-size:0.85rem;"><strong>↪ Vous avez répondu :</strong> ${m.reponse}</div>` : '';
-                    inboxHtml += `<div class="chat-msg"><button class="msg-btn msg-btn-float" onclick="supprimerMessagePublic(${m.id})">❌</button><strong>${m.auteur}</strong> <span style="font-size:0.7rem; color:#ccc;">(${m.date}) - ${badgeType}</span> ${commsBadge}${isPrive && m.email ? `<div style="font-size:0.8rem; color:#f1c40f;">✉️ ${m.email}</div>` : ''}<p style="margin: 5px 0 0 0;">${m.texte}</p>${adminRepHtml}${repondreBtn}</div>`;
-                }); document.getElementById('admin-inbox').innerHTML = inboxHtml;
-
-                let qaHtml = ''; let publicQuestions = messagesPublicData.filter(m => m.type === 'public');
-                if (publicQuestions.length === 0) qaHtml = '<p style="color: var(--text-muted); font-size: 0.9rem;">Aucune discussion publique pour le moment.</p>';
-                else {
-                    publicQuestions.reverse().forEach(m => {
-                        let adminRep = m.reponse ? `<p style="margin: 8px 0 0 0; color: #27ae60; background: rgba(46, 204, 113, 0.1); padding: 10px; border-radius: 4px;"><strong>👑 Réponse du Club :</strong> ${m.reponse}</p>` : '';
-                        let userCommentsHtml = '';
-                        if (m.commentaires && m.commentaires.length > 0) { m.commentaires.forEach(c => { userCommentsHtml += `<div style="margin-top: 10px; padding-left: 15px; border-left: 3px solid var(--border); font-size: 0.9rem; color: var(--text-color);"><strong>${c.auteur}</strong> <span style="color:var(--text-muted); font-size:0.75rem;">(${c.date})</span><p style="margin: 3px 0 0 0;">${c.texte}</p></div>`; }); }
-                        qaHtml += `<div style="background: var(--card-bg); padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #2ecc71; box-shadow: 0 4px 10px rgba(0,0,0,0.05);"><p style="margin: 0 0 8px 0;"><strong>❓ ${m.auteur} :</strong> ${m.texte}</p>${adminRep} ${userCommentsHtml}<button class="poll-btn" style="background-color: transparent; color: #3498db; border: 1px solid #3498db; padding: 6px 12px; font-size: 0.85rem; margin: 15px 0 0 0;" onclick="toggleReplyForm(${m.id})">💬 Ajouter une réponse</button><div id="reply-form-${m.id}" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--border);"><input type="text" id="reply-nom-${m.id}" class="form-input" style="padding: 10px; font-size: 0.9rem; margin-bottom: 10px;" placeholder="Votre Prénom (Laisser vide pour Anonyme)"><textarea id="reply-msg-${m.id}" class="form-input" rows="2" style="padding: 10px; font-size: 0.9rem; margin-bottom: 10px;" placeholder="Votre réponse..."></textarea><button class="poll-btn" style="background-color: #3498db; color: white; padding: 8px 20px; font-size: 0.9rem; margin: 0;" onclick="envoyerReponsePublique(${m.id})">Publier</button></div></div>`;
-                    });
-                }
-                document.getElementById('qa-publique-container').innerHTML = qaHtml;
-
-                let chatHtml = '';
-                if(messagesAdminData.length === 0) chatHtml = '<p style="color: #aaa; text-align:center; font-size:0.9rem; margin-top:50px;">Tchat vide. 👋</p>';
-                messagesAdminData.forEach(m => { chatHtml += `<div class="admin-chat-msg"><span style="font-size:0.7rem; color:#ddd; display:block; text-align:right;">${m.date}</span><p style="margin: 2px 0 0 0;">${m.texte}</p></div>`; });
-                let chatBox = document.getElementById('admin-chatbox'); chatBox.innerHTML = chatHtml; chatBox.scrollTop = chatBox.scrollHeight;
-            }
-        });
-
-        // CHARGEMENT GLOBAL
         onSnapshot(contentRef, (docSnap) => {
-            if (docSnap.exists()) {
-                const data = docSnap.data();
-                if(data.customPagesList) { customPages = JSON.parse(data.customPagesList); construirePagesPersonnalisees(); }
-                
-                // Moteur du sondage
-                window.renderPollConfig(data.pollConfigJSON);
-                
-                if(data.ouverturesDataJSON) window.ouverturesData = JSON.parse(data.ouverturesDataJSON);
-                if(data.conceptsDataJSON) window.conceptsData = JSON.parse(data.conceptsDataJSON);
-                
-                window.renderOuvertures(); window.renderConcepts(1); window.renderConcepts(3);
+            try {
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    if(data.customPagesList) { customPages = JSON.parse(data.customPagesList); construirePagesPersonnalisees(); }
+                    
+                    window.renderPollConfig(data.pollConfigJSON);
+                    
+                    if(data.ouverturesDataJSON) window.ouverturesData = JSON.parse(data.ouverturesDataJSON);
+                    if(data.conceptsDataJSON) window.conceptsData = JSON.parse(data.conceptsDataJSON);
+                    
+                    window.renderOuvertures(); window.renderConcepts(1); window.renderConcepts(3);
 
-                if(data.annonceTexte) { 
-                    let bText = document.getElementById('banniere-annonce-text'); if(bText) bText.innerText = data.annonceTexte; 
-                    let b = document.getElementById('banniere-annonce'); if(b) b.style.display = 'block'; 
-                } else {
-                    let bText = document.getElementById('banniere-annonce-text'); if(bText) bText.innerText = "🎉 Nouveau club d'échecs à Saint-Ouen-du-Breuil, nous venons d'ouvrir !";
-                    let b = document.getElementById('banniere-annonce'); if(b) b.style.display = 'block';
-                }
-                
-                let sondageDiv = document.getElementById('sondage-accueil'); if(sondageDiv) sondageDiv.style.display = (data.sondageVisible === false) ? 'none' : 'block';
-                if(data.couleurPrincipale) document.documentElement.style.setProperty('--accent', data.couleurPrincipale);
-                if(data.agendaHtml) document.getElementById('agenda-container').innerHTML = data.agendaHtml;
-                if(data.linksHtml) document.getElementById('links-container').innerHTML = data.linksHtml;
-
-                for (const key in data) {
-                    if(!['customPagesList', 'ouverturesDataJSON', 'conceptsDataJSON', 'annonceTexte', 'couleurPrincipale', 'agendaHtml', 'linksHtml', 'sondageVisible', 'pollConfigJSON'].includes(key)) {
-                        const el = document.getElementById(key); if (el && document.activeElement !== el) el.innerHTML = data[key];
+                    if(data.annonceTexte) { 
+                        let bText = document.getElementById('banniere-annonce-text'); if(bText) bText.innerText = data.annonceTexte; 
+                        let b = document.getElementById('banniere-annonce'); if(b) b.style.display = 'block'; 
+                    } else {
+                        let bText = document.getElementById('banniere-annonce-text'); if(bText) bText.innerText = "🎉 Nouveau club d'échecs à Saint-Ouen-du-Breuil, nous venons d'ouvrir !";
+                        let b = document.getElementById('banniere-annonce'); if(b) b.style.display = 'block';
                     }
+                    
+                    let sondageDiv = document.getElementById('sondage-accueil'); if(sondageDiv) sondageDiv.style.display = (data.sondageVisible === false) ? 'none' : 'block';
+                    if(data.couleurPrincipale) document.documentElement.style.setProperty('--accent', data.couleurPrincipale);
+                    if(data.agendaHtml) document.getElementById('agenda-container').innerHTML = data.agendaHtml;
+                    if(data.linksHtml) document.getElementById('links-container').innerHTML = data.linksHtml;
+
+                    for (const key in data) {
+                        if(!['customPagesList', 'ouverturesDataJSON', 'conceptsDataJSON', 'annonceTexte', 'couleurPrincipale', 'agendaHtml', 'linksHtml', 'sondageVisible', 'pollConfigJSON'].includes(key)) {
+                            const el = document.getElementById(key); if (el && document.activeElement !== el) el.innerHTML = data[key];
+                        }
+                    }
+                    if (window.isAdmin) { activerEdition(); window.majStatsAdmin(); }
                 }
-                if (isAdmin) { activerEdition(); window.majStatsAdmin(); }
+            } catch(e) {
+                console.error("Erreur de chargement Firebase:", e);
             }
         });
         
-        // Initialisation si on a déjà voté (fallback visuel)
-        if (localStorage.getItem('hasVoted')) { 
-            let pv = document.getElementById('poll-voting'); if(pv) pv.style.display = 'none'; 
-            let pr = document.getElementById('poll-results'); if(pr) pr.style.display = 'block'; 
-        }
     </script>
 </body>
 </html>
