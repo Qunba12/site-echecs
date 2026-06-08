@@ -1457,6 +1457,7 @@
             try {
                 if (docSnap.exists()) {
                     const data = docSnap.data();
+                    console.log("Données reçues de Firebase :", data);
                     if(data.customPagesList) { customPages = JSON.parse(data.customPagesList); construirePagesPersonnalisees(); }
                     
                     window.renderPollConfig(data.pollConfigJSON);
