@@ -13,17 +13,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
     <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
 
-    // Ce code s'exécute dès que la page charge
-document.addEventListener('DOMContentLoaded', () => {
-    if (localStorage.getItem('hasVoted')) {
-        // L'utilisateur a déjà voté, on cache les boutons et on montre les résultats
-        let votingDiv = document.getElementById('poll-voting');
-        let resultsDiv = document.getElementById('poll-results');
-        
-        if (votingDiv) votingDiv.style.display = 'none';
-        if (resultsDiv) resultsDiv.style.display = 'block';
-    }
-});
 
     <style>
         /* =========================================
@@ -261,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         window.fermerModalAdmin = function() { document.getElementById('admin-modal-overlay').style.display = 'none'; }
+        
     </script>
 
     <div id="admin-banner" class="admin-banner">
@@ -1502,7 +1492,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error("Erreur de chargement Firebase:", e);
             }
         });
+       
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('hasVoted')) {
+        const votingDiv = document.getElementById('poll-voting');
+        const resultsDiv = document.getElementById('poll-results');
         
+        if (votingDiv) votingDiv.style.display = 'none';
+        if (resultsDiv) resultsDiv.style.display = 'block';
+        
+        // On force la mise à jour des barres au cas où
+        if (typeof window.updatePollBars === 'function') {
+            window.updatePollBars();
+        }
+    }
+});
     </script>
 </body>
 </html>
