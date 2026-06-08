@@ -1165,7 +1165,7 @@
 
         window.stopPartiesListener = function() { if (unsubscribeParties) { unsubscribeParties(); unsubscribeParties = null; } };
 
-        window.creerPartieLichess = async function() {
+       window.creerPartieLichess = async function() {
             let btn = document.getElementById('btn-create-salon');
             let pseudo = document.getElementById('mon-pseudo-jeu').value.trim();
             let tempsVal = document.getElementById('game-time').value;
@@ -1176,29 +1176,38 @@
             btn.innerText = "⏳ Création..."; 
             btn.disabled = true;
             
-            let fenetreLichess = null;
-            try { fenetreLichess = window.open('about:blank', '_blank'); } catch(e) {}
+            // On tente l'ouverture d'onglet tout de suite
+            let fenetreLichess = window.open('about:blank', '_blank');
             
             try {
-                let bodyData = new URLSearchParams(); 
-                if (tempsVal !== 'unlimited') { bodyData.append('clock.limit', tempsVal); bodyData.append('clock.increment', 0); }
-                
-                let response = await fetch('https://lichess.org/api/challenge/open', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: bodyData });
+                let bodyData = new URLSearchParams({'clock.limit': tempsVal, 'clock.increment': 0});
+                let response = await fetch('https://lichess.org/api/challenge/open', { 
+                    method: 'POST', 
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}, 
+                    body: bodyData 
+                });
                 let data = await response.json();
                 
                 if(data.challenge && data.challenge.url) {
+                    // Enregistrement dans la base (si tes règles Firestore autorisent partiesLive)
+                    try {
+                        await addDoc(partiesLiveRef, {
+                            statut: 'attente',
+                            createurNom: pseudo,
+                            tempsInitial: tempsVal,
+                            urlLichess: data.challenge.url,
+                            date: obtenirDateFormatee(),
+                            timestamp: Date.now()
+                        });
+                    } catch(err) { console.log("Base de données indisponible, mais Lichess est prêt."); }
                     
-                    await window.addPartieLive(pseudo, tempsVal, data.challenge.url);
-                    
+                    // REDIRECTION DIRECTE
                     if (fenetreLichess && !fenetreLichess.closed) {
                         fenetreLichess.location.href = data.challenge.url;
                         btn.innerText = "✅ Redirection...";
                     } else {
-                        // FORCE LA REDIRECTION SUR LA PAGE ACTUELLE
                         window.location.href = data.challenge.url;
                     }
-                    
-                    setTimeout(() => { btn.innerText = originalText; btn.disabled = false; }, 3000);
                 } else throw new Error("Erreur Lichess");
             } catch(e) {
                 console.error(e);
@@ -1206,7 +1215,7 @@
                 btn.innerText = originalText;
                 btn.disabled = false;
                 document.getElementById('zone-secours-manuelle').style.display = 'block';
-                alert("⚠️ Erreur de création automatique. Utilisons la méthode manuelle affichée juste en dessous !");
+                alert("⚠️ Erreur réseau. Utilisons la méthode manuelle !");
             }
         };
 
@@ -1294,12 +1303,21 @@
             }
         }
 
-        window.voter = async function(idx) {
-            if (localStorage.getItem('hasVoted')) return;
-            await setDoc(pollRef, { [idx]: increment(1) }, { merge: true });
-            localStorage.setItem('hasVoted', 'true');
-            document.getElementById('poll-voting').style.display = 'none'; 
-            document.getElementById('poll-results').style.display = 'block';
+  window.voter = async function(optionIndex) {
+            if (localStorage.getItem('hasVoted')) return alert("Tu as déjà voté !");
+            
+            try {
+                // On utilise l'index (0, 1, 2) comme nom de champ dans Firebase
+                await setDoc(pollRef, { [optionIndex]: increment(1) }, { merge: true });
+                localStorage.setItem('hasVoted', 'true');
+                
+                document.getElementById('poll-voting').style.display = 'none'; 
+                document.getElementById('poll-results').style.display = 'block';
+                alert("✅ Vote enregistré !");
+            } catch (e) {
+                console.error("Erreur vote :", e);
+                alert("Impossible de voter pour le moment. Vérifie ta connexion.");
+            }
         }
         
         window.toggleSondage = async function() {
