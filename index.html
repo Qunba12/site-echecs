@@ -1306,26 +1306,25 @@
         }
 
  window.voter = async function(optionIndex) {
-    // 1. On vérifie si l'utilisateur a déjà voté dans sa mémoire locale
-    if (localStorage.getItem('hasVoted')) {
-        return alert("Tu as déjà voté !");
-    }
+    if (localStorage.getItem('hasVoted')) return alert("Tu as déjà voté !");
     
-    const mapping = {'0': 'oui', '1': 'peutetre', '2': 'non'};
+    // CORRECTION : On fait le lien direct avec tes noms de champs Firebase
+    const mapping = {
+        '0': 'oui',
+        '1': 'peutetre',
+        '2': 'non'
+    };
+
     let fieldName = mapping[optionIndex];
     
     try {
         await setDoc(pollRef, { [fieldName]: increment(1) }, { merge: true });
-        
-        // 2. On marque comme voté pour toujours (ou jusqu'au vidage du cache)
         localStorage.setItem('hasVoted', 'true');
-        
-        document.getElementById('poll-voting').style.display = 'none'; 
-        document.getElementById('poll-results').style.display = 'block';
-        window.updatePollBars();
         alert("✅ Vote enregistré !");
+        location.reload(); 
     } catch (e) {
-        alert("Erreur technique.");
+        console.error("Erreur vote :", e);
+        alert("Erreur technique : " + e.message);
     }
 }
         
