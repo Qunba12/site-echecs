@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <title>Club d'Échecs de Saint-Ouen-du-Breuil (76) - Le Cercle des Rois</title>
-    <meta name="description" content="Bienvenue au Cercle des Rois, le club d'échecs officiel de Saint-Ouen-du-Breuil ! Venez jouer en ligne, apprendre les ouvertures et participer à nos tournois.">
+    <meta name="description" content="Bienvenue au Cercle des Rois, le nouveau club d'échecs de Saint-Ouen-du-Breuil ! Venez jouer en ligne, apprendre les ouvertures et participer à nos tournois locaux en Normandie.">
     <meta name="keywords" content="club échecs, Saint-Ouen-du-Breuil, échecs Normandie, 76890, jouer aux échecs, Cercle des Rois, apprendre les échecs, tournoi échecs">
     
     <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
@@ -69,7 +69,7 @@
         .theme-toggle { background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer; margin-left: auto; color: var(--text-color); display: flex; align-items: center; justify-content: center; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .theme-toggle:hover { transform: rotate(30deg); }
         
-        #banniere-annonce { display: none; background: linear-gradient(90deg, var(--accent), #f1c40f); color: #000; text-align: center; padding: 12px; font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.1); letter-spacing: 0.5px; }
+        #banniere-annonce { display: block; background: linear-gradient(90deg, #2ecc71, #27ae60); color: white; text-align: center; padding: 15px; font-size: 1.1rem; font-weight: bold; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3); letter-spacing: 0.5px; }
 
         /* =========================================
            4. COMPOSANTS (Boutons, Inputs, Tableau)
@@ -144,7 +144,7 @@
         .bar-fill { background-color: var(--accent); height: 100%; width: 0%; transition: width 1s cubic-bezier(0.4, 0, 0.2, 1); }
 
         /* =========================================
-           7. NOUVELLE INTERFACE ADMINISTRATEUR
+           7. INTERFACE ADMINISTRATEUR
         ========================================= */
         [contenteditable="true"] { border: 2px dashed #e74c3c; padding: 5px; background-color: rgba(231, 76, 60, 0.05); border-radius: 6px; outline: none; transition: 0.2s; }
         [contenteditable="true"]:focus { background-color: rgba(231, 76, 60, 0.15); box-shadow: 0 0 10px rgba(231, 76, 60, 0.3); }
@@ -153,12 +153,10 @@
         .btn-quitter { background: white; color: #e74c3c; border: none; padding: 6px 15px; font-weight: bold; border-radius: 20px; cursor: pointer; margin-left: 20px; transition: 0.2s; text-transform: uppercase; font-size: 0.8rem; }
         .btn-quitter:hover { background: #f1f1f1; transform: scale(1.05); }
         
-        /* Bouton Flottant Admin */
-        .admin-fab { display: none; position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background-color: #e74c3c; color: white; border-radius: 50%; font-size: 24px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 10px 25px rgba(231, 76, 60, 0.5); z-index: 9999; transition: 0.3s; border: none; }
+        .admin-fab { display: none; position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background-color: #e74c3c; color: white; border-radius: 50%; font-size: 24px; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 10px 25px rgba(231, 76, 60, 0.5); z-index: 9999; transition: 0.3s; border: none; }
         .admin-fab:hover { transform: scale(1.1) rotate(15deg); }
         body.admin-mode .admin-fab { display: flex; }
 
-        /* Menu Latéral Admin */
         .admin-sidebar { position: fixed; top: 0; right: -400px; width: 350px; height: 100vh; background-color: #1e272e; color: white; box-shadow: -10px 0 30px rgba(0,0,0,0.5); z-index: 10000; transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); overflow-y: auto; display: flex; flex-direction: column; }
         .admin-sidebar.open { right: 0; }
         .admin-sidebar-header { padding: 25px 20px; background: #2c3e50; border-bottom: 3px solid var(--accent); display: flex; justify-content: space-between; align-items: center; }
@@ -191,7 +189,6 @@
         .admin-modal-actions button { padding: 12px 25px; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; transition: 0.2s; font-size: 1rem; }
         .admin-modal-actions button:hover { transform: translateY(-2px); }
 
-        /* AGENDA ET LIENS */
         .event-row { display: flex; justify-content: space-between; align-items: center; padding: 18px; background: var(--card-bg); border-left: 5px solid var(--accent); border-radius: 8px; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
         .link-badge { display: inline-block; background-color: #2c3e50; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; margin: 5px; font-weight: bold; transition: 0.2s; border-bottom: 4px solid var(--accent); }
         .link-badge:hover { transform: translateY(-3px); background-color: #34495e; }
@@ -200,9 +197,6 @@
         .admin-login { color: var(--text-muted); cursor: pointer; font-size: 0.9rem; text-decoration: underline; transition: 0.2s; }
         .admin-login:hover { color: var(--accent); }
         
-        /* =========================================
-           8. ADAPTATION MOBILE (RESPONSIVE DESIGN)
-        ========================================= */
         @media (max-width: 768px) {
             .page { margin: 20px auto; padding: 15px; }
             h1 { font-size: 2rem; margin-bottom: 20px; }
@@ -236,7 +230,11 @@
         <button class="btn-quitter" onclick="quitterAdmin()">Quitter et Sauvegarder</button>
     </div>
 
-    <button class="admin-fab" onclick="document.getElementById('admin-sidebar').classList.add('open')" style="display: none;" id="admin-fab-btn">⚙️</button>
+    <div id="banniere-annonce">
+        <span id="banniere-annonce-text">🎉 Nouveau club d'échecs à Saint-Ouen-du-Breuil, nous venons d'ouvrir !</span>
+    </div>
+
+    <button class="admin-fab" onclick="document.getElementById('admin-sidebar').classList.add('open')" id="admin-fab-btn">⚙️</button>
 
     <div id="admin-sidebar" class="admin-sidebar">
         <div class="admin-sidebar-header">
@@ -260,6 +258,15 @@
                         <span style="color:#aaa;">Votes au sondage :</span>
                         <strong id="stat-votes" style="color:var(--accent); font-size:1.1rem;">-</strong>
                     </div>
+                </div>
+            </details>
+
+            <details>
+                <summary>📊 Gérer le Sondage</summary>
+                <div>
+                    <button class="admin-btn-action" style="background-color: #3498db; color: white;" onclick="creerNouveauSondage()">➕ Créer un nouveau sondage</button>
+                    <button class="admin-btn-action" style="background-color: #e67e22; color: white; margin-top:10px;" onclick="toggleSondage()">👁️ Afficher/Masquer le sondage</button>
+                    <button class="admin-btn-danger" onclick="supprimerSondage()">🗑️ Supprimer le sondage</button>
                 </div>
             </details>
 
@@ -290,8 +297,8 @@
                     <button class="admin-btn-action" style="background-color: #9b59b6; color: white;" onclick="ajouterEvenement()">+ Ajouter à l'agenda</button>
                     <hr style="border-color:#444; margin:15px 0;">
                     <label style="color:#ccc; font-size:0.8rem;">Nouveau bouton Web :</label>
-                    <input type="text" id="link-name" placeholder="Nom du bouton (ex: Lichess)">
-                    <input type="url" id="link-url" placeholder="Adresse URL (https://...)">
+                    <input type="text" id="link-name" placeholder="Nom (ex: Lichess)">
+                    <input type="url" id="link-url" placeholder="URL (https://...)">
                     <button class="admin-btn-action" style="background-color: #34495e; color: white;" onclick="ajouterLien()">+ Ajouter le lien</button>
                 </div>
             </details>
@@ -312,7 +319,7 @@
                 <summary>📄 Gérer les Pages Libres</summary>
                 <div>
                     <input type="text" id="new-page-name" placeholder="Nom de la page">
-                    <button class="admin-btn-action btn-success" margin-bottom: 10px;" onclick="ajouterNouvellePage()">+ Créer la page</button>
+                    <button class="admin-btn-action btn-success" style="margin-bottom: 10px;" onclick="ajouterNouvellePage()">+ Créer la page</button>
                     <select id="delete-page-select"><option value="">Sélectionner à supprimer...</option></select>
                     <button class="admin-btn-danger" onclick="supprimerPageDepuisAdmin()">Supprimer définitivement</button>
                 </div>
@@ -340,15 +347,12 @@
             </details>
 
             <details>
-                <summary>👤 Classement & Sondage</summary>
+                <summary>👤 Classement</summary>
                 <div>
                     <input type="text" id="new-nom" placeholder="Nom du joueur">
                     <input type="number" id="new-elo" placeholder="Points Elo">
                     <input type="text" id="new-titre" placeholder="Titre (ex: Novice)">
                     <button class="admin-btn-action" onclick="ajouterJoueur()">+ Ajouter au classement</button>
-                    <hr style="border-color:#444; margin:15px 0;">
-                    <button class="admin-btn-action" style="background-color: #8e44ad; color: white;" onclick="toggleSondage()">👁️ Afficher/Masquer sondage</button>
-                    <button class="admin-btn-danger" onclick="resetSondage()">Remettre les votes à zéro</button>
                 </div>
             </details>
             
@@ -383,10 +387,9 @@
         <button class="theme-toggle" onclick="toggleTheme()" title="Mode Sombre / Clair">🌓</button>
     </nav>
 
-    <div id="banniere-annonce"></div>
-
     <main id="main-content">
         <div id="accueil" class="page active">
+            
             <h1 id="title-accueil" data-editable>Club d'Échecs de Saint-Ouen-du-Breuil ♟️</h1>
             <p style="text-align: center; font-size: 1.1rem; color: var(--text-muted); margin-top: -20px; margin-bottom: 40px;">Le Cercle des Rois - Apprendre, Jouer et Progresser en Normandie.</p>
             
@@ -396,20 +399,9 @@
             </div>
 
             <div id="sondage-accueil" class="poll-container">
-                <h2 style="border: none; color: white; margin-top: 0;">Sondage : Ouverture du Club</h2>
-                <div id="poll-voting">
-                    <button class="poll-btn" onclick="voter('oui')">Oui, carrément !</button>
-                    <button class="poll-btn" onclick="voter('peutetre')">Pourquoi pas</button>
-                    <button class="poll-btn" onclick="voter('non')">Non merci</button>
-                </div>
-                <div id="poll-results" class="poll-results">
-                    <strong>Oui (<span id="count-oui">0</span>)</strong>
-                    <div class="bar-bg"><div id="bar-oui" class="bar-fill"></div></div><br>
-                    <strong>Pourquoi pas (<span id="count-peutetre">0</span>)</strong>
-                    <div class="bar-bg"><div id="bar-peutetre" class="bar-fill"></div></div><br>
-                    <strong>Non (<span id="count-non">0</span>)</strong>
-                    <div class="bar-bg"><div id="bar-non" class="bar-fill"></div></div>
-                </div>
+                <h2 id="poll-question" style="border: none; color: white; margin-top: 0; font-size: 1.8rem; line-height: 1.4;">Chargement du sondage...</h2>
+                <div id="poll-voting"></div>
+                <div id="poll-results" class="poll-results"></div>
             </div>
 
             <h2 id="title-philo" data-editable>Le Concept du Cercle des Rois</h2>
@@ -565,7 +557,7 @@
             <div class="card" style="text-align: center; border-top: 5px solid #2ecc71;">
                 <h2 style="margin-top: 0; color: #2ecc71; border:none;">1. Créer un salon d'attente</h2>
                 <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 25px;">
-                    Indique ton pseudo et choisis le temps. Lichess te générera une partie.<br><strong>ATTENTION :</strong> Ne commence pas à jouer ! Attends qu'un membre te rejoigne depuis cette page.
+                    Indique ton pseudo et choisis le temps. Ton salon sera ouvert instantanément.
                 </p>
                 
                 <input type="text" id="mon-pseudo-jeu" class="form-input" placeholder="👉 Ton pseudo (ex: Quentin)..." style="max-width: 350px; margin: 0 auto 15px auto;">
@@ -582,7 +574,7 @@
                 </div>
 
                 <div id="zone-secours-manuelle" style="display: none; background: rgba(231, 76, 60, 0.05); padding: 25px; border-radius: 12px; margin-top: 30px; border: 2px dashed #e74c3c; text-align: left;">
-                    <h3 style="color: #c0392b; margin-top:0; text-align: center; font-size: 1.3rem;">⚠️ Action bloquée par Lichess ou votre navigateur</h3>
+                    <h3 style="color: #c0392b; margin-top:0; text-align: center; font-size: 1.3rem;">⚠️ Action bloquée par votre navigateur</h3>
                     <p style="font-size: 1rem; margin-bottom: 15px; color: var(--text-color);">Faisons-le simplement à la main en 3 étapes :</p>
                     <ol style="font-size: 1rem; margin-bottom: 20px; padding-left: 20px; color: var(--text-muted); line-height: 1.8;">
                         <li><a href="https://lichess.org/?any#friend" target="_blank" style="color: #3498db; font-weight: bold; text-decoration: underline;">Clique ici pour ouvrir Lichess</a></li>
@@ -591,7 +583,7 @@
                     </ol>
                     <div style="text-align: center;">
                         <input type="url" id="lien-lichess-manuel" class="form-input" placeholder="Ex: https://lichess.org/aBcDeF..." style="max-width: 400px; margin: 0 auto 15px auto;">
-                        <button class="poll-btn" onclick="publierPartieLichessManuelle()" style="background-color: #e74c3c; color: white; padding: 12px 25px; font-size: 1rem;">✅ Publier le salon sur le site</button>
+                        <button class="poll-btn" onclick="publierPartieLichessManuelle(event)" style="background-color: #e74c3c; color: white; padding: 12px 25px; font-size: 1rem;">✅ Publier le salon sur le site</button>
                     </div>
                 </div>
             </div>
@@ -672,15 +664,13 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
         import { getFirestore, doc, onSnapshot, setDoc, increment, collection, addDoc, updateDoc, deleteDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
         import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-        import { getDatabase, ref, set, onDisconnect, remove, onValue, push } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
         // ==========================================
-        // CONFIGURATION FIRESTORE + AUTH + RTDB
+        // 1. CONFIGURATION FIRESTORE CLASSIQUE
         // ==========================================
         const firebaseConfig = {
           apiKey: "AIzaSyA1QahLqwicaJ7mSHlpq5nQ3w2EwMHePiE",
           authDomain: "clubechec-1ac69.firebaseapp.com",
-          databaseURL: "https://clubechec-1ac69-default-rtdb.europe-west1.firebasedatabase.app",
           projectId: "clubechec-1ac69",
           storageBucket: "clubechec-1ac69.firebasestorage.app",
           messagingSenderId: "1084201134964",
@@ -690,24 +680,65 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const auth = getAuth(app);
-        const rtdb = getDatabase(app);
 
         const pollRef = doc(db, "club", "sondage");
         const contentRef = doc(db, "club", "textes");
         const commsRef = doc(db, "club", "communications");
-        const partiesHistoriqueRef = collection(db, "partiesHistorique"); 
-        const lobbyRtdbRef = ref(rtdb, 'lobbyLive'); 
 
         let isAdmin = false;
         let customPages = [];
         let messagesPublicData = [];
         let messagesAdminData = [];
+        let currentPollVotes = {};
 
-        let unsubscribeHistorique = null;
+        let unsubscribeParties = null;
         let monLobbyId = null;
+        let heartbeatInterval = null;
 
         // ==========================================
-        // BASE DE DONNÉES DE L'ACADÉMIE (INTACTE)
+        // 2. SÉCURITÉ AUTHENTIFICATION
+        // ==========================================
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                isAdmin = true; 
+                activerModeAdmin();
+            } else {
+                isAdmin = false;
+                document.body.classList.remove('admin-mode'); 
+                let banner = document.getElementById('admin-banner'); if(banner) banner.style.display = 'none'; 
+                let fab = document.getElementById('admin-fab-btn'); if(fab) fab.style.display = 'none';
+                let sidebar = document.getElementById('admin-sidebar'); if(sidebar) sidebar.classList.remove('open');
+                window.renderOuvertures(); window.renderConcepts(1); window.renderConcepts(3);
+            }
+        });
+
+        window.connexionAdmin = async function() { 
+            if (isAdmin) return alert("Déjà connecté !"); 
+            let email = prompt("Email Administrateur :"); if (!email) return;
+            let mdp = prompt("Mot de passe :"); if (!mdp) return;
+            try { 
+                await signInWithEmailAndPassword(auth, email, mdp); 
+                alert("✅ Connexion réussie !"); 
+            } catch (error) { 
+                alert("❌ Erreur de connexion : " + error.message); 
+            }
+        }
+
+        window.quitterAdmin = async function() {
+            let modifications = {}; 
+            document.querySelectorAll('[data-editable]').forEach(el => modifications[el.id] = el.innerHTML);
+            document.querySelectorAll('.dynamic-zone').forEach(zone => { 
+                let clone = zone.cloneNode(true); 
+                clone.querySelectorAll('[data-editable-dyn]').forEach(el => el.removeAttribute('contenteditable')); 
+                modifications[zone.id] = clone.innerHTML; 
+            });
+            await setDoc(contentRef, modifications, { merge: true }); 
+            await signOut(auth); 
+            location.reload();
+        }
+
+        // ==========================================
+        // 3. BASE DE DONNÉES DE L'ACADÉMIE (INTACTE)
         // ==========================================
         window.ouverturesData = [
             { cat: "⚔️ Ouvertures Blanches", nom: "Partie Italienne", fr: "1. e4 e5 2. Cf3 Cc6 3. Fc4 Fc5 4. c3 Cf6 5. d3 d6 6. O-O O-O", en: "1. e4 e5 2. Nf3 Nc6 3. Bc4 Bc5 4. c3 Nf6 5. d3 d6 6. O-O O-O", desc: "Idéale pour les débutants. Elle vise à contrôler le centre rapidement et à développer le Fou sur une diagonale agressive pointant directement vers le pion f7. La position se solidifie ensuite avec les roques.", color: "" },
@@ -752,30 +783,22 @@
 
         window.majStatsAdmin = async function() {
             if(!isAdmin) return;
-            let vOui = parseInt(document.getElementById('count-oui').innerText) || 0;
-            let vPeut = parseInt(document.getElementById('count-peutetre').innerText) || 0;
-            let vNon = parseInt(document.getElementById('count-non').innerText) || 0;
-            document.getElementById('stat-votes').innerText = (vOui + vPeut + vNon);
+            
+            let totalVotes = 0;
+            for (let key in currentPollVotes) totalVotes += currentPollVotes[key] || 0;
+            let statVotes = document.getElementById('stat-votes');
+            if (statVotes) statVotes.innerText = totalVotes;
+            
             let tb = document.getElementById('edit-classement-body');
-            document.getElementById('stat-joueurs').innerText = tb ? tb.getElementsByTagName('tr').length : 0;
-            try { const snap = await getDocs(partiesHistoriqueRef); document.getElementById('stat-parties').innerText = snap.size; } catch(e) {}
+            let statJoueurs = document.getElementById('stat-joueurs');
+            if (statJoueurs) statJoueurs.innerText = tb ? tb.getElementsByTagName('tr').length : 0;
+            
+            try {
+                let hist = document.getElementById('liste-historique');
+                let statParties = document.getElementById('stat-parties');
+                if (statParties && hist) statParties.innerText = hist.children.length;
+            } catch(e) {}
         }
-
-        // =========================================
-        // GESTION SÉCURITÉ AUTH (RESTAURÉE)
-        // =========================================
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                isAdmin = true; activerModeAdmin();
-            } else {
-                isAdmin = false;
-                document.body.classList.remove('admin-mode'); 
-                document.getElementById('admin-banner').style.display = 'none'; 
-                document.getElementById('admin-fab-btn').style.display = 'none';
-                document.getElementById('admin-sidebar').classList.remove('open');
-                window.renderOuvertures(); window.renderConcepts(1); window.renderConcepts(3);
-            }
-        });
 
         window.toggleTheme = function() {
             let currentTheme = document.documentElement.getAttribute("data-theme");
@@ -802,7 +825,50 @@
         }
 
         // =========================================
-        // MOTEUR D'AFFICHAGE ACADÉMIE
+        // 4. MOTEUR D'AFFICHAGE DU SONDAGE (NOUVEAU)
+        // =========================================
+        window.renderPollConfig = function(configJSON) {
+            let config = { 
+                question: "Est-ce que vous êtes partant pour un club d'échecs à Saint-Ouen-du-Breuil ?", 
+                options: ["Oui, carrément !", "Pourquoi pas", "Non merci"] 
+            };
+            if (configJSON) { try { config = JSON.parse(configJSON); } catch(e) {} }
+            
+            let pq = document.getElementById('poll-question');
+            if(pq) pq.innerText = config.question;
+            
+            let votingHtml = ''; let resultsHtml = '';
+            config.options.forEach((opt, idx) => {
+                votingHtml += `<button class="poll-btn" onclick="voter('${idx}')">${opt}</button>`;
+                resultsHtml += `<strong>${opt} (<span id="count-opt-${idx}">0</span>)</strong><div class="bar-bg"><div id="bar-opt-${idx}" class="bar-fill"></div></div><br>`;
+            });
+            
+            let pv = document.getElementById('poll-voting'); if(pv) pv.innerHTML = votingHtml;
+            let pr = document.getElementById('poll-results'); if(pr) pr.innerHTML = resultsHtml;
+            
+            window.updatePollBars();
+        };
+
+        window.updatePollBars = function() {
+            let total = 0;
+            for (let key in currentPollVotes) total += currentPollVotes[key] || 0;
+            if (total === 0) total = 1;
+            
+            let resultsDiv = document.getElementById('poll-results');
+            if(!resultsDiv) return;
+            let counts = resultsDiv.querySelectorAll('[id^="count-opt-"]');
+            counts.forEach(span => {
+                let idx = span.id.replace('count-opt-', '');
+                let val = currentPollVotes[idx] || 0;
+                span.innerText = val;
+                let bar = document.getElementById('bar-opt-' + idx);
+                if(bar) bar.style.width = ((val / total) * 100) + '%';
+            });
+            if (isAdmin && typeof window.majStatsAdmin === 'function') window.majStatsAdmin();
+        };
+
+        // =========================================
+        // 5. MOTEUR D'AFFICHAGE DE L'ACADÉMIE
         // =========================================
         window.renderOuvertures = function() {
             let menu = document.getElementById('menu-ouvertures-dyn'); if(!menu) return;
@@ -817,7 +883,7 @@
                     let realIndex = window.ouverturesData.indexOf(o);
                     let borderStyle = o.color ? `border-left: 4px solid ${o.color};` : '';
                     let adminHtml = isAdmin ? `<div style="display:flex; gap:5px; margin-bottom: 5px;"><button class="msg-btn" style="background:#f39c12; flex:1;" onclick="ouvrirModalOuverture(${realIndex})">✏️ Éditer</button><button class="msg-btn" style="flex:1;" onclick="supprimerOuverture(${realIndex})">❌ Suppr</button></div>` : '';
-                    html += `<div style="margin-bottom: 10px;">${adminHtml}<button class="academic-btn" style="${borderStyle}" onclick="afficherOuverture(${realIndex}, this)">${o.nom}</button></div>`;
+                    html += `<div style="margin-bottom: 10px;">${adminHtml}<button class="academic-btn" style="${borderStyle}" onclick="afficherOuverture(${realIndex}, this, event)">${o.nom}</button></div>`;
                 });
                 html += `</div>`;
             });
@@ -843,7 +909,7 @@
                     
                     let adminHtml = isAdmin ? `<div style="position: absolute; top: 10px; right: 10px; display:flex; gap:5px; z-index: 10;"><button class="msg-btn" style="background:#f39c12; padding:6px;" onclick="ouvrirModalConcept(${niv}, ${realIndex}); event.stopPropagation();">✏️</button><button class="msg-btn" style="padding:6px;" onclick="supprimerConcept(${realIndex}); event.stopPropagation();">❌</button></div>` : '';
 
-                    html += `<div class="concept-card" style="${borderStyle}" onclick="jouerConcept(${realIndex}, ${niv}, this)">
+                    html += `<div class="concept-card" style="${borderStyle}" onclick="jouerConcept(${realIndex}, ${niv}, this, event)">
                         ${adminHtml}
                         ${visualHtml}
                         <h4 style="margin: 5px 0; ${c.color ? `font-size: 1.2rem;` : ''}">${c.nom}</h4>
@@ -937,7 +1003,9 @@
         let conceptBoard1 = null, conceptGame1 = new Chess(), conceptMoves1 = [], currentConceptMoveIndex1 = 0;
         let conceptBoard3 = null, conceptGame3 = new Chess(), conceptMoves3 = [], currentConceptMoveIndex3 = 0;
 
-        window.jouerConcept = function(index, niv, btnElement) {
+        window.jouerConcept = function(index, niv, btnElement, event) {
+            if (event && (event.target.closest('.admin-only-btn') || event.target.isContentEditable)) return;
+
             document.getElementById('niveau-' + niv).querySelectorAll('.concept-card').forEach(c => c.classList.remove('active-concept'));
             if(btnElement) btnElement.classList.add('active-concept');
 
@@ -955,15 +1023,21 @@
                 board = conceptBoard3; game = conceptGame3;
             }
 
-            game.load_pgn(data.pgn);
-            let moves = game.history();
-            while(game.undo()){} 
+            try {
+                game.load_pgn(data.pgn);
+                let moves = game.history();
+                while(game.undo()){} 
 
-            if (niv === 1) { conceptMoves1 = moves; currentConceptMoveIndex1 = 0; }
-            else { conceptMoves3 = moves; currentConceptMoveIndex3 = 0; }
+                if (niv === 1) { conceptMoves1 = moves; currentConceptMoveIndex1 = 0; }
+                else { conceptMoves3 = moves; currentConceptMoveIndex3 = 0; }
 
-            board.position(game.fen());
-            document.getElementById('concept-moves-' + niv).innerText = moves.length > 0 ? moves.join(' ') : "Prêt pour l'animation.";
+                board.position(game.fen());
+                document.getElementById('concept-moves-' + niv).innerText = moves.length > 0 ? moves.join(' ') : "Prêt pour l'animation.";
+            } catch(e) {
+                console.error("Erreur de format PGN/FEN", e);
+                document.getElementById('concept-moves-' + niv).innerText = "Erreur : Code PGN invalide.";
+            }
+            
             setTimeout(() => { board.resize(); }, 100);
             document.getElementById('concept-details-' + niv).scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
@@ -988,7 +1062,9 @@
 
         let openingBoard = null; let openingGame = new Chess(); let openingMoves = []; let currentMoveIndex = 0;
 
-        window.afficherOuverture = function(index, btnElement) {
+        window.afficherOuverture = function(index, btnElement, event) {
+            if (event && (event.target.closest('.admin-only-btn') || event.target.isContentEditable)) return;
+
             document.querySelectorAll('.academic-btn').forEach(btn => btn.classList.remove('active')); btnElement.classList.add('active');
             let o = window.ouverturesData[index];
             document.getElementById('opening-details').style.display = 'flex';
@@ -996,7 +1072,11 @@
             
             if (!openingBoard) openingBoard = Chessboard('board-ouverture', { position: 'start', pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png' });
             
-            openingGame.reset(); openingGame.load_pgn(o.en); openingMoves = openingGame.history(); openingGame.reset(); currentMoveIndex = 0; openingBoard.position(openingGame.fen());
+            try {
+                openingGame.reset(); openingGame.load_pgn(o.en); openingMoves = openingGame.history(); openingGame.reset(); currentMoveIndex = 0; openingBoard.position(openingGame.fen());
+            } catch(e) {
+                console.error("PGN Error");
+            }
             setTimeout(() => { openingBoard.resize(); }, 100);
         }
 
@@ -1017,57 +1097,64 @@
         };
 
         // =========================================
-        // JEU EN LIGNE (AVEC REDIRECTION IMMÉDIATE)
+        // 8. JEU EN LIGNE DIRECT ET SÉCURISÉ (FIRESTORE)
         // =========================================
-        
-        // --- On écoute uniquement RealTimeDB (lobbyLive) et Firestore (partiesHistorique) ---
+        function startHeartbeat(docId) {
+            monLobbyId = docId;
+            if (heartbeatInterval) clearInterval(heartbeatInterval);
+            heartbeatInterval = setInterval(async () => {
+                if (monLobbyId) { try { await updateDoc(doc(db, "partiesLive", monLobbyId), { lastPing: Date.now() }); } catch(e) { stopHeartbeat(); } }
+            }, 10000); 
+        }
+
+        function stopHeartbeat() { if (heartbeatInterval) clearInterval(heartbeatInterval); heartbeatInterval = null; monLobbyId = null; }
+        window.addEventListener('beforeunload', () => { if (monLobbyId) { deleteDoc(doc(db, "partiesLive", monLobbyId)).catch(()=> {}); } });
+
         window.startPartiesListener = function() {
-            onValue(lobbyRtdbRef, (snapshot) => {
-                let lobbyHtml = '';
-                snapshot.forEach((childSnapshot) => {
-                    let partie = childSnapshot.val();
-                    let id = childSnapshot.key;
-                    let affichageTemps = partie.tempsInitial === "unlimited" ? "Illimité" : (partie.tempsInitial ? (partie.tempsInitial / 60) + " minutes" : "");
-                    
-                    lobbyHtml += `
-                    <div style="background: var(--bg-color); padding: 15px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #e67e22; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 10px;">
-                        <div><strong>⚔️ En attente : ${partie.createurNom}</strong><br><span style="font-size: 0.85rem; color: var(--text-muted);">${affichageTemps ? '⏱️ ' + affichageTemps : ''}</span></div>
-                        <div>
-                            <button class="poll-btn" style="margin: 0; padding: 8px 16px; font-size: 0.95rem; background-color:#e67e22; color:white;" onclick="rejoindrePartieLichess('${id}', '${partie.urlLichess}', '${partie.createurNom}')">Rejoindre la partie</button>
-                        </div>
-                    </div>`;
-                });
-                document.getElementById('liste-parties-attente').innerHTML = lobbyHtml || '<p style="color: var(--text-muted); font-style:italic; text-align:center;">Personne ne cherche de partie pour le moment. Sois le premier à créer un salon au-dessus !</p>';
-            });
+            if (unsubscribeParties) return; 
+            unsubscribeParties = onSnapshot(partiesLiveRef, (snapshot) => {
+                let lobbyHtml = ''; let historiqueHtml = ''; let partiesTab = []; let now = Date.now();
+                snapshot.forEach(docSnap => { let p = docSnap.data(); p.id = docSnap.id; partiesTab.push(p); });
+                partiesTab.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
 
-            if(!unsubscribeHistorique) {
-                unsubscribeHistorique = onSnapshot(partiesHistoriqueRef, (snapshot) => {
-                    let historiqueHtml = '';
-                    let partiesTab = [];
-                    snapshot.forEach(docSnap => { let p = docSnap.data(); p.id = docSnap.id; partiesTab.push(p); });
-                    partiesTab.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
-
-                    partiesTab.forEach(partie => {
+                partiesTab.forEach(partie => {
+                    if (partie.statut === "attente") {
+                        let dernierSignal = partie.lastPing || partie.timestamp;
+                        if (now - dernierSignal > 25000) { deleteDoc(doc(db, "partiesLive", partie.id)).catch(e => console.log(e)); return; }
+                        let affichageTemps = partie.tempsInitial === "unlimited" ? "Illimité" : (partie.tempsInitial ? (partie.tempsInitial / 60) + " minutes" : "");
+                        lobbyHtml += `
+                        <div style="background: var(--bg-color); padding: 15px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #e67e22; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 10px;">
+                            <div><strong>⚔️ En attente : ${partie.createurNom}</strong><br><span style="font-size: 0.85rem; color: var(--text-muted);">${affichageTemps ? '⏱️ ' + affichageTemps : ''}</span></div>
+                            <div>
+                                <button class="poll-btn" style="margin: 0; padding: 8px 16px; font-size: 0.95rem; background-color:#e67e22; color:white;" onclick="rejoindrePartieLichess('${partie.id}', '${partie.urlLichess}', '${partie.createurNom}')">Rejoindre la partie</button>
+                                <button class="admin-only-btn" style="margin: 0; padding: 8px 16px; background-color:#e74c3c;" onclick="supprimerPartie('${partie.id}')">❌</button>
+                            </div>
+                        </div>`;
+                    }
+                    if (partie.statut === "historique") {
                         historiqueHtml += `
                         <div class="historique-item" style="background: var(--bg-color); padding: 10px 15px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #9b59b6; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 10px;">
                             <div><strong>${partie.createurNom} ⚡ ${partie.adversaireNom}</strong><br><span style="font-size: 0.85rem; color: var(--text-muted);">📅 ${partie.date}</span></div>
                             <div style="display:flex; gap: 5px; align-items:center;">
-                                <a href="${partie.urlLichess}" target="_blank" class="poll-btn" style="text-decoration: none; margin: 0; padding: 8px 16px; font-size: 0.9rem; background-color: #9b59b6; color: white;">🔍 Analyser</a>
+                                <a href="${partie.urlLichess}" target="_blank" class="poll-btn" style="text-decoration: none; margin: 0; padding: 8px 16px; font-size: 0.8rem; background-color: #9b59b6; color: white;">🔍 Analyser</a>
                                 <button class="admin-only-btn" style="margin: 0; padding: 8px 16px; background-color:#e74c3c;" onclick="supprimerPartie('${partie.id}')">❌</button>
                             </div>
                         </div>`;
-                    });
-                    document.getElementById('liste-historique').innerHTML = historiqueHtml || '<p style="color: var(--text-muted); font-style:italic; text-align:center;">Aucune partie jouée pour le moment.</p>';
-                    if(typeof window.filtrerHistorique === 'function') window.filtrerHistorique();
-                    
-                    if(isAdmin && document.getElementById('stat-parties')) document.getElementById('stat-parties').innerText = document.getElementById('liste-historique').children.length;
+                    }
                 });
-            }
+                
+                document.getElementById('liste-parties-attente').innerHTML = lobbyHtml || '<p style="color: var(--text-muted); font-style:italic; text-align:center;">Personne ne cherche de partie pour le moment. Sois le premier à créer un salon au-dessus !</p>';
+                let histContainer = document.getElementById('liste-historique');
+                if(histContainer) {
+                    histContainer.innerHTML = historiqueHtml || '<p style="color: var(--text-muted); font-style:italic; text-align:center;">Aucune partie jouée pour le moment.</p>';
+                    if(typeof window.filtrerHistorique === 'function') window.filtrerHistorique();
+                    if(isAdmin && typeof window.majStatsAdmin === 'function') window.majStatsAdmin();
+                }
+            });
         };
 
-        window.stopPartiesListener = function() {};
+        window.stopPartiesListener = function() { if (unsubscribeParties) { unsubscribeParties(); unsubscribeParties = null; } };
 
-        // LA MAGIE DE LA REDIRECTION IMMÉDIATE EST ICI
         window.creerPartieLichess = async function() {
             let btn = document.getElementById('btn-create-salon');
             let pseudo = document.getElementById('mon-pseudo-jeu').value.trim();
@@ -1079,8 +1166,9 @@
             btn.innerText = "⏳ Création..."; 
             btn.disabled = true;
             
-            // Astuce pour contrer le bloqueur : on ouvre l'onglet DÈS LE CLIC
-            let fenetreLichess = window.open('about:blank', '_blank');
+            // REDIRECTION IMMÉDIATE POUR CONTRER LE BLOQUEUR
+            let fenetreLichess = null;
+            try { fenetreLichess = window.open('about:blank', '_blank'); } catch(e) {}
             
             try {
                 let bodyData = new URLSearchParams(); 
@@ -1090,19 +1178,26 @@
                 let data = await response.json();
                 
                 if(data.challenge && data.challenge.url) {
-                    const newLobbyRef = push(lobbyRtdbRef);
-                    await set(newLobbyRef, { createurNom: pseudo, tempsInitial: tempsVal, urlLichess: data.challenge.url });
-                    onDisconnect(newLobbyRef).remove(); // Sécurité Firebase
+                    let docRef = await addDoc(partiesLiveRef, {
+                        statut: 'attente',
+                        createurNom: pseudo,
+                        tempsInitial: tempsVal,
+                        urlLichess: data.challenge.url,
+                        date: obtenirDateFormatee(),
+                        timestamp: Date.now(),
+                        lastPing: Date.now() 
+                    });
+                    startHeartbeat(docRef.id);
                     
-                    // ON REDIRIGE INSTANTANÉMENT
-                    if (fenetreLichess) {
+                    // REDIRECTION GARANTIE (Onglet ou Fenêtre courante)
+                    if (fenetreLichess && !fenetreLichess.closed) {
                         fenetreLichess.location.href = data.challenge.url;
-                        btn.innerText = originalText;
-                        btn.disabled = false;
+                        btn.innerText = "✅ Redirection...";
                     } else {
-                        // Si le navigateur a bloqué le popup quand même, on change de page direct !
                         window.location.href = data.challenge.url;
                     }
+                    
+                    setTimeout(() => { btn.innerText = originalText; btn.disabled = false; }, 3000);
                 } else throw new Error("Erreur Lichess");
             } catch(e) {
                 console.error(e);
@@ -1110,12 +1205,12 @@
                 btn.innerText = originalText;
                 btn.disabled = false;
                 document.getElementById('zone-secours-manuelle').style.display = 'block';
-                alert("⚠️ Erreur lors de la création de la partie. Utilisons la méthode manuelle affichée juste en dessous !");
+                alert("⚠️ Erreur réseau ou Lichess indisponible. Utilisons la méthode manuelle !");
             }
         };
 
-        // LA CORRECTION DU BOUTON MANUEL EST ICI
-        window.publierPartieLichessManuelle = async function() {
+        window.publierPartieLichessManuelle = async function(event) {
+            if(event) event.preventDefault();
             let btn = document.querySelector('#zone-secours-manuelle .poll-btn');
             let originalText = btn.innerText;
             
@@ -1127,12 +1222,19 @@
                 if(!pseudo) return alert("Veuillez entrer un pseudo !");
                 if(!url.includes('lichess.org/')) return alert("Veuillez coller un lien Lichess valide ! (https://lichess.org/...)");
 
-                btn.innerText = "⏳ Publication en cours...";
+                btn.innerText = "⏳ Publication...";
                 btn.disabled = true;
 
-                const newLobbyRef = push(lobbyRtdbRef);
-                await set(newLobbyRef, { createurNom: pseudo, tempsInitial: tempsVal, urlLichess: url });
-                onDisconnect(newLobbyRef).remove();
+                let docRef = await addDoc(partiesLiveRef, {
+                    statut: 'attente',
+                    createurNom: pseudo,
+                    tempsInitial: tempsVal,
+                    urlLichess: url,
+                    date: obtenirDateFormatee(),
+                    timestamp: Date.now(),
+                    lastPing: Date.now()
+                });
+                startHeartbeat(docRef.id);
 
                 alert("✅ Ta partie a été ajoutée à la liste d'attente ! Laisse la page Lichess ouverte pour attendre ton adversaire.");
                 document.getElementById('lien-lichess-manuel').value = '';
@@ -1140,64 +1242,67 @@
                 
                 btn.innerText = originalText;
                 btn.disabled = false;
-                
-            } catch (error) {
-                console.error("Erreur bloquée par Firebase :", error);
-                alert("❌ Opération bloquée !\n\nC'est la sécurité de ta clé API qui fait son travail. Tu testes depuis ton ordinateur (Fichier Local). Mets ton code à jour sur Netlify et ça fonctionnera !");
-                
+            } catch(e) {
+                console.error(e);
+                alert("❌ Erreur lors de la publication.");
                 btn.innerText = originalText;
                 btn.disabled = false;
             }
         };
 
-        window.rejoindrePartieLichess = async function(idLobby, urlLichess, createur) {
+        window.rejoindrePartieLichess = async function(idPartie, urlLichess, createur) {
             let pseudo = document.getElementById('mon-pseudo-jeu').value.trim();
             if(!pseudo) { pseudo = prompt("Entrez votre pseudo pour affronter " + createur + " :"); if(!pseudo) return; }
             
-            // Ouverture immédiate
+            // Ouverture immédiate pour esquiver le bloqueur !
             let fenetreLichess = window.open(urlLichess, '_blank');
             if (!fenetreLichess) window.location.href = urlLichess;
 
-            await addDoc(partiesHistoriqueRef, { createurNom: createur, adversaireNom: pseudo, urlLichess: urlLichess, date: obtenirDateFormatee(), timestamp: Date.now() });
-            await remove(ref(rtdb, 'lobbyLive/' + idLobby));
+            await updateDoc(doc(db, "partiesLive", idPartie), { statut: 'historique', adversaireNom: pseudo });
         };
 
-        window.supprimerPartie = async function(id) { if(confirm("Administrateur : Supprimer cette partie de l'historique ?")) await deleteDoc(doc(db, "partiesHistorique", id)); }
+        window.supprimerPartie = async function(id) { if(confirm("Administrateur : Supprimer cette partie ?")) await deleteDoc(doc(db, "partiesLive", id)); }
         window.filtrerHistorique = function() { let recherche = document.getElementById('search-historique').value.toLowerCase(); document.querySelectorAll('.historique-item').forEach(item => { item.style.display = item.innerText.toLowerCase().includes(recherche) ? 'flex' : 'none'; }); }
 
         window.viderHistorique = async function() {
             if(confirm("⚠️ Es-tu sûr de vouloir supprimer TOUTES les parties de l'historique ? Cette action est irréversible !")) {
-                const querySnapshot = await getDocs(partiesHistoriqueRef);
-                querySnapshot.forEach(async (docSnap) => { await deleteDoc(doc(db, "partiesHistorique", docSnap.id)); });
+                const q = query(partiesLiveRef, where("statut", "==", "historique"));
+                const querySnapshot = await getDocs(q);
+                querySnapshot.forEach(async (docSnap) => { await deleteDoc(doc(db, "partiesLive", docSnap.id)); });
                 alert("✅ L'historique a été vidé avec succès !");
             }
         }
 
-        // ----------------------------------------
-        // 6. MESSAGERIE ET SONDAGE
-        // ----------------------------------------
-        window.voter = async function(choix) {
-            if (localStorage.getItem('hasVoted')) return;
-            await setDoc(pollRef, { [choix]: increment(1) }, { merge: true });
-            localStorage.setItem('hasVoted', 'true');
-            document.getElementById('poll-voting').style.display = 'none'; 
-            document.getElementById('poll-results').style.display = 'block';
+        // =========================================
+        // 9. MESSAGERIE ET OPTIONS ADMIN
+        // =========================================
+        window.creerNouveauSondage = async function() {
+            let q = prompt("Quelle est la question du sondage ?\nEx: Êtes-vous partant pour un club d'échecs à Saint-Ouen-du-Breuil ?");
+            if(!q) return;
+            let optsRaw = prompt("Entrez les réponses possibles, séparées par une virgule :\nEx: Oui, Non, Peut-être");
+            if(!optsRaw) return;
+            
+            let options = optsRaw.split(',').map(s => s.trim()).filter(s => s !== "");
+            if(options.length < 2) return alert("Il faut au moins 2 options !");
+            
+            if(confirm("Cela va remplacer le sondage actuel et remettre les votes à zéro. Continuer ?")) {
+                await setDoc(pollRef, {}); 
+                let newConfig = { question: q, options: options };
+                await setDoc(contentRef, { pollConfigJSON: JSON.stringify(newConfig), sondageVisible: true }, { merge: true });
+                localStorage.removeItem('hasVoted');
+                alert("✅ Nouveau sondage créé !");
+                location.reload();
+            }
         }
         
-        window.toggleSondage = async function() {
-            let isHidden = document.getElementById('sondage-accueil').style.display === 'none';
-            await setDoc(contentRef, { sondageVisible: isHidden }, { merge: true });
+        window.supprimerSondage = async function() {
+            if(confirm("Masquer et désactiver le sondage ?")) {
+                await setDoc(contentRef, { sondageVisible: false }, { merge: true });
+            }
         }
 
-        window.toggleEmailInput = function() {
-            let isPrive = document.querySelector('input[name="contact-type"]:checked').value === 'prive';
-            document.getElementById('contact-email').style.display = isPrive ? 'block' : 'none';
-        }
-
-        window.toggleReplyForm = function(id) {
-            let form = document.getElementById('reply-form-' + id);
-            form.style.display = form.style.display === 'none' ? 'block' : 'none';
-        }
+        window.toggleEmailInput = function() { let isPrive = document.querySelector('input[name="contact-type"]:checked').value === 'prive'; document.getElementById('contact-email').style.display = isPrive ? 'block' : 'none'; }
+        window.toggleReplyForm = function(id) { let form = document.getElementById('reply-form-' + id); form.style.display = form.style.display === 'none' ? 'block' : 'none'; }
 
         window.envoyerMessageContact = async function() {
             let anonyme = document.getElementById('contact-anonyme').checked; let nom = document.getElementById('contact-nom').value; let msg = document.getElementById('contact-msg').value; let isPrive = document.querySelector('input[name="contact-type"]:checked').value === 'prive'; let email = document.getElementById('contact-email').value;
@@ -1230,9 +1335,6 @@
             await setDoc(commsRef, { messagesAdmin: updatedMessages }, { merge: true }); input.value = '';
         };
 
-        // ----------------------------------------
-        // 7. ADMINISTRATION GÉNÉRALE
-        // ----------------------------------------
         window.ajouterEvenement = async function() {
             let date = document.getElementById('event-date').value; let titre = document.getElementById('event-title').value; if(!date || !titre) return alert("Remplis la date et l'intitulé !");
             let dateFormatee = new Date(date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }); let container = document.getElementById('agenda-container'); if(container.innerHTML.includes("Aucun événement")) container.innerHTML = '';
@@ -1249,25 +1351,11 @@
         }
         window.supprimerLien = async function(id) { if(confirm("Supprimer ce bouton de lien ?")) { document.getElementById(id).remove(); await setDoc(contentRef, { linksHtml: document.getElementById('links-container').innerHTML }, { merge: true }); } }
 
-        window.connexionAdmin = async function() { 
-            if (isAdmin) return alert("Déjà connecté !"); 
-            let email = prompt("Email Administrateur :"); if (!email) return;
-            let mdp = prompt("Mot de passe :"); if (!mdp) return;
-            try { await signInWithEmailAndPassword(auth, email, mdp); alert("Connexion réussie !"); } catch (error) { alert("Erreur de connexion : " + error.message); }
-        }
-
-        window.quitterAdmin = async function() {
-            let modifications = {}; document.querySelectorAll('[data-editable]').forEach(el => modifications[el.id] = el.innerHTML);
-            document.querySelectorAll('.dynamic-zone').forEach(zone => { let clone = zone.cloneNode(true); clone.querySelectorAll('[data-editable-dyn]').forEach(el => el.removeAttribute('contenteditable')); modifications[zone.id] = clone.innerHTML; });
-            await setDoc(contentRef, modifications, { merge: true }); 
-            await signOut(auth); location.reload();
-        }
-        
         window.publierAnnonce = async function() { await setDoc(contentRef, { annonceTexte: document.getElementById('input-annonce').value }, { merge: true }); }
         window.supprimerAnnonce = async function() { await setDoc(contentRef, { annonceTexte: "" }, { merge: true }); }
         window.changerCouleur = async function() { await setDoc(contentRef, { couleurPrincipale: document.getElementById('input-color').value }, { merge: true }); }
-        window.resetSondage = async function() { if (confirm("Effacer les votes ?")) { await setDoc(pollRef, { oui: 0, peutetre: 0, non: 0 }); localStorage.removeItem('hasVoted'); location.reload(); } }
-        window.supprimerLigneClassement = async function(bouton) { if(confirm("Retirer ce joueur ?")) { bouton.closest('tr').remove(); let lignes = document.getElementById('edit-classement-body').getElementsByTagName('tr'); for(let i=0; i<lignes.length; i++) lignes[i].getElementsByTagName('td')[0].innerText = i + 1; await setDoc(contentRef, { 'edit-classement-body': document.getElementById('edit-classement-body').innerHTML }, { merge: true }); majStatsAdmin(); } }
+        
+        window.supprimerLigneClassement = async function(bouton) { if(confirm("Retirer ce joueur ?")) { bouton.closest('tr').remove(); let lignes = document.getElementById('edit-classement-body').getElementsByTagName('tr'); for(let i=0; i<lignes.length; i++) lignes[i].getElementsByTagName('td')[0].innerText = i + 1; await setDoc(contentRef, { 'edit-classement-body': document.getElementById('edit-classement-body').innerHTML }, { merge: true }); if(isAdmin) window.majStatsAdmin(); } }
         
         window.ajouterJoueur = async function() {
             let nom = document.getElementById('new-nom').value; let elo = document.getElementById('new-elo').value; let titre = document.getElementById('new-titre').value || "Membre"; 
@@ -1275,7 +1363,7 @@
             let tbody = document.getElementById('edit-classement-body'); let rangActuel = tbody.getElementsByTagName('tr').length + 1;
             tbody.insertAdjacentHTML('beforeend', `<tr><td>${rangActuel}</td><td>${titre}</td><td>${nom}</td><td>${elo}</td><td><button class="admin-only-btn" onclick="supprimerLigneClassement(this)">❌</button></td></tr>`);
             await setDoc(contentRef, { 'edit-classement-body': tbody.innerHTML }, { merge: true }); 
-            document.getElementById('new-nom').value = ''; document.getElementById('new-elo').value = ''; document.getElementById('new-titre').value = ''; majStatsAdmin();
+            document.getElementById('new-nom').value = ''; document.getElementById('new-elo').value = ''; document.getElementById('new-titre').value = ''; if(isAdmin) window.majStatsAdmin();
         }
         window.ajouterNouvellePage = async function() { let nom = document.getElementById('new-page-name').value; if(!nom) return; customPages.push({ id: 'page-' + Date.now(), nom: nom }); await setDoc(contentRef, { customPagesList: JSON.stringify(customPages) }, { merge: true }); document.getElementById('new-page-name').value = ''; }
         window.supprimerPageDepuisAdmin = async function() { let select = document.getElementById('delete-page-select'); let pageId = select.value; if(!pageId) return; if(confirm("Supprimer cette page ? C'est définitif !")) { customPages = customPages.filter(p => p.id !== pageId); await setDoc(contentRef, { customPagesList: JSON.stringify(customPages), ['zone-'+pageId]: '' }, { merge: true }); location.reload(); } }
@@ -1302,7 +1390,7 @@
             else if (type === 'image') htmlToAdd = `<div id="${uniqueId}" style="margin-top:20px; text-align:center;"><img src="${text || title}" style="max-width:100%; border-radius:8px;"><br><button class="admin-only-btn" onclick="supprimerBloc('${uniqueId}', 'zone-${page}')">🗑️ Supprimer l'image</button></div>`;
             zone.insertAdjacentHTML('beforeend', htmlToAdd); 
             document.getElementById('new-block-title').value = ''; document.getElementById('new-block-text').value = ''; 
-            sauvegarderZoneDynamic('zone-' + page); activerEdition();
+            window.sauvegarderZoneDynamic('zone-' + page); activerEdition();
         }
 
         window.supprimerBloc = function(blocId, zoneId) { document.getElementById(blocId).remove(); window.sauvegarderZoneDynamic(zoneId); }
@@ -1322,24 +1410,20 @@
         function activerModeAdmin() { 
             document.body.classList.add('admin-mode'); document.getElementById('admin-banner').style.display = 'block'; 
             document.getElementById('admin-fab-btn').style.display = 'flex';
-            activerEdition(); window.renderOuvertures(); window.renderConcepts(1); window.renderConcepts(3); majStatsAdmin();
+            activerEdition(); window.renderOuvertures(); window.renderConcepts(1); window.renderConcepts(3); window.majStatsAdmin();
         }
 
         // =========================================
-        // ÉCOUTEURS FIREBASE (REAL-TIME)
+        // INITIALISATION FIREBASE REAL-TIME
         // =========================================
-        if (localStorage.getItem('hasVoted')) { document.getElementById('poll-voting').style.display = 'none'; document.getElementById('poll-results').style.display = 'block'; }
         
+        // SONDAGE
         onSnapshot(pollRef, (docSnap) => {
-            if (docSnap.exists()) {
-                const data = docSnap.data(); let total = (data.oui || 0) + (data.peutetre || 0) + (data.non || 0) || 1;
-                document.getElementById('count-oui').innerText = data.oui || 0; document.getElementById('bar-oui').style.width = ((data.oui || 0) / total * 100) + '%';
-                document.getElementById('count-peutetre').innerText = data.peutetre || 0; document.getElementById('bar-peutetre').style.width = ((data.peutetre || 0) / total * 100) + '%';
-                document.getElementById('count-non').innerText = data.non || 0; document.getElementById('bar-non').style.width = ((data.non || 0) / total * 100) + '%';
-                if(isAdmin) majStatsAdmin();
-            }
+            currentPollVotes = docSnap.exists() ? docSnap.data() : {};
+            window.updatePollBars();
         });
 
+        // MESSAGES ET QUESTIONS
         onSnapshot(commsRef, (docSnap) => {
             if (docSnap.exists()) {
                 const data = docSnap.data(); messagesPublicData = data.messagesPublic || []; messagesAdminData = data.messagesAdmin || [];
@@ -1373,30 +1457,47 @@
             }
         });
 
+        // CHARGEMENT GLOBAL
         onSnapshot(contentRef, (docSnap) => {
             if (docSnap.exists()) {
                 const data = docSnap.data();
                 if(data.customPagesList) { customPages = JSON.parse(data.customPagesList); construirePagesPersonnalisees(); }
+                
+                // Moteur du sondage
+                window.renderPollConfig(data.pollConfigJSON);
                 
                 if(data.ouverturesDataJSON) window.ouverturesData = JSON.parse(data.ouverturesDataJSON);
                 if(data.conceptsDataJSON) window.conceptsData = JSON.parse(data.conceptsDataJSON);
                 
                 window.renderOuvertures(); window.renderConcepts(1); window.renderConcepts(3);
 
-                if(data.annonceTexte) { document.getElementById('banniere-annonce').innerText = data.annonceTexte; document.getElementById('banniere-annonce').style.display = 'block'; } else document.getElementById('banniere-annonce').style.display = 'none';
-                let sondageDiv = document.getElementById('sondage-accueil'); if(data.sondageVisible === false) sondageDiv.style.display = 'none'; else sondageDiv.style.display = 'block';
+                if(data.annonceTexte) { 
+                    let bText = document.getElementById('banniere-annonce-text'); if(bText) bText.innerText = data.annonceTexte; 
+                    let b = document.getElementById('banniere-annonce'); if(b) b.style.display = 'block'; 
+                } else {
+                    let bText = document.getElementById('banniere-annonce-text'); if(bText) bText.innerText = "🎉 Nouveau club d'échecs à Saint-Ouen-du-Breuil, nous venons d'ouvrir !";
+                    let b = document.getElementById('banniere-annonce'); if(b) b.style.display = 'block';
+                }
+                
+                let sondageDiv = document.getElementById('sondage-accueil'); if(sondageDiv) sondageDiv.style.display = (data.sondageVisible === false) ? 'none' : 'block';
                 if(data.couleurPrincipale) document.documentElement.style.setProperty('--accent', data.couleurPrincipale);
                 if(data.agendaHtml) document.getElementById('agenda-container').innerHTML = data.agendaHtml;
                 if(data.linksHtml) document.getElementById('links-container').innerHTML = data.linksHtml;
 
                 for (const key in data) {
-                    if(!['customPagesList', 'ouverturesDataJSON', 'conceptsDataJSON', 'annonceTexte', 'couleurPrincipale', 'agendaHtml', 'linksHtml', 'sondageVisible'].includes(key)) {
+                    if(!['customPagesList', 'ouverturesDataJSON', 'conceptsDataJSON', 'annonceTexte', 'couleurPrincipale', 'agendaHtml', 'linksHtml', 'sondageVisible', 'pollConfigJSON'].includes(key)) {
                         const el = document.getElementById(key); if (el && document.activeElement !== el) el.innerHTML = data[key];
                     }
                 }
-                if (isAdmin) { activerEdition(); majStatsAdmin(); }
+                if (isAdmin) { activerEdition(); window.majStatsAdmin(); }
             }
         });
+        
+        // Initialisation si on a déjà voté (fallback visuel)
+        if (localStorage.getItem('hasVoted')) { 
+            let pv = document.getElementById('poll-voting'); if(pv) pv.style.display = 'none'; 
+            let pr = document.getElementById('poll-results'); if(pr) pr.style.display = 'block'; 
+        }
     </script>
 </body>
 </html>
