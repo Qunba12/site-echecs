@@ -1306,22 +1306,29 @@
   window.voter = async function(optionIndex) {
     if (localStorage.getItem('hasVoted')) return alert("Tu as déjà voté !");
     
-    // On crée la passerelle entre le clic (0, 1, 2) et le champ dans Firebase (oui, non, peutetre)
     const mapping = {
         '0': 'oui',
-        '1': 'peutetre', // Attention à l'ordre exact de tes boutons
+        '1': 'peutetre',
         '2': 'non'
     };
 
     let fieldName = mapping[optionIndex];
     
     try {
-        // Cette ligne va maintenant mettre à jour le bon champ ("oui", etc.)
+        // 1. Enregistrement du vote
         await setDoc(pollRef, { [fieldName]: increment(1) }, { merge: true });
-        
         localStorage.setItem('hasVoted', 'true');
-        alert("✅ Vote enregistré !");
-        location.reload(); // Recharge pour voir les barres à jour
+        
+        // 2. Bascule visuelle : on cache les boutons et on affiche les résultats
+        document.getElementById('poll-voting').style.display = 'none'; 
+        document.getElementById('poll-results').style.display = 'block';
+        
+        // 3. Optionnel : un petit message de confirmation
+        alert("✅ Vote enregistré ! Voici les résultats.");
+        
+        // 4. Mise à jour immédiate de l'affichage des barres
+        window.updatePollBars(); 
+        
     } catch (e) {
         console.error("Erreur vote :", e);
         alert("Impossible de voter pour le moment.");
