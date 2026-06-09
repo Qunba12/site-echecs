@@ -470,10 +470,7 @@
                         <tr><th>Rang</th><th>Titre</th><th>Joueur</th><th>Elo Club</th><th class="admin-only-btn" style="background:none; color:inherit; border:none; padding:15px;">Actions</th></tr>
                     </thead>
                    
-                       <tbody id="leaderboard-body">
-        
-  
-                    </tbody>
+                       <tbody id="leaderboard-body"></tbody>
                 </table>
             </div>
         </div>
@@ -1330,11 +1327,50 @@
         
     </script>
     <a href="admin.html">Connexion Espace Admin</a>
-    <footer>
-        <p><b>Le Cercle des Rois</b></p>
-        <p>Club d'échecs de Saint-Ouen-du-Breuil - 2026</p>
-        <a href="admin.html">Connexion Espace Admin</a>
-    </footer>
+   </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyA1QahLqwicaJ7mSHlpq5nQ3w2EwMHePiE",
+          authDomain: "clubechec-1ac69.firebaseapp.com",
+          projectId: "clubechec-1ac69",
+          storageBucket: "clubechec-1ac69.firebasestorage.app",
+          messagingSenderId: "1084201134964",
+          appId: "1:1084201134964:web:ed31998fa24b1baddb5a21"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const q = query(collection(db, "joueurs"), orderBy("elo", "desc"));
+
+        onSnapshot(q, (snapshot) => {
+            const tbody = document.getElementById('leaderboard-body');
+            if (tbody) {
+                let html = '';
+                let rang = 1;
+
+                snapshot.forEach((doc) => {
+                    const joueur = doc.data();
+                    html += `
+                        <tr>
+                            <td>${rang}</td>
+                            <td>${joueur.titre}</td>
+                            <td>${joueur.nom}</td>
+                            <td>${joueur.elo} Elo</td>
+                        </tr>
+                    `;
+                    rang++;
+                });
+
+                tbody.innerHTML = html;
+            }
+        });
+    </script>
+
 
 </body>
 </html>
