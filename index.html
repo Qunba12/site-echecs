@@ -1369,7 +1369,36 @@
                 tbody.innerHTML = html;
             }
         });
+        function creerPartieLichess() {
+    // Récupère l'option de temps sélectionnée dans ton menu déroulant ou tes boutons
+    const selectTemps = document.getElementById('select-temps-lichess'); // Ajuste l'ID si nécessaire
+    const tempsChoisi = selectTemps ? selectTemps.value : '10'; 
+    // ... tout ton code actuel (la création de l'url, etc.) ...
+
+    // AJOUTE CETTE LIGNE TOUT EN BAS DE LA FONCTION :
+    window.location.href = url;
+}
+    let urlLichess = "";
+
+    switch(tempsChoisi) {
+        case "3":
+            urlLichess = "https://lichess.org/setup/friend?timeMode=1&clockTime=3&clockIncrement=0";
+            break;
+        case "5":
+            urlLichess = "https://lichess.org/setup/friend?timeMode=1&clockTime=5&clockIncrement=0";
+            break;
+        case "10":
+            urlLichess = "https://lichess.org/setup/friend?timeMode=1&clockTime=10&clockIncrement=0";
+            break;
+        default:
+            urlLichess = "https://lichess.org/setup/friend?timeMode=0"; // Temps illimité
+    }
+
+    // Redirection immédiate dans le même onglet pour éviter le blocage du navigateur
+    window.location.href = urlLichess;
+}
     </script>
+
 
 
 </body>
