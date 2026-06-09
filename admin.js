@@ -1,8 +1,8 @@
-// 1. Importation des fonctions Firebase via les liens officiels (version 10.7.1)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+// NOUVEAU : On importe les fonctions d'authentification
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// 2. Ta configuration Firebase exacte
 const firebaseConfig = {
   apiKey: "AIzaSyA1QahLqwicaJ7mSHlpq5nQ3w2EwMHePiE",
   authDomain: "clubechec-1ac69.firebaseapp.com",
@@ -13,46 +13,61 @@ const firebaseConfig = {
   measurementId: "G-V1SBKD6E7P"
 };
 
-// 3. Initialisation de Firebase et connexion à ta base de données (Firestore)
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app); // On initialise la sécurité
 
-// 4. Écoute du formulaire pour ajouter un joueur
-const form = document.getElementById('add-player-form');
+const loginSection = document.getElementById('login-section');
+const adminSection = document.getElementById('admin-section');
+const loginBtn = document.getElementById('login-btn');
+const addPlayerForm = document.getElementById('add-player-form');
 
-// On s'assure que le formulaire existe bien sur la page avant d'écouter les clics
-if (form) {
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault(); // Empêche le rechargement de la page
+// Vérifie en permanence si tu es connecté
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // Si connecté : on cache la connexion et on montre l'espace admin
+    loginSection.style.display = 'none';
+    adminSection.style.display = 'block';
+  } else {
+    // Si non connecté : on montre la connexion
+    loginSection.style.display = 'block';
+    adminSection.style.display = 'none';
+  }
+});
 
-        // Récupération des valeurs tapées par toi ou ton copain
+// Quand on clique sur "Se connecter"
+loginBtn.addEventListener('click', async () => {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    document.getElementById('login-error').style.display = 'none';
+  } catch (error) {
+    document.getElementById('login-error').style.display = 'block';
+  }
+});
+
+// L'ajout de joueur (inchangé, mais désormais protégé)
+if (addPlayerForm) {
+    addPlayerForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
         const nomJoueur = document.getElementById('nom').value;
         const titreJoueur = document.getElementById('titre').value;
         const eloJoueur = document.getElementById('elo').value;
 
         try {
-            // Envoi direct dans la collection "joueurs"
             await addDoc(collection(db, "joueurs"), {
                 nom: nomJoueur,
                 titre: titreJoueur,
-                elo: Number(eloJoueur) // Force la valeur en mode "Nombre" pour le classement
+                elo: Number(eloJoueur)
             });
-
-            // Affichage du message de succès en vert
             const messageSucces = document.getElementById('message-succes');
             messageSucces.style.display = 'block';
-            form.reset(); // Vide les cases du formulaire
-
-            // Fait disparaître le message après 3 secondes
-            setTimeout(() => {
-                messageSucces.style.display = 'none';
-            }, 3000);
-
+            addPlayerForm.reset();
+            setTimeout(() => { messageSucces.style.display = 'none'; }, 3000);
         } catch (e) {
-            console.error("Erreur détaillée de Firebase : ", e);
-            alert("Impossible d'ajouter le joueur. Vérifie que tu as bien mis les règles Firestore sur 'true' dans la console Firebase.");
+            console.error(e);
+            alert("Erreur. Action non autorisée.");
         }
     });
-} else {
-    console.error("Le formulaire 'add-player-form' est introuvable sur cette page.");
 }
